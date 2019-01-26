@@ -440,9 +440,9 @@ body {
 /*  2.2 Mainmenu area
 /*----------------------------------------*/
 
-.mainmenu-area.home2.bg-color-tr.product-items {
-  background-color: transparent;
-}
+/*.mainmenu-area.home2.bg-color-tr.product-items {*/
+  /*background-color: transparent;*/
+/*}*/
 .mainmenu-area {
   position: relative;
   z-index: 9;
