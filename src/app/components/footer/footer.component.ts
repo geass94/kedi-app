@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-
+declare var jQuery: any;
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',

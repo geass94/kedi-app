@@ -23,9 +23,34 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/css/font-awesome.min.css",
+              "src/assets/css/owl.carousel.css",
+              "src/assets/css/owl.theme.css",
+              "src/assets/css/owl.transitions.css",
+              "src/assets/css/jquery-ui.css",
+              "src/assets/css/meanmenu.min.css",
+              "src/assets/lib/css/nivo-slider.css",
+              "src/assets/lib/css/preview.css",
+              "src/assets/css/animate.css",
+              "src/assets/css/magic.css",
+              "src/assets/css/normalize.css",
+              "src/assets/css/main.css",
+              "src/styles.css",
+              "src/assets/css/responsive.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "src/assets/js/vendor/modernizr-2.8.3.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/js/jquery-price-slider.js",
+              "src/assets/lib/js/jquery.nivo.slider.js",
+              "src/assets/js/jquery.meanmenu.js",
+              "src/assets/js/owl.carousel.min.js",
+              "src/assets/js/jquery.elevatezoom.js",
+              "src/assets/js/jquery.scrollUp.min.js",
+              "src/assets/js/plugins.js"
+            ]
           },
           "configurations": {
             "production": {
