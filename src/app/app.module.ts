@@ -31,7 +31,9 @@ import {ErrorInterceptor} from "./helpers/error-interceptor";
   imports: [
     BrowserModule,
     OwlModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
