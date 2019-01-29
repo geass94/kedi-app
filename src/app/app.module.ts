@@ -19,7 +19,7 @@ import { SignupComponent } from './components/signup/signup.component';
     FooterComponent,
     HomeComponent,
     ProfileComponent,
-    SignupComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
