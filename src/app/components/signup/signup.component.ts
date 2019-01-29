@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit {
     this.authenticationService.logout();
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = '/login';
   }
 
   // convenience getter for easy access to form fields
@@ -53,7 +53,7 @@ export class SignupComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.router.navigate(['login']);
+          this.router.navigate([this.returnUrl]);
         },
         error => {
           this.error = error;

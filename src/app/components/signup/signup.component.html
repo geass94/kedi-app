@@ -24,9 +24,9 @@
             </div>
             <div class="login-form">
               <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-                <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }"/>
-                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
-                <input type="email" formControlEmail="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
+                <input type="text" formControlName="name" class="form-control" placeholder="Name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }"/>
+                <input type="password" formControlName="password" class="form-control" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+                <input type="email" formControlName="email" class="form-control" placeholder="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
                 <div class="button-box">
                   <button type="submit" class="default-btn">Register</button>
                 </div>
