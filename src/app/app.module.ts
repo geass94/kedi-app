@@ -15,6 +15,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import {LoginComponent} from "./components/login/login.component";
 import {JwtInterceptor} from "./helpers/jwt-interceptor";
 import {ErrorInterceptor} from "./helpers/error-interceptor";
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {ErrorInterceptor} from "./helpers/error-interceptor";
     OwlModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
