@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
 import {AuthenticationService} from "../services/authentication.service";
 import {Observable, throwError} from "rxjs/index";
+import {catchError} from "rxjs/internal/operators";
 
 @Injectable
 export class ErrorInterceptor implements HttpInterceptor {

@@ -24,7 +24,7 @@
             </div>
             <div class="login-form">
               <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
                 <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
                 <div class="button-box">
                   <div class="login-toggle-btn">
