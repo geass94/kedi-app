@@ -16,6 +16,10 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
+  {
+    path: 'signup',
+    component: SignupComponent,
+  },
 
   // otherwise redirect to home
   { path: '**', redirectTo: '' }

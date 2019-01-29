@@ -23,10 +23,10 @@
               <span>Please Register using account detail bellow.</span>
             </div>
             <div class="login-form">
-              <form action="#" method="post">
-                <input type="text" name="user-name" placeholder="email">
-                <input type="password" name="user-password" placeholder="Password">
-                <input name="user-email" placeholder="Email" type="email">
+              <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }"/>
+                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+                <input type="email" formControlEmail="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
                 <div class="button-box">
                   <button type="submit" class="default-btn">Register</button>
                 </div>
