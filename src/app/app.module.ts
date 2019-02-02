@@ -16,6 +16,8 @@ import {LoginComponent} from "./components/login/login.component";
 import {JwtInterceptor} from "./helpers/jwt-interceptor";
 import {ErrorInterceptor} from "./helpers/error-interceptor";
 import { FormsModule } from '@angular/forms';
+import { ProductComponent } from './components/home/product/product.component';
+import { SingleProductComponent } from './components/single-product/single-product.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     ProfileComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    ProductComponent,
+    SingleProductComponent
   ],
   imports: [
     BrowserModule,
