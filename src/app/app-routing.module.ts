@@ -5,6 +5,7 @@ import {ProfileComponent} from "./components/profile/profile.component";
 import {SignupComponent} from "./components/signup/signup.component";
 import {LoginComponent} from "./components/login/login.component";
 import {AuthGuard} from "./guards/auth.guard";
+import {SingleProductComponent} from "./components/single-product/single-product.component";
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: 'signup',
     component: SignupComponent,
+  },
+  {
+    path: 'product/:id',
+    component: SingleProductComponent,
   },
 
   // otherwise redirect to home
