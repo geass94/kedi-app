@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {Product} from "../../models/product";
 import {ProductService} from "../../services/product.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -22,6 +22,24 @@ export class SingleProductComponent implements OnInit, AfterViewInit {
     });
   }
 
+
+  ready(isReady: boolean) {
+    console.log("modis")
+    if (isReady) {
+      jQuery(".product-page-slider").owlCarousel({
+        autoPlay: false,
+        slideSpeed: 2000,
+        pagination: false,
+        navigation: true,
+        items : 5,
+        itemsDesktop : [1199, 3],
+        itemsDesktopSmall : [980, 3],
+        itemsTablet: [768, 2],
+        itemsMobile : [479, 2],
+      });
+    }
+  }
+
   ngAfterViewInit() {
     jQuery(".product-slider").owlCarousel({
       autoPlay: false,
@@ -34,17 +52,7 @@ export class SingleProductComponent implements OnInit, AfterViewInit {
       itemsTablet: [768, 2],
       itemsMobile : [479, 1],
     });
-    jQuery(".product-page-slider").owlCarousel({
-      autoPlay: false,
-      slideSpeed: 2000,
-      pagination: false,
-      navigation: true,
-      items : 5,
-      itemsDesktop : [1199, 3],
-      itemsDesktopSmall : [980, 3],
-      itemsTablet: [768, 2],
-      itemsMobile : [479, 2],
-    });
+
     jQuery(".upsell-slider").owlCarousel({
       autoPlay: false,
       slideSpeed: 2000,

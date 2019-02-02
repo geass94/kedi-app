@@ -22,12 +22,13 @@
         <div class="single-product-img tab-content">
           <ng-template ngFor let-image [ngForOf]="product.productFiles" let-i= "index">
           <div class="single-pro-main-image tab-pane" [ngClass]="{ active: i == 0 }" id="pro-large-img-{{i}}">
-            <a href="#"><img class="optima_zoom" src="{{image.fileUrl}}"  alt="optima"/></a>
+            <a href="#"><img class="optima_zoom" src="{{image.fileUrl}}" alt="optima"/></a>
           </div>
           </ng-template>
         </div>
         <div class="product-page-slider">
-          <div class="single-product-slider" *ngFor="let image of product.productFiles; let i = index;">
+          <div class="single-product-slider" *ngFor="let image of product.productFiles; let i = index; let last = last">
+            <span *ngIf="last ? ready(false) : ready(true)"></span>
             <a href="#pro-large-img-{{i}}" data-toggle="tab">
               <img src="{{image.fileUrl}}" alt="" width="150" height="150">
             </a>
