@@ -18,6 +18,7 @@ import {ErrorInterceptor} from "./helpers/error-interceptor";
 import { FormsModule } from '@angular/forms';
 import { ProductComponent } from './components/home/product/product.component';
 import { SingleProductComponent } from './components/single-product/single-product.component';
+import { ShopComponent } from './components/shop/shop.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { SingleProductComponent } from './components/single-product/single-produ
     SignupComponent,
     LoginComponent,
     ProductComponent,
-    SingleProductComponent
+    SingleProductComponent,
+    ShopComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ import {SignupComponent} from "./components/signup/signup.component";
 import {LoginComponent} from "./components/login/login.component";
 import {AuthGuard} from "./guards/auth.guard";
 import {SingleProductComponent} from "./components/single-product/single-product.component";
+import {ShopComponent} from "./components/shop/shop.component";
 
 const routes: Routes = [
   {
@@ -24,6 +25,15 @@ const routes: Routes = [
   {
     path: 'product/:id',
     component: SingleProductComponent,
+  },
+  {
+    path: 'shop',
+    component: ShopComponent,
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
   },
 
   // otherwise redirect to home
