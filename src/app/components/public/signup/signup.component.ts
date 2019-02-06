@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
-import {AuthenticationService} from "../../services/authentication.service";
 import {first} from "rxjs/internal/operators";
+import {AuthenticationService} from "../../../services/authentication.service";
 
 @Component({
   selector: 'app-signup',
@@ -24,10 +24,10 @@ export class SignupComponent implements OnInit {
     private authenticationService: AuthenticationService
   ) { }
   ngOnInit() {
-    this.signupForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', Validators.required]
+    this.signupForm = new FormGroup({
+      name: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required)
     });
 
     // reset login status
@@ -36,9 +36,6 @@ export class SignupComponent implements OnInit {
     // get return url from route parameters or default to '/'
     this.returnUrl = '/login';
   }
-
-  // convenience getter for easy access to form fields
-  get f() { return this.signupForm.controls; }
 
   onSubmit() {
     this.submitted = true;
@@ -49,7 +46,7 @@ export class SignupComponent implements OnInit {
     }
 
     this.loading = true;
-    this.authenticationService.signup(this.f.name.value, this.f.email.value, this.f.password.value)
+    this.authenticationService.signup(this.signupForm.value.name, this.signupForm.value.email, this.signupForm.value.password)
       .pipe(first())
       .subscribe(
         data => {

@@ -6,36 +6,23 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { OwlModule } from 'ngx-owl-carousel';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { SliderComponent } from './components/slider/slider.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { HomeComponent } from './components/home/home.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { SignupComponent } from './components/signup/signup.component';
-import {LoginComponent} from "./components/login/login.component";
+import { HeaderComponent } from './layout/main/header/header.component';
+import { FooterComponent } from './layout/main/footer/footer.component';
 import {JwtInterceptor} from "./helpers/jwt-interceptor";
 import {ErrorInterceptor} from "./helpers/error-interceptor";
 import { FormsModule } from '@angular/forms';
-import { ProductComponent } from './components/home/product/product.component';
-import { SingleProductComponent } from './components/single-product/single-product.component';
-import { ShopComponent } from './components/shop/shop.component';
-
+import { MainComponent } from './layout/main/main.component';
+import {CommonModule, LocationStrategy, PathLocationStrategy} from "@angular/common";
 
 @NgModule({
   declarations: [
     AppComponent,
+    MainComponent,
     HeaderComponent,
-    SliderComponent,
     FooterComponent,
-    HomeComponent,
-    ProfileComponent,
-    SignupComponent,
-    LoginComponent,
-    ProductComponent,
-    SingleProductComponent,
-    ShopComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     OwlModule,
     AppRoutingModule,
@@ -43,9 +30,15 @@ import { ShopComponent } from './components/shop/shop.component';
     HttpClientModule,
     FormsModule
   ],
+  exports: [
+  ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    {
+      provide: LocationStrategy,
+      useClass: PathLocationStrategy
+    }
   ],
   bootstrap: [AppComponent]
 })

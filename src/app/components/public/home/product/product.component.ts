@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ProductService} from "../../../services/product.service";
-import {Product} from "../../../models/product";
+import {ProductService} from "../../../../services/product.service";
+import {Product} from "../../../../models/product";
 import {deserialize} from "serializer.ts/Serializer";
 
 @Component({
@@ -13,11 +13,10 @@ export class ProductComponent implements OnInit {
   constructor(
     private productService: ProductService
   ) { }
-  imgClass(i:number){
-    if (i==0){
+  imgClass(i: number) {
+    if (i === 0) {
       return "primary-img";
-    }
-    else {
+    } else {
       return "secondary-img";
     }
   }

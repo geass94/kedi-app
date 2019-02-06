@@ -1,8 +1,8 @@
 import {AfterViewInit, Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import {Product} from "../../models/product";
-import {ProductService} from "../../services/product.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {deserialize} from "serializer.ts/Serializer";
+import {Product} from "../../../models/product";
+import {ProductService} from "../../../services/product.service";
 declare var jQuery: any;
 
 @Component({
