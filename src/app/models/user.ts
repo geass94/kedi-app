@@ -1,8 +1,20 @@
+import {Skip} from "serializer.ts/Decorators";
+
 export class User {
   id: number;
+  name: string;
   email: string;
-  password: string;
-  firstName: string;
-  lastName: string;
+  imageUrl: string;
+  personalInformation: {
+    id: number,
+    firstName: string,
+    lastName: string,
+    company: string,
+    address1: string,
+    address2: string,
+    city: string,
+    postCode: string,
+  };
+  @Skip()
   accessToken?: string;
 }

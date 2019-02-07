@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {first} from "rxjs/internal/operators";
 import {AuthenticationService} from "../../../services/authentication.service";
+import {UserService} from "../../../services/user.service";
 
 @Component({
   selector: 'app-login',
@@ -19,10 +20,10 @@ export class LoginComponent implements OnInit {
   error = '';
 
   constructor(
-    private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
@@ -51,12 +52,17 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.router.navigate([this.returnUrl]);
+          // this.router.navigate([this.returnUrl]);
         },
         error => {
           this.error = error;
           this.loading = false;
-        });
+        },
+        () => {
+          this.userService.setProfile();
+          window.location.href = "/home";
+        }
+      );
   }
 
 }

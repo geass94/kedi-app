@@ -13,6 +13,7 @@ import {ErrorInterceptor} from "./helpers/error-interceptor";
 import { FormsModule } from '@angular/forms';
 import { MainComponent } from './layout/main/main.component';
 import {CommonModule, LocationStrategy, PathLocationStrategy} from "@angular/common";
+import { UserMenuComponent } from './layout/main/header/user-menu/user-menu.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {CommonModule, LocationStrategy, PathLocationStrategy} from "@angular/com
     MainComponent,
     HeaderComponent,
     FooterComponent,
+    UserMenuComponent,
   ],
   imports: [
     CommonModule,

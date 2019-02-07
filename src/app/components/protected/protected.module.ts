@@ -8,10 +8,12 @@ import {AppRoutingModule} from "../../app-routing.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {CommonModule} from "@angular/common";
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
-    ProfileComponent
+    ProfileComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,
