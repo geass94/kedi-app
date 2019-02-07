@@ -1,18 +1,21 @@
+import {Color} from "./color";
+import {Manufacturer} from "./manufacturer";
+import {Category} from "./category";
+import {Type} from "serializer.ts/Decorators";
+
 export class Product {
   id: number;
   name: string;
   price: number;
-  color: {id: number, name: string};
+  @Type(() => Color)
+  color: Color;
   size: string;
   sex: string;
   description: string;
-  manufacturer: {id: number, name: string};
-  categoryList: [
-    {
-      id: number,
-      name: string
-    }
-    ];
+  @Type(() => Manufacturer)
+  manufacturer: Manufacturer;
+  @Type(() => Category)
+  categoryList: Category[];
   productFiles: [{
     id: number,
     name: string,
