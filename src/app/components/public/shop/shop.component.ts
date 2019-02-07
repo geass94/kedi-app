@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {environment} from "../../../../environments/environment";
-import {HttpClient} from "@angular/common/http";
 import {Product} from "../../../models/product";
 import {ProductService} from "../../../services/product.service";
 import {deserialize} from "serializer.ts/Serializer";
