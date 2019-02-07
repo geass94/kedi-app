@@ -13,6 +13,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {LoginComponent} from "./login/login.component";
 import {CommonModule} from "@angular/common";
+import { ShopComponent } from './shop/shop.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {CommonModule} from "@angular/common";
     SingleProductComponent,
     SliderComponent,
     LoginComponent,
+    ShopComponent,
   ],
   imports: [
     RouterModule.forChild(PublicRoutes),
