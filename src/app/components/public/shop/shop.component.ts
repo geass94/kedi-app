@@ -3,6 +3,7 @@ import {Product} from "../../../models/product";
 import {ProductService} from "../../../services/product.service";
 import {deserialize} from "serializer.ts/Serializer";
 
+
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
