@@ -12,19 +12,33 @@ declare var jQuery: any;
   encapsulation: ViewEncapsulation.None
 })
 export class SingleProductComponent implements OnInit, AfterViewInit {
+  selectedVariant: Product;
+  colorVariants: Product [];
   product: Product = new Product;
   private id = this.route.snapshot.paramMap.get("id") ;
   constructor(private productService: ProductService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.productService.getProduct(parseInt(this.id)).subscribe(res => {
-      this.product = deserialize<Product>(Product, res);
-    });
+    this.productService.getProduct(parseInt(this.id)).subscribe((res) => {
+        this.product = deserialize<Product>(Product, res);
+      },
+      (error) => {
+
+      },
+      () => {
+        this.productService.getProductVariants(this.product.productVariantIds).subscribe(res=>{
+          this.colorVariants = deserialize<Product[]>(Product, res);
+        });
+      }
+    );
+
   }
 
+  onColorChange(){
+    console.log(this.selectedVariant)
+  }
 
   ready(isReady: boolean) {
-    console.log("modis")
     if (isReady) {
       jQuery(".product-page-slider").owlCarousel({
         autoPlay: false,

@@ -22,4 +22,7 @@ export class Product {
     filType: string,
     fileUrl: string
   }];
+  baseProduct: boolean;
+  productVariantId: number;
+  productVariantIds: number[];
 }

@@ -88,11 +88,8 @@
                 <em>*</em> Color
               </label>
               <div class="input-box">
-                <select id="select-1">
-                  <option value="">-- Please Select --</option>
-                  <option value="">black +$2.00</option>
-                  <option value="">blue +$1.00</option>
-                  <option value="">yellow +$1.00</option>
+                <select id="select-1" [(ngModel)]="selectedVariant" (change)="onColorChange()">
+                  <option *ngFor="let variant of colorVariants" [ngValue]="variant" >{{variant.color.name}}</option>
                 </select>
               </div>
             </div>
