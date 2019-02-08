@@ -13,8 +13,9 @@ import {MenuService} from "../../../services/menu.service";
 })
 export class ShopComponent implements OnInit {
 
-  products: Product[] = [];
-  sideBar: Menu;
+  products: Product[];
+  sideBar: Menu = new Menu;
+
   constructor(
     private productService: ProductService,
     private menuService: MenuService
@@ -29,8 +30,9 @@ export class ShopComponent implements OnInit {
 
   ngOnInit() {
     this.productService.getProducts().subscribe(res => {
-      this.products.push(deserialize<Product>(Product, res));
+      this.products = deserialize<Product[]>(Product, res);
     });
+
     this.menuService.getSideBar().subscribe(res => {
       this.sideBar = deserialize<Menu>(Menu, res);
       console.log(this.sideBar.categories);

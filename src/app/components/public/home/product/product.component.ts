@@ -9,6 +9,7 @@ import {deserialize} from "serializer.ts/Serializer";
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
+  productsResponse: Product[] = [];
   products: Product[] = [];
   constructor(
     private productService: ProductService
@@ -23,7 +24,18 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
     this.productService.getProducts().subscribe(res => {
-      this.products.push(deserialize<Product>(Product, res));
+      this.productsResponse = deserialize<Product[]>(Product, res);
+
+      for (let i = 0; i < this.productsResponse.length; i++) {
+          if (i % 2 === 0) {
+            const toPush: Product[] = [
+              this.productsResponse[i],
+              this.productsResponse[i + 1]
+            ];
+            this.products.push( deserialize(Product, toPush) );
+          }
+      }
+      console.log(this.products);
     });
   }
 
