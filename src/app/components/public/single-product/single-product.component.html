@@ -91,6 +91,7 @@
                 <select id="select-1" [(ngModel)]="selectedVariant" (change)="onColorChange()">
                   <option *ngFor="let variant of colorVariants" [ngValue]="variant" >{{variant.color.name}}</option>
                 </select>
+
               </div>
             </div>
             <div class="size-select">
