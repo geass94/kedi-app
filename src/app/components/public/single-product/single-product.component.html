@@ -28,10 +28,10 @@
         </div>
         <div class="product-page-slider">
           <div class="single-product-slider" *ngFor="let image of product.productFiles; let i = index; let last = last">
-            <span *ngIf="last ? ready(false) : ready(true)"></span>
             <a href="#pro-large-img-{{i}}" data-toggle="tab">
-              <img src="{{image.fileUrl}}" alt="" width="150" height="150">
+              <img src="{{image.fileUrl}}" alt="">
             </a>
+            {{ last === true ? ready(true) : '' }}
           </div>
         </div>
       </div>
@@ -58,7 +58,7 @@
             <span>{{product.price}}</span>
           </div>
           <div class="single-product-info">
-            <p>Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada tincidunt. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer enim purus, posuere at ultricies eu, placerat a felis. Suspendisse aliquet urna pretium eros convallis interdum. Quisque in arcu id dui vulputate mollis eget non arcu. Aenean et nulla purus. Mauris vel tellus non nunc mattis lobortis. </p>
+            <p>{{product.description}}</p>
             <div class="share">
               <img src="assets/img/product/share.png" alt="">
             </div>
@@ -141,7 +141,7 @@
           <div class="tab-content single-product-page">
             <div role="tabpanel" class="tab-pane fade in active" id="tab1">
               <div class="single-p-tab-content">
-                <p>Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada tincidunt. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer enim purus, posuere at ultricies eu, placerat a felis. Suspendisse aliquet urna pretium eros convallis interdum. Quisque in arcu id dui vulputate mollis eget non arcu. Aenean et nulla purus. Mauris vel tellus non nunc mattis lobortis. </p>
+                <p>{{product.description}}</p>
               </div>
             </div>
             <div role="tabpanel" class="tab-pane fade" id="tab2">

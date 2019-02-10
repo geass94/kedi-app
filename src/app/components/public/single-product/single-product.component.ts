@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {deserialize} from "serializer.ts/Serializer";
 import {Product} from "../../../models/product";
@@ -16,11 +16,14 @@ export class SingleProductComponent implements OnInit, AfterViewInit {
   selectedVariant: Product;
   colorVariants: Product [] = [];
   product: Product = new Product;
+  pluginsInited = false;
   private id: string;
-  constructor(private productService: ProductService, private cartService: CartService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private productService: ProductService,
+              private cartService: CartService,
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
-    console.log(typeof this.product.id)
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
       if (typeof this.product.id === 'undefined') {
@@ -72,7 +75,8 @@ export class SingleProductComponent implements OnInit, AfterViewInit {
   }
 
   ready(isReady: boolean) {
-    if (isReady) {
+    if (isReady && !this.pluginsInited) {
+      this.pluginsInited = true;
       jQuery(".product-page-slider").owlCarousel({
         autoPlay: false,
         slideSpeed: 2000,
@@ -84,10 +88,27 @@ export class SingleProductComponent implements OnInit, AfterViewInit {
         itemsTablet: [768, 2],
         itemsMobile : [479, 2],
       });
+
+      jQuery(".optima_zoom").elevateZoom({
+        gallery: 'optima_gallery',
+        cursor: 'pointer',
+        galleryActiveClass: "active",
+        imageCrossfade: true,
+        loadingIcon: ""
+      });
+
+      jQuery(".optima_zoom").bind("click", function(e) {
+        var ez =   jQuery('.optima_zoom').data('elevateZoom');
+        ez.closeAll(); // NEW: This function force hides the lens, tint and window
+        jQuery.fancybox(ez.getGalleryList());
+        return false;
+      });
     }
   }
 
   ngAfterViewInit() {
+
+
     jQuery(".product-slider").owlCarousel({
       autoPlay: false,
       slideSpeed: 2000,
@@ -121,19 +142,6 @@ export class SingleProductComponent implements OnInit, AfterViewInit {
       itemsDesktopSmall : [980, 3],
       itemsTablet: [768, 2],
       itemsMobile : [479, 1],
-    });
-    jQuery(".optima_zoom").elevateZoom({
-      gallery: 'optima_gallery',
-      cursor: 'pointer',
-      galleryActiveClass: "active",
-      imageCrossfade: true,
-      loadingIcon: ""
-    });
-    jQuery(".optima_zoom").bind("click", function(e) {
-      var ez =   jQuery('.optima_zoom').data('elevateZoom');
-      ez.closeAll(); // NEW: This function force hides the lens, tint and window
-      jQuery.fancybox(ez.getGalleryList());
-      return false;
     });
   }
 
