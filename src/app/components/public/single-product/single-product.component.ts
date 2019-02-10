@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {deserialize} from "serializer.ts/Serializer";
 import {Product} from "../../../models/product";
 import {ProductService} from "../../../services/product.service";
+import {CartService} from "../../../services/cart.service";
 declare var jQuery: any;
 
 @Component({
@@ -16,13 +17,37 @@ export class SingleProductComponent implements OnInit, AfterViewInit {
   colorVariants: Product [] = [];
   product: Product = new Product;
   private id: string;
-  constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private productService: ProductService, private cartService: CartService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    console.log(typeof this.product.id)
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
-      this.loadProduct();
+      if (typeof this.product.id === 'undefined') {
+        this.renderProduct();
+      } else {
+        let result = this.colorVariants.find(obj => {
+          return obj.id === this.selectedVariant.id;
+        });
+        this.product = result;
+      }
     });
+  }
+
+  addToCart(product: Product) {
+    this.cartService.addToCart(product.id).subscribe((res) => {
+      console.log(res);
+    });
+  }
+
+  addToWishlist(product: Product) {
+    this.cartService.addToWishlist(product.id).subscribe((res) => {
+      console.log(res);
+    });
+  }
+
+  private renderProduct() {
+    this.loadProduct();
   }
 
   private loadProduct() {
@@ -33,7 +58,7 @@ export class SingleProductComponent implements OnInit, AfterViewInit {
 
       },
       () => {
-        if (this.colorVariants.length === 0){
+        if (this.colorVariants.length === 0) {
           this.productService.getProductVariants(this.product.productVariantIds).subscribe(res => {
             this.colorVariants = deserialize<Product[]>(Product, res);
           });

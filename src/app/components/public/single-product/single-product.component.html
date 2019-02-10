@@ -66,13 +66,13 @@
           <div class="action">
             <ul class="add-to-links">
               <li>
-                <a href="#">
-                  <i class="fa fa-heart"></i>
+                <a >
+                  <i class="fa fa-heart" (click)="addToWishlist(product)" ></i>
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <i class="fa fa-refresh"></i>
+                  <i class="fa fa-refresh" ></i>
                 </a>
               </li>
               <li>
@@ -116,7 +116,7 @@
                 <label>Qty: </label>
                 <input class="cart-plus-minus-box" type="text" name="qtybutton" value="0">
               </div>
-              <button class="cart-btn">Add to cart</button>
+              <button class="cart-btn" (click)="addToCart(product)" >Add to cart</button>
             </div>
           </div>
         </div>

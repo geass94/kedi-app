@@ -12,4 +12,8 @@ export class CartService {
   addToCart(productId: number) {
     return this.http.post(`${environment.apiUrl}/cart/add-to-cart`, { productId : productId });
   }
+
+  addToWishlist(productId: number) {
+    return this.http.post(`${environment.apiUrl}/cart/add-to-wishlist`, { productId : productId });
+  }
 }

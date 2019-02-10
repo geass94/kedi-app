@@ -19,7 +19,6 @@ export class ProductService {
     return this.http.get(`${environment.apiUrl}/product/get-product-by-id/${id}`);
   }
   getProductVariants(ids: any[]): Observable<Product[]> {
-    console.log (ids)
     let params = new HttpParams();
     params = params.append('ids', JSON.stringify(ids).replace("[", "").replace("]", ""));
     return this.http.get(`${environment.apiUrl}/product/get-product-variants`, {params: params})
