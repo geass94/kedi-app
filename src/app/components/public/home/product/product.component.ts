@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {ProductService} from "../../../../services/product.service";
 import {Product} from "../../../../models/product";
 import {deserialize} from "serializer.ts/Serializer";
+import {User} from "../../../../models/user";
+import {UserService} from "../../../../services/user.service";
+import {CartService} from "../../../../services/cart.service";
 
 @Component({
   selector: 'app-product',
@@ -9,33 +12,45 @@ import {deserialize} from "serializer.ts/Serializer";
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
+  loggedUser: User;
   productsResponse: Product[] = [];
   products: Product[] = [];
   constructor(
-    private productService: ProductService
-  ) { }
+    private productService: ProductService,
+    private userService: UserService,
+    private cartService: CartService
+  ) {
+    this.loggedUser = userService.loadProfile();
+  }
+
   imgClass(i: number) {
-    if (i === 0) {
-      return "primary-img";
-    } else {
-      return "secondary-img";
-    }
+    return i === 0 ? 'primary-img' : 'secondary-img';
   }
 
   ngOnInit() {
+
     this.productService.getProducts().subscribe(res => {
       this.productsResponse = deserialize<Product[]>(Product, res);
 
       for (let i = 0; i < this.productsResponse.length; i++) {
           if (i % 2 === 0) {
-            const toPush: Product[] = [
-              this.productsResponse[i],
-              this.productsResponse[i + 1]
-            ];
+            let toPush: Product[] = [];
+            if (typeof this.productsResponse[i] !== 'undefined') {
+              toPush.push(this.productsResponse[i]);
+            }
+            if (typeof this.productsResponse[i + 1] !== 'undefined') {
+              toPush.push(this.productsResponse[i + 1]);
+            }
+
             this.products.push( deserialize(Product, toPush) );
           }
       }
-      console.log(this.products);
+    });
+  }
+
+  addToCart(product: Product) {
+    this.cartService.addToCart(product.id).subscribe((res) => {
+      console.log(res);
     });
   }
 

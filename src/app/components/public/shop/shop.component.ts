@@ -4,6 +4,8 @@ import {ProductService} from "../../../services/product.service";
 import {deserialize} from "serializer.ts/Serializer";
 import {Menu} from "../../../models/menu";
 import {MenuService} from "../../../services/menu.service";
+import {User} from "../../../models/user";
+import {UserService} from "../../../services/user.service";
 
 
 @Component({
@@ -12,20 +14,20 @@ import {MenuService} from "../../../services/menu.service";
   styleUrls: ['./shop.component.css']
 })
 export class ShopComponent implements OnInit {
-
+  loggedUser: User;
   products: Product[];
   sideBar: Menu = new Menu;
 
   constructor(
     private productService: ProductService,
-    private menuService: MenuService
-  ) { }
+    private menuService: MenuService,
+    private userService: UserService
+  ) {
+    this.loggedUser = this.userService.loadProfile();
+  }
+
   imgClass(i: number) {
-    if (i === 0) {
-      return "primary-img";
-    } else {
-      return "secondary-img";
-    }
+    return i === 0 ? 'primary-img' : 'secondary-img';
   }
 
   ngOnInit() {
