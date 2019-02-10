@@ -159,42 +159,42 @@
                 <div class="panel-body">
                   <div class="col-md-12">
                     <div class="delivery-details">
-                      <form action="#">
+                      <form [formGroup]="piForm" (submit)="onPiSubmit()">
                         <div class="list-style">
                           <div class="account-title">
                             <h4>გთხოვთ განაახლოთ პირადი ინფორმაცია თუ იგი შეიცვალა </h4>
                           </div>
                           <div class="form-name">
                             <label>სახელი <em>*</em> </label>
-                            <input type="text" placeholder="...">
+                            <input type="text" placeholder="..." formControlName="firstName">
                           </div>
                           <div class="form-name">
                             <label>გვარი <em>*</em> </label>
-                            <input type="text" placeholder="...">
+                            <input type="text" placeholder="..." formControlName="lastName">
                           </div>
                           <div class="form-name">
                             <label>კომპანია </label>
-                            <input type="text" placeholder="...">
+                            <input type="text" placeholder="..." formControlName="company">
                           </div>
                           <div class="form-name">
                             <label>მისამართი <em>*</em> </label>
-                            <input type="text" placeholder="...">
+                            <input type="text" placeholder="..." formControlName="address1">
                           </div>
                           <div class="form-name">
                             <label>მისამართი <em>*</em> </label>
-                            <input type="text" placeholder="...">
+                            <input type="text" placeholder="..." formControlName="address2">
                           </div>
                           <div class="form-name">
                             <label>ქალაქი <em>*</em> </label>
-                            <input type="text" placeholder="...">
+                            <input type="text" placeholder="..." formControlName="city">
                           </div>
                           <div class="form-name">
                             <label>საფოსტო ინდექსი <em>*</em> </label>
-                            <input type="text" placeholder="...">
+                            <input type="text" placeholder="..." formControlName="postCode">
                           </div>
                           <div class="form-name">
                             <label> ქვეყანა <em>*</em> </label>
-                            <select>
+                            <select formControlName="country">
                               <option value="1">---Please select---</option>
                               <option value="1">Afghanistan</option>
                               <option value="1">Algeria</option>
@@ -212,8 +212,8 @@
                             </select>
                           </div>
                           <div class="form-name">
-                            <label> ქალაქი </label>
-                            <select>
+                            <label> რაიონი </label>
+                            <select formControlName="state">
                               <option value="1">---Please select---</option>
                               <option value="1">Arizona</option>
                               <option value="1">Armed Forces Africa</option>
@@ -230,7 +230,7 @@
                             </select>
                           </div>
                           <div class="save-button">
-                            <button>save</button>
+                            <button type="submit">save</button>
                           </div>
                         </div>
                       </form>

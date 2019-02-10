@@ -14,6 +14,8 @@ export class User {
     address2: string,
     city: string,
     postCode: string,
+    country: string,
+    state: string
   };
   @Skip()
   accessToken?: string;

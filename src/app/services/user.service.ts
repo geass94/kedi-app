@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {User} from "../models/user";
 import {environment} from "../../environments/environment";
 import {BehaviorSubject, Observable, Observer} from "rxjs/index";
-import {deserialize} from "serializer.ts/Serializer";
+import {deserialize, serialize} from "serializer.ts/Serializer";
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +31,11 @@ export class UserService {
     return JSON.parse(localStorage.getItem('loggedUser'));
   }
 
+  updateProfile(u: User): void {
+    this.http.put(`${environment.apiUrl}/user/update/${u.id}`, serialize(u)).subscribe((res) => {
+      let usr: User = deserialize(User, res);
+      localStorage.setItem('loggedUser', JSON.stringify(usr));
+    });
+  }
 
 }
