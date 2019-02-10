@@ -16,7 +16,7 @@ export class SingleProductComponent implements OnInit, AfterViewInit {
   colorVariants: Product [];
   product: Product = new Product;
   private id = this.route.snapshot.paramMap.get("id") ;
-  constructor(private productService: ProductService, private route: ActivatedRoute) { }
+  constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.productService.getProduct(parseInt(this.id)).subscribe((res) => {
@@ -35,7 +35,8 @@ export class SingleProductComponent implements OnInit, AfterViewInit {
   }
 
   onColorChange(){
-    console.log(this.selectedVariant)
+    console.log(this.selectedVariant);
+    this.router.navigate(['/product/' + this.selectedVariant.id]);
   }
 
   ready(isReady: boolean) {
