@@ -13,12 +13,19 @@ declare var jQuery: any;
 })
 export class SingleProductComponent implements OnInit, AfterViewInit {
   selectedVariant: Product;
-  colorVariants: Product [];
+  colorVariants: Product [] = [];
   product: Product = new Product;
-  private id = this.route.snapshot.paramMap.get("id") ;
+  private id: string;
   constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      this.id = params.get('id');
+      this.loadProduct();
+    });
+  }
+
+  private loadProduct() {
     this.productService.getProduct(parseInt(this.id)).subscribe((res) => {
         this.product = deserialize<Product>(Product, res);
       },
@@ -26,17 +33,17 @@ export class SingleProductComponent implements OnInit, AfterViewInit {
 
       },
       () => {
-        this.productService.getProductVariants(this.product.productVariantIds).subscribe(res=>{
-          this.colorVariants = deserialize<Product[]>(Product, res);
-        });
+        if (this.colorVariants.length === 0){
+          this.productService.getProductVariants(this.product.productVariantIds).subscribe(res => {
+            this.colorVariants = deserialize<Product[]>(Product, res);
+          });
+        }
       }
     );
-
   }
 
-  onColorChange(){
-    console.log(this.selectedVariant);
-    this.router.navigate(['/product/' + this.selectedVariant.id]);
+  onColorChange() {
+    this.router.navigate(['/product',  this.selectedVariant.id], { relativeTo: this.route });
   }
 
   ready(isReady: boolean) {
