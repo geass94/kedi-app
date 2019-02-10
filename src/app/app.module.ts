@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { OwlModule } from 'ngx-owl-carousel';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './layout/main/header/header.component';
@@ -26,7 +25,6 @@ import { UserMenuComponent } from './layout/main/header/user-menu/user-menu.comp
   imports: [
     CommonModule,
     BrowserModule,
-    OwlModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,

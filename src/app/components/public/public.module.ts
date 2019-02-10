@@ -6,9 +6,6 @@ import {SingleProductComponent} from "./single-product/single-product.component"
 import {RouterModule} from "@angular/router";
 import {PublicRoutes} from "./public.routing";
 import {SliderComponent} from "../../layout/main/slider/slider.component";
-import {BrowserModule} from "@angular/platform-browser";
-import {OwlModule} from "ngx-owl-carousel";
-import {AppRoutingModule} from "../../app-routing.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {LoginComponent} from "./login/login.component";
@@ -27,7 +24,6 @@ import { ShopComponent } from './shop/shop.component';
   ],
   imports: [
     RouterModule.forChild(PublicRoutes),
-    OwlModule,
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
