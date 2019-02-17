@@ -24,7 +24,7 @@ export class UserService {
       () => {
         localStorage.setItem('loggedUser', JSON.stringify(this.user));
       }
-    );
+    ).unsubscribe();
   }
 
   loadProfile(): User {
@@ -35,7 +35,7 @@ export class UserService {
     this.http.put(`${environment.apiUrl}/user/update/${u.id}`, serialize(u)).subscribe((res) => {
       let usr: User = deserialize(User, res);
       localStorage.setItem('loggedUser', JSON.stringify(usr));
-    });
+    }).unsubscribe();
   }
 
 }

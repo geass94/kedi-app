@@ -37,8 +37,7 @@ export class ShopComponent implements OnInit {
 
     this.menuService.getSideBar().subscribe(res => {
       this.sideBar = deserialize<Menu>(Menu, res);
-      console.log(this.sideBar.categories);
-    });
+    }).unsubscribe();
   }
 
 
