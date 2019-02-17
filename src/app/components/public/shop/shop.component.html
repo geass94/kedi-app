@@ -60,7 +60,7 @@
                 <div class="price-filter">
                   <div id="slider-range"></div>
                   <div class="price-slider-amount">
-                    <input type="text" id="amount" name="price"  placeholder="Add Your Price" />
+                    <input type="text" id="amount" name="price" (change)="priceSliderOnChange(v)" #v placeholder="Add Your Price" />
                   </div>
                 </div>
                 <button type="submit"> <span>search</span> </button>
@@ -136,7 +136,7 @@
                       </a>
                     </div>
                     <div class="actions">
-                      <button type="submit" class="cart-btn" title="Add to cart">add to cart</button>
+                      <button type="button" (click)="addToCart(product)" class="cart-btn" title="Add to cart">add to cart</button>
                       <ul class="add-to-link">
                         <li><a class="modal-view" data-target="#productModal" data-toggle="modal" href="#"> <i class="fa fa-search"></i></a></li>
                         <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
