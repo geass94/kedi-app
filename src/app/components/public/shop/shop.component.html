@@ -60,7 +60,7 @@
                 <div class="price-filter">
                   <div id="slider-range"></div>
                   <div class="price-slider-amount">
-                    <input type="text" id="amount" name="price" (change)="priceSliderOnChange(v)" #v placeholder="Add Your Price" />
+                    <input type="text" id="amount" name="price" (change)="priceSliderOnChange($event.target.value)" placeholder="Add Your Price" />
                   </div>
                 </div>
                 <button type="submit"> <span>search</span> </button>
@@ -163,51 +163,20 @@
               </div>
               <div role="tabpanel" class="tab-pane fade home2" id="list">
                 <div class="product-catagory">
-                  <div class="single-list-product">
-                    <div class="col-sm-4">
-                      <div class="list-product-img">zx
-                        <a href="single-product.html">
-                          <img src="assets/img/product/1.png" alt="">
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-sm-8">
-                      <div class="list-product-info">
-                        <a href="single-product.html" class="list-product-name"> Cras neque metus</a>
-                        <div class="price-rating">
-                          <span class="old-price">$700.00</span>
-                          <span>$800.00</span>
-                          <div class="ratings">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                            <a href="#" class="review">1 Review(s)</a>
-                            <a href="#" class="add-review">Add Your Review</a>
-                          </div>
-                        </div>
-                        <div class="list-product-details">
-                          <p>Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nul
-                            <a href="single-product.html">Learn More</a> </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="single-list-product">
+                  <div class="single-list-product" *ngFor="let product of products  ">
                     <div class="col-sm-4">
                       <div class="list-product-img">
-                        <a href="single-product.html">
-                          <img src="assets/img/product/6.png" alt="">
+                        <a href="/product/{{product.id}}">
+                          <img src="{{product.productFiles[0].fileUrl}}" alt="">
                         </a>
                       </div>
                     </div>
                     <div class="col-sm-8">
                       <div class="list-product-info">
-                        <a href="single-product.html" class="list-product-name"> Cras neque metus</a>
+                        <a href="/product/{{product.id}}" class="list-product-name"> {{product.name}}</a>
                         <div class="price-rating">
-                          <span class="old-price">$700.00</span>
-                          <span>$800.00</span>
+                          <span class="old-price">{{product.price}}</span>
+                          <span>{{product.price}}</span>
                           <div class="ratings">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -219,101 +188,7 @@
                           </div>
                         </div>
                         <div class="list-product-details">
-                          <p>Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nul
-                            <a href="single-product.html">Learn More</a> </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="single-list-product">
-                    <div class="col-sm-4">
-                      <div class="list-product-img">
-                        <a href="single-product.html">
-                          <img src="assets/img/product/3.png" alt="">
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-sm-8">
-                      <div class="list-product-info">
-                        <a href="single-product.html" class="list-product-name"> Cras neque metus</a>
-                        <div class="price-rating">
-                          <span class="old-price">$700.00</span>
-                          <span>$800.00</span>
-                          <div class="ratings">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                            <a href="#" class="review">1 Review(s)</a>
-                            <a href="#" class="add-review">Add Your Review</a>
-                          </div>
-                        </div>
-                        <div class="list-product-details">
-                          <p>Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nul
-                            <a href="single-product.html">Learn More</a> </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="single-list-product">
-                    <div class="col-sm-4">
-                      <div class="list-product-img">
-                        <a href="single-product.html">
-                          <img src="assets/img/product/4.png" alt="">
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-sm-8">
-                      <div class="list-product-info">
-                        <a href="single-product.html" class="list-product-name"> Cras neque metus</a>
-                        <div class="price-rating">
-                          <span class="old-price">$700.00</span>
-                          <span>$800.00</span>
-                          <div class="ratings">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                            <a href="#" class="review">1 Review(s)</a>
-                            <a href="#" class="add-review">Add Your Review</a>
-                          </div>
-                        </div>
-                        <div class="list-product-details">
-                          <p>Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nul
-                            <a href="single-product.html">Learn More</a> </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="single-list-product">
-                    <div class="col-sm-4">
-                      <div class="list-product-img">
-                        <a href="single-product.html">
-                          <img src="assets/img/product/5.png" alt="">
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-sm-8">
-                      <div class="list-product-info">
-                        <a href="single-product.html" class="list-product-name"> Cras neque metus</a>
-                        <div class="price-rating">
-                          <span class="old-price">$700.00</span>
-                          <span>$800.00</span>
-                          <div class="ratings">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                            <a href="#" class="review">1 Review(s)</a>
-                            <a href="#" class="add-review">Add Your Review</a>
-                          </div>
-                        </div>
-                        <div class="list-product-details">
-                          <p>Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nul
-                            <a href="single-product.html">Learn More</a> </p>
+                          <p>{{product.description}}<a href="/product/{{product.id}}">Learn More</a> </p>
                         </div>
                       </div>
                     </div>
