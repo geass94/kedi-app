@@ -24,4 +24,14 @@ export class ProductService {
     return this.http.get(`${environment.apiUrl}/product/get-product-variants`, {params: params})
       .pipe(map((res: any) => deserialize<Product[]>(Product, res)));
   }
+
+  getFilteredProducts(filter: any) {
+    let params = new HttpParams();
+    params.append('categories', JSON.stringify(filter.category).replace("[", "").replace("]", ""));
+    params.append('colors', JSON.stringify(filter.color).replace("[", "").replace("]", ""));
+    params.append('manufacturers', JSON.stringify(filter.manufacturer).replace("[", "").replace("]", ""));
+    params.append('min_price', filter.price.priceMin);
+    params.append('max_price', filter.price.priceMax);
+    // console.log(params);
+  }
 }

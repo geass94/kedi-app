@@ -27,7 +27,9 @@
             </div>
             <div class="single-sidebar-content">
               <ul>
-                <li *ngFor="let category of sideBar.categories"><a href="#">{{category.name}}</a></li>
+                <li *ngFor="let category of sideBar.categories">
+                  <a (click)="applyFilter({category: category.id})" [ngClass]="{'bg-success': filter.category.indexOf(category.id) > -1}">{{category.name}}</a>
+                </li>
               </ul>
             </div>
           </div>
@@ -37,7 +39,7 @@
             </div>
             <div class="single-sidebar-content">
               <ul>
-                <li *ngFor="let color of sideBar.colors"><a href="#">{{color.name}}</a></li>
+                <li *ngFor="let color of sideBar.colors"><a (click)="applyFilter({color: color.id})">{{color.name}}</a></li>
               </ul>
             </div>
           </div>
@@ -47,7 +49,7 @@
             </div>
             <div class="single-sidebar-content">
               <ul>
-                <li *ngFor="let manufacturer of sideBar.manufacturers"><a href="#">{{manufacturer.name}}</a></li>
+                <li *ngFor="let manufacturer of sideBar.manufacturers"><a (click)="applyFilter({manufacturer: manufacturer.id})">{{manufacturer.name}}</a></li>
               </ul>
             </div>
           </div>
