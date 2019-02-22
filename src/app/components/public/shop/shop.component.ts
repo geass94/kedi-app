@@ -23,6 +23,7 @@ export class ShopComponent implements OnInit, AfterViewInit {
   maxPrice = 0;
   minPrice = 0;
   filter = {
+    changed: false,
     category: [],
     color: [],
     manufacturer: [],
@@ -48,37 +49,37 @@ export class ShopComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-
     this.route.queryParamMap.subscribe(params => {
-      this.filter.category = params.getAll("category").map(value => parseInt(value, 10)) || [];
-      this.filter.color = params.getAll("color").map(value => parseInt(value, 10)) || [];
-      this.filter.manufacturer = params.getAll("manufacturer").map(value => parseInt(value, 10)) || [];
-      this.filter.price.priceMax = params.get("max_price");
-      this.filter.price.priceMin = params.get("min_price");
-      this.navigateByFilter();
-      console.log(this.filter)
+      this.applyFilterFromURL(params);
+      this.filterProducts();
     });
 
-    this.productService.getProducts().subscribe(
-      (res) => {
-      this.products = deserialize<Product[]>(Product, res);
-      },
-      (err) => {
+    if (!this.filter.changed) {
+      this.productService.getProducts().subscribe(
+        (res) => {
+          this.products = deserialize<Product[]>(Product, res);
+        },
+        (err) => {
 
-      },
-      () => {
-        this.maxPrice = Math.max.apply(null, this.products.map(function(item) {
-          return item.price;
-        }));
+        },
+        () => {
+          this.maxPrice = Math.max.apply(null, this.products.map(function(item) {
+            return item.price;
+          }));
 
-        this.minPrice = Math.min.apply(null, this.products.map(function(item) {
-          return item.price;
-        }));
+          this.minPrice = Math.min.apply(null, this.products.map(function(item) {
+            return item.price;
+          }));
 
-        this.allProducts = this.products;
+          this.filter.price.priceMax = this.maxPrice;
+          this.filter.price.priceMin = this.minPrice;
 
-        this.initPriceSlider();
-      });
+          this.allProducts = this.products;
+
+          this.initPriceSlider();
+        }
+      );
+    }
 
     this.menuService.getSideBar().subscribe(res => {
       this.sideBar = deserialize<Menu>(Menu, res);
@@ -121,6 +122,19 @@ export class ShopComponent implements OnInit, AfterViewInit {
     this.filterProductsByPriceRange(this.minPrice, this.maxPrice);
   }
 
+  applyFilterFromURL(p: any) {
+    if (!p.keys.length) {
+      this.filter.changed = false;
+    } else {
+      this.filter.changed = true;
+      this.filter.category = p.getAll("category").map(value => parseInt(value, 10)) || [];
+      this.filter.color = p.getAll("color").map(value => parseInt(value, 10)) || [];
+      this.filter.manufacturer = p.getAll("manufacturer").map(value => parseInt(value, 10)) || [];
+      this.filter.price.priceMax = parseFloat(p.get("max_price"));
+      this.filter.price.priceMin = parseFloat(p.get("min_price"));
+    }
+  }
+
   applyFilter(p: any) {
     let keys = Object.keys(p);
     if (keys.length > 1) {
@@ -137,12 +151,34 @@ export class ShopComponent implements OnInit, AfterViewInit {
   }
 
   private navigateByFilter(): void {
+    this.filter.changed = true;
     this.router.navigate(['/shop'], { queryParams: { category: this.filter.category,
       color: this.filter.color,
       manufacturer: this.filter.manufacturer,
       max_price: this.filter.price.priceMax,
       min_price: this.filter.price.priceMin} });
-    this.productService.getFilteredProducts(this.filter);
+  }
+
+  private filterProducts(): void {
+    this.productService.getFilteredProducts(this.filter).subscribe(
+      (res) => {
+        this.products = deserialize<Product[]>(Product, res);
+      },
+      (err) => {
+
+      },
+      () => {
+        if (this.filter.changed
+          && !this.filter.category.length
+          && !this.filter.color.length
+          && !this.filter.manufacturer.length
+          && this.filter.price.priceMin === this.minPrice
+          && this.filter.price.priceMax === this.maxPrice
+          && !this.products.length) {
+          this.products = this.allProducts;
+        }
+      }
+    );
   }
 
   ngAfterViewInit() {
