@@ -1,6 +1,5 @@
 import {NgModule} from "@angular/core";
 import {HomeComponent} from "./home/home.component";
-import {ProductComponent} from "./home/product/product.component";
 import {SignupComponent} from "./signup/signup.component";
 import {SingleProductComponent} from "./single-product/single-product.component";
 import {RouterModule} from "@angular/router";
@@ -11,23 +10,28 @@ import {HttpClientModule} from "@angular/common/http";
 import {LoginComponent} from "./login/login.component";
 import {CommonModule} from "@angular/common";
 import { ShopComponent } from './shop/shop.component';
+import { FeaturedProductsComponent } from './home/featured-products/featured-products.component';
+import { SaleoffComponent } from './home/saleoff/saleoff.component';
+import { NewproductsComponent } from './home/newproducts/newproducts.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
-    ProductComponent,
     SignupComponent,
     SingleProductComponent,
     SliderComponent,
     LoginComponent,
     ShopComponent,
+    FeaturedProductsComponent,
+    SaleoffComponent,
+    NewproductsComponent,
   ],
   imports: [
     RouterModule.forChild(PublicRoutes),
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    CommonModule
+    CommonModule,
   ]
 })
 

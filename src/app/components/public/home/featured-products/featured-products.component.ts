@@ -1,19 +1,19 @@
-import {AfterViewInit, Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {ProductService} from "../../../../services/product.service";
-import {Product} from "../../../../models/product";
-import {deserialize} from "serializer.ts/Serializer";
+import { Component, OnInit } from '@angular/core';
 import {User} from "../../../../models/user";
+import {Product} from "../../../../models/product";
+import {ProductService} from "../../../../services/product.service";
 import {UserService} from "../../../../services/user.service";
 import {CartService} from "../../../../services/cart.service";
+import {deserialize} from "serializer.ts/Serializer";
 declare var jQuery: any;
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css'],
-  encapsulation: ViewEncapsulation.None
+  selector: 'app-featured-products',
+  templateUrl: './featured-products.component.html',
+  styleUrls: ['./featured-products.component.css']
 })
-export class ProductComponent implements OnInit, AfterViewInit {
+export class FeaturedProductsComponent implements OnInit {
+
   loggedUser: User;
   productsResponse: Product[] = [];
   products: Product[] = [];
@@ -31,7 +31,7 @@ export class ProductComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
 
-    this.productService.getProducts().subscribe(res => {
+    this.productService.getFeaturedProducts().subscribe(res => {
       this.productsResponse = deserialize<Product[]>(Product, res);
 
       for (let i = 0; i < this.productsResponse.length; i++) {
@@ -69,10 +69,6 @@ export class ProductComponent implements OnInit, AfterViewInit {
         itemsMobile : [479, 1],
       });
     }
-  }
-
-  ngAfterViewInit() {
-
   }
 
 }

@@ -1,5 +1,5 @@
-import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
-import {Product} from "../../../models/product";
+import {AfterViewInit, Component, ElementRef, OnInit, ViewEncapsulation} from '@angular/core';
+import {Product, ProductPage} from "../../../models/product";
 import {ProductService} from "../../../services/product.service";
 import {deserialize} from "serializer.ts/Serializer";
 import {Menu} from "../../../models/menu";
@@ -8,30 +8,24 @@ import {User} from "../../../models/user";
 import {UserService} from "../../../services/user.service";
 import {CartService} from "../../../services/cart.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {Filter} from "../../../models/filter";
+import {Sort} from "../../../models/sort";
+import {PriceRange} from "../../../models/price-range";
 declare var jQuery: any;
 
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
-  styleUrls: ['./shop.component.css']
+  styleUrls: ['./shop.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ShopComponent implements OnInit, AfterViewInit {
   loggedUser: User;
   products: Product[];
-  private allProducts: Product[];
   sideBar: Menu = new Menu;
   maxPrice = 0;
   minPrice = 0;
-  filter = {
-    changed: false,
-    category: [],
-    color: [],
-    manufacturer: [],
-    price: {
-      priceMin: this.minPrice,
-      priceMax: this.maxPrice
-    }
-  };
+  filter = new Filter();
 
   constructor(
     private productService: ProductService,
@@ -42,10 +36,24 @@ export class ShopComponent implements OnInit, AfterViewInit {
     private router: Router
   ) {
     this.loggedUser = this.userService.loadProfile();
-  }
+    this.productService.getPriceRange().subscribe(
+      res => {
+        let range = deserialize<PriceRange>(PriceRange, res);
+        this.minPrice = range.minPrice;
+        this.maxPrice = range.maxPrice;
+      },
+      err => {
 
-  imgClass(i: number) {
-    return i === 0 ? 'primary-img' : 'secondary-img';
+      },
+      () => {
+        this.filter.maxPrice = this.maxPrice;
+        this.filter.minPrice = this.minPrice;
+        this.initPriceSlider();
+      }
+    );
+    this.menuService.getSideBar().subscribe(res => {
+      this.sideBar = deserialize<Menu>(Menu, res);
+    });
   }
 
   ngOnInit() {
@@ -53,43 +61,19 @@ export class ShopComponent implements OnInit, AfterViewInit {
       this.applyFilterFromURL(params);
       this.filterProducts();
     });
-
-    if (!this.filter.changed) {
-      this.productService.getProducts().subscribe(
-        (res) => {
-          this.products = deserialize<Product[]>(Product, res);
-        },
-        (err) => {
-
-        },
-        () => {
-          this.maxPrice = Math.max.apply(null, this.products.map(function(item) {
-            return item.price;
-          }));
-
-          this.minPrice = Math.min.apply(null, this.products.map(function(item) {
-            return item.price;
-          }));
-
-          this.filter.price.priceMax = this.maxPrice;
-          this.filter.price.priceMin = this.minPrice;
-
-          this.allProducts = this.products;
-
-          this.initPriceSlider();
-        }
-      );
-    }
-
-    this.menuService.getSideBar().subscribe(res => {
-      this.sideBar = deserialize<Menu>(Menu, res);
-    });
   }
 
   addToCart(product: Product) {
     this.cartService.addToCart(product.id).subscribe();
   }
 
+  imgClass(i: number) {
+    return i === 0 ? 'primary-img' : 'secondary-img';
+  }
+
+  onSort(v: any): void {
+    // this.sort = v;
+  }
 
   private initPriceSlider() {
     jQuery( "#slider-range" ).slider({
@@ -107,7 +91,6 @@ export class ShopComponent implements OnInit, AfterViewInit {
   }
 
   private filterProductsByPriceRange(min, max) {
-    // this.products = this.allProducts.filter(e => e.price >= min && e.price <= max);
     this.applyFilter({priceMin: min, priceMax: max});
   }
 
@@ -123,23 +106,21 @@ export class ShopComponent implements OnInit, AfterViewInit {
   }
 
   applyFilterFromURL(p: any) {
-    if (!p.keys.length) {
-      this.filter.changed = false;
-    } else {
-      this.filter.changed = true;
-      this.filter.category = p.getAll("category").map(value => parseInt(value, 10)) || [];
-      this.filter.color = p.getAll("color").map(value => parseInt(value, 10)) || [];
-      this.filter.manufacturer = p.getAll("manufacturer").map(value => parseInt(value, 10)) || [];
-      this.filter.price.priceMax = parseFloat(p.get("max_price"));
-      this.filter.price.priceMin = parseFloat(p.get("min_price"));
-    }
+    this.filter.category = p.getAll("category").map(value => parseInt(value, 10)) || [];
+    this.filter.color = p.getAll("color").map(value => parseInt(value, 10)) || [];
+    this.filter.manufacturer = p.getAll("manufacturer").map(value => parseInt(value, 10)) || [];
+    this.filter.maxPrice = parseFloat(p.get("max_price") || '0');
+    this.filter.minPrice = parseFloat(p.get("min_price") || '0');
+    this.filter.sort.sort = p.get("sort") || 'name';
+    this.filter.sort.order = p.get("order") || 'desc';
+    this.filter.sort.page = p.get("page") || 0;
   }
 
   applyFilter(p: any) {
     let keys = Object.keys(p);
     if (keys.length > 1) {
-        this.filter.price.priceMin = p.priceMin;
-        this.filter.price.priceMax = p.priceMax;
+        this.filter.minPrice = p.priceMin;
+        this.filter.maxPrice = p.priceMax;
     } else {
       if (this.filter[keys[0]].indexOf(p[keys[0]]) === -1) {
         this.filter[keys[0]].push(p[keys[0]]);
@@ -151,34 +132,28 @@ export class ShopComponent implements OnInit, AfterViewInit {
   }
 
   private navigateByFilter(): void {
-    this.filter.changed = true;
-    this.router.navigate(['/shop'], { queryParams: { category: this.filter.category,
-      color: this.filter.color,
-      manufacturer: this.filter.manufacturer,
-      max_price: this.filter.price.priceMax,
-      min_price: this.filter.price.priceMin} });
+    this.router.navigate(['/shop'],
+      {
+        queryParams: {
+          category: this.filter.category,
+          color: this.filter.color,
+          manufacturer: this.filter.manufacturer,
+          max_price: this.filter.maxPrice,
+          min_price: this.filter.minPrice,
+          sort: this.filter.sort.sort,
+          order: this.filter.sort.order,
+          page: this.filter.sort.page
+        }
+      }
+    );
   }
 
   private filterProducts(): void {
     this.productService.getFilteredProducts(this.filter).subscribe(
       (res) => {
-        this.products = deserialize<Product[]>(Product, res);
-      },
-      (err) => {
-
-      },
-      () => {
-        if (this.filter.changed
-          && !this.filter.category.length
-          && !this.filter.color.length
-          && !this.filter.manufacturer.length
-          && this.filter.price.priceMin === this.minPrice
-          && this.filter.price.priceMax === this.maxPrice
-          && !this.products.length) {
-          this.products = this.allProducts;
-        }
-      }
-    );
+        let data: ProductPage = res;
+        this.products = data.content;
+      });
   }
 
   ngAfterViewInit() {

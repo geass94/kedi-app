@@ -1,0 +1,40 @@
+<div class="features-home2-slider">
+  <div class="col-md-12" *ngFor="let prdct of products; let last = last;">
+    <div class="single-product" *ngFor="let product of prdct;">
+      <div class="level-pro-new">
+        <span>new</span>
+      </div>
+      <div class="product-img">
+        <a routerLink="/product/{{product.id}}">
+          <ng-template ngFor let-image [ngForOf]="product.productFiles" let-i= "index">
+            <img src="{{image.fileUrl}}" alt="" ngClass="{{imgClass(i)}}" *ngIf="i<2">
+          </ng-template>
+        </a>
+      </div>
+      <div class="actions">
+        <button type="submit" class="cart-btn" (click)="addToCart(product)" title="Add to cart">add to cart</button>
+        <ul class="add-to-link">
+          <li><a class="modal-view" data-target="#productModal" data-toggle="modal" href="#"> <i class="fa fa-search"></i></a></li>
+          <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
+          <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
+        </ul>
+      </div>
+      <div class="product-price">
+        <div class="product-name">
+          <a routerLink="/product/{{product.id}}" title="{{product.name}}">{{product.name}}</a>
+        </div>
+        <div class="price-rating">
+          <span>{{product.price}}GEL</span>
+          <div class="ratings">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-o"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{last ? initCarousel() : ''}}
+  </div>
+</div>

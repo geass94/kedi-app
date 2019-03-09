@@ -25,4 +25,15 @@ export class Product {
   baseProduct: boolean;
   productVariantId: number;
   productVariantIds: number[];
+  quantity: number;
+  sale: number;
+  bundleSale: number;
+  bundlePrice: number;
+  @Type(() => Product)
+  bundle: Product[];
+}
+
+export interface ProductPage {
+  content: Product[];
+  numberOfElements: number;
 }

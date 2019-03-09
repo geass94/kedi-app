@@ -86,49 +86,15 @@
           <div class="mainmenu">
             <nav>
               <ul>
-
-                <!--<li><a routerLink="/home">მთავარი</a>-->
-
-                  <!--<div class="sub-menu">-->
-                                                <!--<span>-->
-                                                    <!--<a routerLink="/home">Home version 1</a>-->
-                                                <!--</span>-->
-                    <!--<span>-->
-                                                    <!--<a href="index-2.html">Home version 2</a>-->
-                                                <!--</span>-->
-                  <!--</div>-->
-                <!--</li>-->
-                <li class="mega-women"><a href="shop.html">ქალი</a>
-                  <div class="mega-menu women">
+                <li class="mega-women" *ngFor="let category of headerMenu">
+                  <a [routerLink]="['/shop']" [queryParams]="{category: category.id}">{{category.name}}</a>
+                  <div *ngIf="category.children.length" class="mega-menu women">
                     <div class="part-1">
-                                                    <span>
-                                                        <a href="#">Dresses</a>
-                                                        <a href="#">Cocktail</a>
-                                                        <a href="#">Day</a>
-                                                        <a href="#">Evening</a>
-                                                        <a href="#">Sports</a>
-                                                    </span>
-                      <span>
-                                                        <a href="#">shoes</a>
-                                                        <a href="#">Sports</a>
-                                                        <a href="#">run</a>
-                                                        <a href="#">sandals</a>
-                                                        <a href="#">Books</a>
-                                                    </span>
-                      <span>
-                                                        <a href="#">Handbags</a>
-                                                        <a href="#">Blazers</a>
-                                                        <a href="#">table</a>
-                                                        <a href="#">coats</a>
-                                                        <a href="#">kids</a>
-                                                    </span>
-                      <span>
-                                                        <a href="#">Clothing</a>
-                                                        <a href="#">T-shirts</a>
-                                                        <a href="#">coats</a>
-                                                        <a href="#">Jackets</a>
-                                                        <a href="#">jeans</a>
-                                                    </span>
+                      <span *ngFor="let child of category.children">
+                          <a [routerLink]="['/shop']" [queryParams]="{category: [category.id, child.id]}">{{child.name}}</a>
+                          <a *ngFor="let subCat of child.children" [routerLink]="['/shop']" [queryParams]="{category: [category.id, child.id, subCat.id]}">{{subCat.name}}</a>
+                      </span>
+
                     </div>
                     <div class="part-2">
                       <a href="#">
@@ -137,83 +103,7 @@
                     </div>
                   </div>
                 </li>
-                <li class="mega-men"><a href="shop.html">მამაკაცი</a>
-                  <div class="mega-menu women">
-
-                  </div>
-                </li>
-                <li class="mega-jewellery"><a href="shop.html">ბავშვები</a>
-                  <div class="mega-menu women">
-
-                  </div>
-                </li>
-                <li class="mega-footwear"><a href="shop.html">ფეხსაცმელი</a>
-                  <div class="mega-menu women">
-                                    <span>
-                                                        <a href="#">Dresses</a>
-                                                        <a href="#">Cocktail</a>
-                                                        <a href="#">Day</a>
-                                                        <a href="#">Evening</a>
-                                                        <a href="#">Sports</a>
-                                                    </span>
-                  </div>
-                </li>
-
-                <li><a href="shop.html">აქსესუარები</a>
-                  <div class="mega-menu women">
-                                    <span>
-                                                        <a href="#">Dresses</a>
-                                                        <a href="#">Cocktail</a>
-                                                        <a href="#">Day</a>
-                                                        <a href="#">Evening</a>
-                                                        <a href="#">Sports</a>
-                                                    </span>
-                  </div>
-                </li>
                 <li><a href="#">შექმენი შენი მაისური</a></li>
-                <li><a href="#">Pages</a>
-                  <div class="sub-menu pages">
-                                                <span>
-                                                    <a href="about-us.html">About us</a>
-                                                </span>
-                    <span>
-                                                    <a href="blog.html">Blog</a>
-                                                </span>
-                    <span>
-                                                    <a href="blog-details.html">Blog Details</a>
-                                                </span>
-                    <span>
-                                                    <a href="cart.html">Cart</a>
-                                                </span>
-                    <span>
-                                                    <a href="checkout.html">Checkout</a>
-                                                </span>
-                    <span>
-                                                    <a href="contact.html">Contact</a>
-                                                </span>
-                    <span>
-                                                    <a href="my-account.html">My account</a>
-                                                </span>
-                    <span>
-                                                    <a href="shop.html">Shop</a>
-                                                </span>
-                    <span>
-                                                    <a href="shop-list.html">Shop list</a>
-                                                </span>
-                    <span>
-                                                    <a href="single-product.html">Single Shop</a>
-                                                </span>
-                    <span>
-                                                    <a href="login.html">Login page</a>
-                                                </span>
-                    <span>
-                                                    <a routerLink="/signup">Ragister page</a>
-                                                </span>
-                    <span>
-                                                    <a href="wishlist.html">Wishlist</a>
-                                                </span>
-                  </div>
-                </li>
               </ul>
             </nav>
           </div>

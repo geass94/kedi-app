@@ -1,14 +1,14 @@
-<div class="features-home2-slider">
-  <div class="col-md-12" *ngFor="let prdct of products; let last = last;">
-    <div class="single-product" *ngFor="let product of prdct;">
+<div class="features-home2-slider-2">
+  <div class="col-md-12" *ngFor="let product of products; let last = last;">
+    <div class="single-product">
       <div class="level-pro-new">
         <span>new</span>
       </div>
       <div class="product-img">
         <a routerLink="/product/{{product.id}}">
-        <ng-template ngFor let-image [ngForOf]="product.productFiles" let-i= "index">
-          <img src="{{image.fileUrl}}" alt="" ngClass="{{imgClass(i)}}" *ngIf="i<2">
-        </ng-template>
+          <ng-template ngFor let-image [ngForOf]="product.productFiles" let-i= "index">
+            <img src="{{image.fileUrl}}" alt="" ngClass="{{imgClass(i)}}" *ngIf="i<2">
+          </ng-template>
         </a>
       </div>
       <div class="actions">
@@ -21,7 +21,7 @@
       </div>
       <div class="product-price">
         <div class="product-name">
-          <a routerLink="/product/{{product.id}}" title="Fusce aliquam">{{product.name}}</a>
+          <a routerLink="/product/{{product.id}}" title="{{product.name}}">{{product.name}}</a>
         </div>
         <div class="price-rating">
           <span>{{product.price}}GEL</span>

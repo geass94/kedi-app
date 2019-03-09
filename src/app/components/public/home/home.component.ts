@@ -26,18 +26,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
       itemsTablet: [768, 2],
       itemsMobile : [479, 1],
     });
-
-    jQuery(".sell-off-slider").owlCarousel({
-      autoPlay: false,
-      slideSpeed: 2000,
-      pagination: false,
-      navigation: false,
-      items : 4,
-      itemsDesktop : [1199, 3],
-      itemsDesktopSmall : [980, 3],
-      itemsTablet: [768, 2],
-      itemsMobile : [479, 1],
-    });
   }
 
 }
