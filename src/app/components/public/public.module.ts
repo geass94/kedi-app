@@ -13,6 +13,7 @@ import { ShopComponent } from './shop/shop.component';
 import { FeaturedProductsComponent } from './home/featured-products/featured-products.component';
 import { SaleoffComponent } from './home/saleoff/saleoff.component';
 import { NewproductsComponent } from './home/newproducts/newproducts.component';
+import { RelatedProductsComponent } from './single-product/related-products/related-products.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { NewproductsComponent } from './home/newproducts/newproducts.component';
     FeaturedProductsComponent,
     SaleoffComponent,
     NewproductsComponent,
+    RelatedProductsComponent,
   ],
   imports: [
     RouterModule.forChild(PublicRoutes),

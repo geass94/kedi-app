@@ -13,15 +13,11 @@ declare var jQuery: any;
   styleUrls: ['./saleoff.component.css']
 })
 export class SaleoffComponent implements OnInit {
-  loggedUser: User;
   products: Product[] = [];
   constructor(
     private productService: ProductService,
-    private userService: UserService,
     private cartService: CartService
-  ) {
-    this.loggedUser = userService.loadProfile();
-  }
+  ) {  }
 
   imgClass(i: number) {
     return i === 0 ? 'primary-img' : 'secondary-img';
@@ -35,7 +31,7 @@ export class SaleoffComponent implements OnInit {
   }
 
   addToCart(product: Product) {
-    this.cartService.addToCart(product.id).subscribe((res) => {
+    this.cartService.addToCart(product.id, 1).subscribe((res) => {
       console.log(res);
     });
   }

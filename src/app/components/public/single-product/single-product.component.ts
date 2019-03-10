@@ -14,6 +14,7 @@ declare var jQuery: any;
 })
 export class SingleProductComponent implements OnInit, AfterViewInit {
   selectedVariant: Product;
+  chosenQuantity = 1;
   colorVariants: Product [] = [];
   product: Product = new Product;
   pluginsInited = false;
@@ -38,7 +39,7 @@ export class SingleProductComponent implements OnInit, AfterViewInit {
   }
 
   addToCart(product: Product) {
-    this.cartService.addToCart(product.id).subscribe((res) => {
+    this.cartService.addToCart(product.id, this.chosenQuantity).subscribe((res) => {
       console.log(res);
     });
   }
@@ -54,7 +55,7 @@ export class SingleProductComponent implements OnInit, AfterViewInit {
   }
 
   private loadProduct() {
-    this.productService.getProduct(parseInt(this.id)).subscribe((res) => {
+    this.productService.getProduct(parseInt(this.id, 10)).subscribe((res) => {
         this.product = deserialize<Product>(Product, res);
       },
       (error) => {
@@ -72,6 +73,10 @@ export class SingleProductComponent implements OnInit, AfterViewInit {
 
   onColorChange() {
     this.router.navigate(['/product',  this.selectedVariant.id], { relativeTo: this.route });
+  }
+
+  updateQuantity(value: any) {
+    this.chosenQuantity = parseInt(value, 10);
   }
 
   ready(isReady: boolean) {
@@ -106,38 +111,17 @@ export class SingleProductComponent implements OnInit, AfterViewInit {
     }
   }
 
+  compareFn(c1: any, c2: any): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
+  }
+
   ngAfterViewInit() {
-
-
     jQuery(".product-slider").owlCarousel({
       autoPlay: false,
       slideSpeed: 2000,
       pagination: false,
       navigation: false,
       items : 3,
-      itemsDesktop : [1199, 3],
-      itemsDesktopSmall : [980, 3],
-      itemsTablet: [768, 2],
-      itemsMobile : [479, 1],
-    });
-
-    jQuery(".upsell-slider").owlCarousel({
-      autoPlay: false,
-      slideSpeed: 2000,
-      pagination: false,
-      navigation: true,
-      items : 4,
-      itemsDesktop : [1199, 3],
-      itemsDesktopSmall : [980, 3],
-      itemsTablet: [768, 2],
-      itemsMobile : [479, 1],
-    });
-    jQuery(".related-slider").owlCarousel({
-      autoPlay: false,
-      slideSpeed: 2000,
-      pagination: false,
-      navigation: true,
-      items : 4,
       itemsDesktop : [1199, 3],
       itemsDesktopSmall : [980, 3],
       itemsTablet: [768, 2],

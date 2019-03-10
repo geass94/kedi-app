@@ -50,7 +50,7 @@ export class FeaturedProductsComponent implements OnInit {
   }
 
   addToCart(product: Product) {
-    this.cartService.addToCart(product.id).subscribe((res) => {
+    this.cartService.addToCart(product.id, 1).subscribe((res) => {
       console.log(res);
     });
   }

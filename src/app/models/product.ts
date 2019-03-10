@@ -2,6 +2,7 @@ import {Color} from "./color";
 import {Manufacturer} from "./manufacturer";
 import {Category} from "./category";
 import {Type} from "serializer.ts/Decorators";
+import {Bundle} from "./bundle";
 
 export class Product {
   id: number;
@@ -29,8 +30,8 @@ export class Product {
   sale: number;
   bundleSale: number;
   bundlePrice: number;
-  @Type(() => Product)
-  bundle: Product[];
+  @Type(() => Bundle)
+  bundle: Bundle;
 }
 
 export interface ProductPage {

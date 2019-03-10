@@ -30,8 +30,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     console.log(this.userService.loadProfile())
     if (this.userService.loadProfile()) {
-      console.log("eee")
-      this.router.navigate([this.returnUrl]);
+      this.router.navigate([this.returnUrl || 'home']);
       return;
     }
     this.loginForm = new FormGroup({
@@ -67,7 +66,6 @@ export class LoginComponent implements OnInit {
         },
         () => {
           this.userService.setProfile();
-          window.location.href = "/home";
         }
       );
   }

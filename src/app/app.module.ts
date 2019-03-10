@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { MainComponent } from './layout/main/main.component';
 import {CommonModule, LocationStrategy, PathLocationStrategy} from "@angular/common";
 import { UserMenuComponent } from './layout/main/header/user-menu/user-menu.component';
+import { QuickCheckoutComponent } from './layout/main/header/quick-checkout/quick-checkout.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { UserMenuComponent } from './layout/main/header/user-menu/user-menu.comp
     HeaderComponent,
     FooterComponent,
     UserMenuComponent,
+    QuickCheckoutComponent,
   ],
   imports: [
     CommonModule,

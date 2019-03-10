@@ -19,7 +19,7 @@
             <tr>
               <th class="cart-item-img"></th>
               <th class="cart-product-name">Product Name</th>
-              <th class="edit"></th>
+              <th class="edit">Save for Later</th>
               <th class="move-wishlist">Move to Wishlist</th>
               <th class="unit-price">Unit Price</th>
               <th class="quantity">Qty</th>
@@ -27,94 +27,34 @@
               <th class="remove-icon"></th>
             </tr>
             </thead>
-            <tbody class="text-center">
-            <tr>
+            <tbody *ngIf="cartItems != null" class="text-center">
+            <tr *ngFor="let item of cartItems">
               <td class="cart-item-img">
-                <a href="single-product.html">
-                  <img src="img/cart/3.png" alt="">
+                <a routerLink="/product/{{item.product.id}}">
+                  <img src="{{item.product.productFiles[0].fileUrl}}" alt="{{item.product.name}}">
                 </a>
               </td>
               <td class="cart-product-name">
-                <a href="single-product.html">Cras neque metus</a>
+                <a routerLink="/product/{{item.product.id}}">{{item.product.name}}</a>
               </td>
               <td class="edit">
-                <a href="#">Edit</a>
+                <a (click)="saveForLater(item)">Save</a>
               </td>
               <td class="move-wishlist">
-                <a href="#">Move</a>
+                <a (click)="moveToWishlist(item)">Move</a>
               </td>
               <td class="unit-price">
-                <span>$174.00</span>
+                <span>{{itemUnitPrice(item)}}</span>
               </td>
               <td class="quantity">
-                <span>1</span>
+                <span>{{item.quantity}}</span>
               </td>
               <td class="subtotal">
-                <span>$174.00</span>
+                <span>{{itemSubotal(item)}}</span>
               </td>
               <td class="remove-icon">
-                <a href="#">
-                  <img src="img/cart/btn_remove.png" alt="">
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td class="cart-item-img">
-                <a href="single-product.html">
-                  <img src="img/cart/4.png" alt="">
-                </a>
-              </td>
-              <td class="cart-product-name">
-                <a href="single-product.html">Cras neque metus</a>
-              </td>
-              <td class="edit">
-                <a href="#">Edit</a>
-              </td>
-              <td class="move-wishlist">
-                <a href="#">Move</a>
-              </td>
-              <td class="unit-price">
-                <span>$174.00</span>
-              </td>
-              <td class="quantity">
-                <span>1</span>
-              </td>
-              <td class="subtotal">
-                <span>$174.00</span>
-              </td>
-              <td class="remove-icon">
-                <a href="#">
-                  <img src="img/cart/btn_remove.png" alt="">
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td class="cart-item-img">
-                <a href="single-product.html">
-                  <img src="img/cart/5.png" alt="">
-                </a>
-              </td>
-              <td class="cart-product-name">
-                <a href="single-product.html">Cras neque metus</a>
-              </td>
-              <td class="edit">
-                <a href="#">Edit</a>
-              </td>
-              <td class="move-wishlist">
-                <a href="#">Move</a>
-              </td>
-              <td class="unit-price">
-                <span>$275.00</span>
-              </td>
-              <td class="quantity">
-                <span>2</span>
-              </td>
-              <td class="subtotal">
-                <span>$350.00</span>
-              </td>
-              <td class="remove-icon">
-                <a href="#">
-                  <img src="img/cart/btn_remove.png" alt="">
+                <a (click)="removeFromCart(item)">
+                  <img src="assets/img/cart/btn_remove.png" alt="">
                 </a>
               </td>
             </tr>
@@ -202,8 +142,8 @@
       </div>
       <div class="col-sm-4">
         <div class="totals">
-          <p>subtotal <span>$1,540.00</span> </p>
-          <h3>Grand Total <span>$1,540.00</span></h3>
+          <p>subtotal <span>{{subtotal}}</span> </p>
+          <h3>Grand Total <span>{{subtotal}}</span></h3>
           <div class="shopping-button">
             <button type="submit">proceed to checkout</button>
           </div>

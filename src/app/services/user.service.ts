@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {User} from "../models/user";
 import {environment} from "../../environments/environment";
-import {BehaviorSubject, Observable, Observer} from "rxjs/index";
 import {deserialize, serialize} from "serializer.ts/Serializer";
 
 @Injectable({
@@ -24,7 +23,7 @@ export class UserService {
       () => {
         localStorage.setItem('loggedUser', JSON.stringify(this.user));
       }
-    ).unsubscribe();
+    );
   }
 
   loadProfile(): User {
@@ -35,7 +34,7 @@ export class UserService {
     this.http.put(`${environment.apiUrl}/user/update/${u.id}`, serialize(u)).subscribe((res) => {
       let usr: User = deserialize(User, res);
       localStorage.setItem('loggedUser', JSON.stringify(usr));
-    }).unsubscribe();
+    });
   }
 
 }

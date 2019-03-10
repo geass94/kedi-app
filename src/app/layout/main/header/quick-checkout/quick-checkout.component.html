@@ -1,0 +1,21 @@
+<ul>
+  <li><a href="#"> <img src="assets/img/icon-cart.png" alt=""> <span>2</span> </a>
+    <div class="cart-info">
+      <ul *ngIf="shoppinCart != null">
+        <li *ngFor="let item of shoppinCart" class="checkout-item">
+          <div class="cart-img">
+            <img src="{{item.product.productFiles[0].fileUrl}}" alt="{{item.product.name}}">
+          </div>
+          <div class="cart-details">
+            <a routerLink="/product/{{item.product.id}}">{{item.product.name}}</a>
+            <p>{{item.quantity}} x {{item.product.price}}</p>
+          </div>
+          <div class="btn-edit"></div>
+          <div class="btn-remove"></div>
+        </li>
+      </ul>
+      <h3>Subtotal: <span>{{subtotal}}GEL</span></h3>
+      <a routerLink="/cart" class="checkout">checkout</a>
+    </div>
+  </li>
+</ul>

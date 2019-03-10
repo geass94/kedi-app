@@ -1,0 +1,9 @@
+.checkout-item{
+  width: 100%;
+  display: flex;
+  text-align: left;
+}
+
+.cart-img img {
+  max-width: 70px;
+}

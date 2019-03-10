@@ -25,7 +25,7 @@
                     </li>
                   </ul>
                 </li>
-                <li>
+                <li *ngIf="loggedUser">
                   <a href="#">
                     <i class="fa fa-bars"></i>
                   </a>
@@ -33,39 +33,8 @@
                 </li>
               </ul>
             </div>
-            <div class="cart-menu">
-              <ul>
-                <li><a href="#"> <img src="assets/img/icon-cart.png" alt=""> <span>2</span> </a>
-                  <div class="cart-info">
-                    <ul>
-                      <li>
-                        <div class="cart-img">
-                          <img src="assets/img/cart/1.png" alt="">
-                        </div>
-                        <div class="cart-details">
-                          <a href="#">Fusce aliquam</a>
-                          <p>1 x $174.00</p>
-                        </div>
-                        <div class="btn-edit"></div>
-                        <div class="btn-remove"></div>
-                      </li>
-                      <li>
-                        <div class="cart-img">
-                          <img src="assets/img/cart/2.png" alt="">
-                        </div>
-                        <div class="cart-details">
-                          <a href="#">Fusce aliquam</a>
-                          <p>1 x $777.00</p>
-                        </div>
-                        <div class="btn-edit"></div>
-                        <div class="btn-remove"></div>
-                      </li>
-                    </ul>
-                    <h3>Subtotal: <span> $951.00</span></h3>
-                    <a href="checkout.html" class="checkout">checkout</a>
-                  </div>
-                </li>
-              </ul>
+            <div *ngIf="loggedUser" class="cart-menu">
+              <app-quick-checkout></app-quick-checkout>
             </div>
           </div>
         </div>

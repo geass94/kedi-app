@@ -1,0 +1,9 @@
+.cart-item-img img {
+  max-width: 70px;
+  max-height:95px;
+}
+
+
+td a{
+  cursor: pointer;
+}
