@@ -23,11 +23,12 @@ export class SignupComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService
   ) { }
+
   ngOnInit() {
     this.signupForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required)
+      'name': new FormControl('', Validators.required),
+      'email': new FormControl('', Validators.required),
+      'password': new FormControl('', Validators.required)
     });
 
     // reset login status

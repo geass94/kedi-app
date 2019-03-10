@@ -4,6 +4,7 @@ import {SignupComponent} from "./signup/signup.component";
 import {LoginComponent} from "./login/login.component";
 import {SingleProductComponent} from "./single-product/single-product.component";
 import {ShopComponent} from "./shop/shop.component";
+import {PageComponent} from "./page/page.component";
 
 export const PublicRoutes: Routes = [
   {
@@ -25,5 +26,9 @@ export const PublicRoutes: Routes = [
   {
     path: 'shop',
     component: ShopComponent,
+  },
+  {
+    path: 'page/:alias',
+    component: PageComponent
   }
 ];

@@ -14,6 +14,7 @@ import { FeaturedProductsComponent } from './home/featured-products/featured-pro
 import { SaleoffComponent } from './home/saleoff/saleoff.component';
 import { NewproductsComponent } from './home/newproducts/newproducts.component';
 import { RelatedProductsComponent } from './single-product/related-products/related-products.component';
+import { PageComponent } from './page/page.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { RelatedProductsComponent } from './single-product/related-products/rela
     SaleoffComponent,
     NewproductsComponent,
     RelatedProductsComponent,
+    PageComponent,
   ],
   imports: [
     RouterModule.forChild(PublicRoutes),

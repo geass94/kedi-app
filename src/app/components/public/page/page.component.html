@@ -1,0 +1,19 @@
+<div class="blog-details-main">
+  <div class="container">
+    <div *ngIf="page != null" class="row">
+        <div class="col-md-12">
+          <br/>
+          <div class="sidebar-title">
+            <h2>{{page.name}}</h2>
+          </div>
+          <div class="blog-area">
+            <div class="blog-post-details">
+              <div class="blog-content">
+                <div [innerHTML]="page.body"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
