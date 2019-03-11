@@ -1,13 +1,13 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {UserService} from "../../../services/user.service";
 import {User} from "../../../models/user";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Address} from "../../../models/address";
 import {deserialize, serialize} from "serializer.ts/Serializer";
 import {CartService} from "../../../services/cart.service";
 import {Cart} from "../../../models/cart";
 import {OrderService} from "../../../services/order.service";
 import {Order} from "../../../models/order";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-checkout',
@@ -26,10 +26,10 @@ export class CheckoutComponent implements OnInit {
     step2: false,
     step3: false
   };
-  step1Form = FormGroup;
-  step2Form = FormGroup;
-  step3Form = FormGroup;
-  step4Form = FormGroup;
+  step1Form: FormGroup;
+  step2Form: FormGroup;
+  step3Form: FormGroup;
+  step4Form: FormGroup;
   private order: Order;
   constructor(private userService: UserService, private cartService: CartService, private orderService: OrderService) {
     this.user = this.userService.loadProfile();
@@ -67,6 +67,7 @@ export class CheckoutComponent implements OnInit {
       'country': new FormControl(this.user.personalInformation.country, Validators.nullValidator),
       'state': new FormControl(this.user.personalInformation.state, Validators.nullValidator),
     });
+
     this.steps.step1 = true;
     this.initStep2Form();
   }
