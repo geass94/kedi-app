@@ -23,18 +23,23 @@ export class OrderService {
   }
 
   private makeTransaction(obj: Object) {
-      var mapForm = document.createElement("form");
+      let mapForm = document.createElement("form");
       mapForm.target = "_blank";
       mapForm.method = "POST"; // or "post" if appropriate
       mapForm.action = "https://e-commerce.cartubank.ge/servlet/Process3DSServlet/3dsproxy_init.jsp";
-      Object.keys(obj).forEach(function (param) {
-        var mapInput = document.createElement("input");
+      Object.keys(obj).forEach(param => {
+        let mapInput = document.createElement("input");
         mapInput.type = "hidden";
-        mapInput.name = param;
+        console.log(this.ucFirst(param));
+        mapInput.name = this.ucFirst(param);
         mapInput.setAttribute("value", obj[param]);
         mapForm.appendChild(mapInput);
       });
       document.body.appendChild(mapForm);
       mapForm.submit();
+  }
+
+  private ucFirst(string) {
+    return string.toString().charAt(0).toUpperCase() + string.slice(1);
   }
 }
