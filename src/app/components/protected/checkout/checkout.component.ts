@@ -1,19 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {UserService} from "../../../services/user.service";
 import {User} from "../../../models/user";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Address} from "../../../models/address";
 import {deserialize, serialize} from "serializer.ts/Serializer";
+import {CartService} from "../../../services/cart.service";
+import {Cart} from "../../../models/cart";
+import {OrderService} from "../../../services/order.service";
+import {Order} from "../../../models/order";
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.css']
+  styleUrls: ['./checkout.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class CheckoutComponent implements OnInit {
   user: User;
   loggedIn = false;
   shippingAddress: Address;
+  cartItems: Cart[];
+  subtotal = 0;
   steps = {
     step1: false,
     step2: false,
@@ -23,8 +30,8 @@ export class CheckoutComponent implements OnInit {
   step2Form = FormGroup;
   step3Form = FormGroup;
   step4Form = FormGroup;
-
-  constructor(private userService: UserService) {
+  private order: Order;
+  constructor(private userService: UserService, private cartService: CartService, private orderService: OrderService) {
     this.user = this.userService.loadProfile();
   }
 
@@ -32,6 +39,17 @@ export class CheckoutComponent implements OnInit {
     if (this.user !== null) {
       this.loggedIn = true;
       this.initStep1Form();
+      this.cartService.getUserCart().subscribe(
+        (res) => {
+          this.cartItems = res.filter(c => c.savedForLater === false && c.wishlist === false);
+        },
+        (err) => {
+
+        },
+        () => {
+          this.countSubtotal();
+        }
+      );
     }
   }
 
@@ -70,12 +88,61 @@ export class CheckoutComponent implements OnInit {
 
   onForm2Submit() {
     const form = this.step2Form;
-    console.log(form)
     if (form.valid) {
       let toSubmit: Address = deserialize<Address>(Address, serialize(form.value));
       this.shippingAddress = toSubmit;
       this.steps.step2 = true;
     }
+  }
+
+  private countSubtotal() {
+    this.cartItems.forEach(item => {
+      if (item.product.bundle !== null) {
+        this.subtotal += (item.product.bundle.price - (item.product.bundle.price * item.product.bundle.sale / 100)) * item.quantity;
+      } else {
+        this.subtotal += (item.product.price - (item.product.price * item.product.sale / 100)) * item.quantity;
+      }
+    });
+  }
+
+  itemUnitPrice(item: Cart): number {
+    if (item.product.bundle !== null) {
+      return (item.product.bundle.price - (item.product.bundle.price * item.product.bundle.sale / 100));
+    } else {
+      return (item.product.price - (item.product.price * item.product.sale / 100));
+    }
+  }
+
+  itemSubotal(item: Cart): number {
+    let itemSubtotal = 0;
+    if (item.product.bundle !== null) {
+      itemSubtotal += (item.product.bundle.price - (item.product.bundle.price * item.product.bundle.sale / 100)) * item.quantity;
+    } else {
+      itemSubtotal += (item.product.price - (item.product.price * item.product.sale / 100)) * item.quantity;
+    }
+    return itemSubtotal;
+  }
+
+  placeOrder() {
+    const order = new Order();
+    order.shippingAddress = this.shippingAddress;
+    order.billingAddress = this.shippingAddress;
+    this.cartItems.forEach(c => {
+      order.products.push(c.product);
+    });
+    order.paymentMethod = "CARD";
+    order.shippingMethod = "COURIER";
+    this.orderService.placeOrder(order).subscribe(
+      (res) => {
+        this.order = deserialize<Order>(Order, res);
+      },
+      (err) => {
+
+      },
+      () => {
+        this.orderService.initPayment(this.order);
+      }
+    );
   }
 
 }

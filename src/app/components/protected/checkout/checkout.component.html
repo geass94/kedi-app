@@ -8,15 +8,15 @@
           </a>
         </div>
         <div class="checkout-heading">
-          <h2>Checkout</h2>
+          <h2>გადახდა</h2>
         </div>
         <div class="checkout-accordion">
           <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
             <div *ngIf="loggedIn" class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingTwo">
                 <h4 class="panel-title">
-                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Account & Billing Details
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    ანგარიშისა და გადახდების დეტალები
                     <i class="fa fa-caret-down"></i>
                   </a>
                 </h4>
@@ -27,80 +27,80 @@
                     <form [formGroup]="step1Form">
                     <div class="col-sm-6">
                       <div class="account-details">
-                        <h4>Your Personal Details</h4>
+                        <h4>პერსონალური ინფორმაცია</h4>
                         <div class="form-box">
                           <div class="form-name">
-                            <label>First Name <em>*</em> </label>
-                            <input type="text" placeholder="First Name" name="firstName" formControlName="firstName">
+                            <label>სახელი <em>*</em> </label>
+                            <input type="text" placeholder="სახელი" name="firstName" formControlName="firstName">
                           </div>
                         </div>
                         <div class="form-box">
                           <div class="form-name">
-                            <label>Last Name <em>*</em> </label>
-                            <input type="text" placeholder="Last Name" name="lastName" formControlName="lastName">
+                            <label>გვარი <em>*</em> </label>
+                            <input type="text" placeholder="გვარი" name="lastName" formControlName="lastName">
                           </div>
                         </div>
                         <div class="form-box">
                           <div class="form-name">
-                            <label>E-mail <em>*</em> </label>
-                            <input type="email" placeholder="E-mail" name="email" formControlName="email">
+                            <label>ემაილი <em>*</em> </label>
+                            <input type="email" placeholder="..." name="email" formControlName="email">
                           </div>
                         </div>
                         <div class="form-box">
                           <div class="form-name">
-                            <label>Telephone <em>*</em> </label>
-                            <input type="text" placeholder="Telephone" name="phone" formControlName="phone">
+                            <label>ტელეფონი <em>*</em> </label>
+                            <input type="text" placeholder="..." name="phone" formControlName="phone">
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="checkout-collapse">
-                        <h4>Your Address</h4>
+                        <h4>მისამართი</h4>
                         <div class="form-box">
                           <div class="form-name">
-                            <label>Company </label>
-                            <input type="text" placeholder="Company" name="company" formControlName="company">
+                            <label>კომპანია </label>
+                            <input type="text" placeholder="კომპანიის დასახელება" name="company" formControlName="company">
                           </div>
                         </div>
                         <div class="form-box">
                           <div class="form-name">
-                            <label>Address 1 <em>*</em> </label>
-                            <input type="text" placeholder="Address 1" name="address1" formControlName="address1">
+                            <label>მისამართი 1 <em>*</em> </label>
+                            <input type="text" placeholder="მისამართი" name="address1" formControlName="address1">
                           </div>
                         </div>
                         <div class="form-box">
                           <div class="form-name">
-                            <label>Address 2 <em>*</em> </label>
-                            <input type="text" placeholder="Address 2" name="address2" formControlName="address2">
+                            <label>მისამართი 2 <em>*</em> </label>
+                            <input type="text" placeholder="მისამართი" name="address2" formControlName="address2">
                           </div>
                         </div>
                         <div class="form-box">
                           <div class="form-name">
-                            <label>City <em>*</em> </label>
-                            <input type="text" placeholder="City" name="city" formControlName="city">
+                            <label>ქალაქი <em>*</em> </label>
+                            <input type="text" placeholder="ქალაქი" name="city" formControlName="city">
                           </div>
                         </div>
                         <div class="form-box">
                           <div class="form-name">
-                            <label>Post Code <em>*</em> </label>
-                            <input type="text" placeholder="Post Code" name="postCode" formControlName="postCode">
+                            <label>საფოსტო ინდექსი <em>*</em> </label>
+                            <input type="text" placeholder="საფოსტო ინდექსი" name="postCode" formControlName="postCode">
                           </div>
                         </div>
                         <div class="form-box">
                           <div class="form-name">
-                            <label> country <em>*</em> </label>
-                            <input type="text" placeholder="Country" name="country" formControlName="country">
+                            <label>ქვეყანა <em>*</em> </label>
+                            <input type="text" placeholder="ქვეყანა" name="country" formControlName="country">
                           </div>
                         </div>
                         <div class="form-box">
                           <div class="form-name">
-                            <label> State/Province </label>
-                            <input type="text" placeholder="State/Province" name="state" formControlName="state">
+                            <label> რაიონი </label>
+                            <input type="text" placeholder="რაიონი" name="state" formControlName="state">
                           </div>
                         </div>
                         <div class="privacy-policy">
-                          <button type="submit" class="check-button">Update</button>
+                          <button type="submit" class="check-button">განახლება</button>
                         </div>
                       </div>
                     </div>
@@ -113,7 +113,7 @@
               <div class="panel-heading" role="tab" id="headingThree">
                 <h4 class="panel-title">
                   <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    Delivery Details
+                    მიწოდების დეტალები
                     <i class="fa fa-caret-down"></i>
                   </a>
                 </h4>
@@ -126,48 +126,48 @@
                         <form [formGroup]="step2Form" (submit)="onForm2Submit()">
                           <div class="list-style">
                             <div class="form-name">
-                              <label>First Name <em>*</em> </label>
-                              <input type="text" placeholder="First Name" name="firstName" formControlName="firstName">
+                              <label>სახელი <em>*</em> </label>
+                              <input type="text" placeholder="სახელი" name="firstName" formControlName="firstName">
                             </div>
                             <div class="form-name">
-                              <label>Last Name <em>*</em> </label>
-                              <input type="text" placeholder="Last Name" name="lastName" formControlName="lastName">
+                              <label>გვარი <em>*</em> </label>
+                              <input type="text" placeholder="გვარი" name="lastName" formControlName="lastName">
                             </div>
                             <div class="form-name">
-                              <label>Company </label>
-                              <input type="text" placeholder="Company" name="company" formControlName="company">
+                              <label>კომპანია </label>
+                              <input type="text" placeholder="კომპანია" name="company" formControlName="company">
                             </div>
                             <div class="form-name">
-                              <label>Address 1 <em>*</em> </label>
-                              <input type="text" placeholder="Address 1" name="address1" formControlName="address1">
+                              <label>მისამართი 1 <em>*</em> </label>
+                              <input type="text" placeholder="მისამართი" name="address1" formControlName="address1">
                             </div>
                             <div class="form-name">
-                              <label>Address 2 <em>*</em> </label>
-                              <input type="text" placeholder="Address 2" name="address2" formControlName="address2">
+                              <label>მისამართი 2 <em>*</em> </label>
+                              <input type="text" placeholder="მისამართი" name="address2" formControlName="address2">
                             </div>
                             <div class="form-name">
-                              <label>City <em>*</em> </label>
-                              <input type="text" placeholder="City" name="city" formControlName="city">
+                              <label >ქალაქი<em>*</em> </label>
+                              <input type="text" placeholder="ქალაქი" name="city" formControlName="city">
                             </div>
                             <div class="form-name">
-                              <label>Post Code <em>*</em> </label>
-                              <input type="text" placeholder="Post Code"  name="postCode" formControlName="postCode">
+                              <label>საფოსტო ინდექსი <em>*</em> </label>
+                              <input type="text" placeholder="საფოსტო ინდექსი"  name="postCode" formControlName="postCode">
                             </div>
                             <div class="form-name">
-                              <label>Phone <em>*</em> </label>
-                              <input type="text" placeholder="Phone"  name="phone" formControlName="phone">
+                              <label>ტელეფონი <em>*</em> </label>
+                              <input type="text" placeholder="..."  name="phone" formControlName="phone">
                             </div>
                             <div class="form-name">
-                              <label> country <em>*</em> </label>
-                              <input type="text" placeholder="Country" name="country" formControlName="country">
+                              <label> ქვეყანა <em>*</em> </label>
+                              <input type="text" placeholder="ქვეყანა" name="country" formControlName="country">
                             </div>
                             <div class="form-name">
-                              <label> State/Province </label>
-                              <input type="text" placeholder="State" name="state" formControlName="state">
+                              <label> რაიონი </label>
+                              <input type="text" placeholder="რაიონი" name="state" formControlName="state">
                             </div>
                             <br>
                             <div class="privacy-policy">
-                              <button type="submit" class="check-button">Update</button>
+                              <button type="submit" class="check-button">განახლება</button>
                             </div>
                           </div>
                         </form>
@@ -181,7 +181,7 @@
               <div class="panel-heading" role="tab" id="headingFive">
                 <h4 class="panel-title">
                   <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                    Payment Method
+                    გადახდის მეთოდი
                     <i class="fa fa-caret-down"></i>
                   </a>
                 </h4>
@@ -189,14 +189,14 @@
               <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
                 <div class="panel-body">
                   <div class="patment-method">
-                    <p>Please select the preferred payment method to use on this order.</p>
+                    <p>აირჩიეთ სასურველი გადახდის მეთოდი</p>
                     <div class="radio">
                       <input type="radio" checked="" value="shipping-method">Cash On Delivery
                     </div>
-                    <p> <strong> Add Comments About Your Order</strong></p>
+                    <p> <strong> დამატებიტი ინფორმაცია შეკვეტის შესახებ </strong></p>
                     <p> <textarea name="comment" rows="8"></textarea> </p>
                     <div class="privacy-policy">
-                      <button type="submit" class="check-button">Continue</button>
+                      <button type="submit" class="check-button">გაგრძელება</button>
                     </div>
                   </div>
                 </div>
@@ -206,7 +206,7 @@
               <div class="panel-heading" role="tab" id="headingSix">
                 <h4 class="panel-title">
                   <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                    Confirm Order
+                    შეკვეთის დადასტურება
                     <i class="fa fa-caret-down"></i>
                   </a>
                 </h4>
@@ -218,31 +218,22 @@
                       <table class="table table-bordered table-hover">
                         <thead>
                         <tr>
-                          <th>Product Name</th>
-                          <th>Model</th>
-                          <th>Quantity</th>
-                          <th>Unit Price</th>
-                          <th>Total</th>
+                          <th>პროდუქტის სახელი</th>
+                          <th>მოდელი</th>
+                          <th>რაოდენობა</th>
+                          <th>ერთეულის ფასი</th>
+                          <th>ჯამი</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
+                        <tr *ngFor="let item of cartItems;">
                           <td>
-                            <a href="#">More-Or-Less</a>
+                            <a routerLink="/product/{{item.product.id}}">{{item.product.name}}</a>
                           </td>
-                          <td>Product 14</td>
-                          <td>2</td>
-                          <td>$100.00</td>
-                          <td>$200.00</td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <a href="#">Aliquam Consequat</a>
-                          </td>
-                          <td>Product 14</td>
-                          <td>1</td>
-                          <td>$90.00</td>
-                          <td>$90.00</td>
+                          <td>{{item.product.name}}</td>
+                          <td>{{item.quantity}}</td>
+                          <td>{{itemUnitPrice(item)}}</td>
+                          <td>{{itemSubotal(item)}}</td>
                         </tr>
                         </tbody>
                         <tfoot>
@@ -250,24 +241,24 @@
                           <td class="text-right" colspan="4">
                             <strong>Sub-Total:</strong>
                           </td>
-                          <td>$290.00</td>
+                          <td>{{subtotal}}</td>
                         </tr>
-                        <tr>
-                          <td class="text-right" colspan="4">
-                            <strong>Flat Shipping Rate:</strong>
-                          </td>
-                          <td>$5.00</td>
-                        </tr>
-                        <tr>
-                          <td class="text-right" colspan="4">
-                            <strong>Flat Shipping Rate:</strong>
-                          </td>
-                          <td>$5.00</td>
-                        </tr>
+                        <!--<tr>-->
+                          <!--<td class="text-right" colspan="4">-->
+                            <!--<strong>Flat Shipping Rate:</strong>-->
+                          <!--</td>-->
+                          <!--<td>$5.00</td>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                          <!--<td class="text-right" colspan="4">-->
+                            <!--<strong>Flat Shipping Rate:</strong>-->
+                          <!--</td>-->
+                          <!--<td>$5.00</td>-->
+                        <!--</tr>-->
                         </tfoot>
                       </table>
                     </div>
-                    <button type="submit" value="Continue" class="check-button">Confirm Order</button>
+                    <button type="button" (click)="placeOrder()" value="Continue" class="check-button">შეკვეტის დადასტურება</button>
                   </div>
                 </div>
               </div>
