@@ -126,6 +126,7 @@ export class CheckoutComponent implements OnInit {
 
   placeOrder() {
     const order = new Order();
+    order.products = [];
     order.shippingAddress = this.shippingAddress;
     order.billingAddress = this.shippingAddress;
     this.cartItems.forEach(c => {
