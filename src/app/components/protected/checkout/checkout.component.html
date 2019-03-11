@@ -1,0 +1,280 @@
+<div class="checkout-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="checkout-banner hidden-xs">
+          <a href="#">
+            <img src="img/checkout/checkout_banner.jpg" alt="">
+          </a>
+        </div>
+        <div class="checkout-heading">
+          <h2>Checkout</h2>
+        </div>
+        <div class="checkout-accordion">
+          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div *ngIf="loggedIn" class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Account & Billing Details
+                    <i class="fa fa-caret-down"></i>
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                  <div class="row">
+                    <form [formGroup]="step1Form">
+                    <div class="col-sm-6">
+                      <div class="account-details">
+                        <h4>Your Personal Details</h4>
+                        <div class="form-box">
+                          <div class="form-name">
+                            <label>First Name <em>*</em> </label>
+                            <input type="text" placeholder="First Name" name="firstName" formControlName="firstName">
+                          </div>
+                        </div>
+                        <div class="form-box">
+                          <div class="form-name">
+                            <label>Last Name <em>*</em> </label>
+                            <input type="text" placeholder="Last Name" name="lastName" formControlName="lastName">
+                          </div>
+                        </div>
+                        <div class="form-box">
+                          <div class="form-name">
+                            <label>E-mail <em>*</em> </label>
+                            <input type="email" placeholder="E-mail" name="email" formControlName="email">
+                          </div>
+                        </div>
+                        <div class="form-box">
+                          <div class="form-name">
+                            <label>Telephone <em>*</em> </label>
+                            <input type="text" placeholder="Telephone" name="phone" formControlName="phone">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="checkout-collapse">
+                        <h4>Your Address</h4>
+                        <div class="form-box">
+                          <div class="form-name">
+                            <label>Company </label>
+                            <input type="text" placeholder="Company" name="company" formControlName="company">
+                          </div>
+                        </div>
+                        <div class="form-box">
+                          <div class="form-name">
+                            <label>Address 1 <em>*</em> </label>
+                            <input type="text" placeholder="Address 1" name="address1" formControlName="address1">
+                          </div>
+                        </div>
+                        <div class="form-box">
+                          <div class="form-name">
+                            <label>Address 2 <em>*</em> </label>
+                            <input type="text" placeholder="Address 2" name="address2" formControlName="address2">
+                          </div>
+                        </div>
+                        <div class="form-box">
+                          <div class="form-name">
+                            <label>City <em>*</em> </label>
+                            <input type="text" placeholder="City" name="city" formControlName="city">
+                          </div>
+                        </div>
+                        <div class="form-box">
+                          <div class="form-name">
+                            <label>Post Code <em>*</em> </label>
+                            <input type="text" placeholder="Post Code" name="postCode" formControlName="postCode">
+                          </div>
+                        </div>
+                        <div class="form-box">
+                          <div class="form-name">
+                            <label> country <em>*</em> </label>
+                            <input type="text" placeholder="Country" name="country" formControlName="country">
+                          </div>
+                        </div>
+                        <div class="form-box">
+                          <div class="form-name">
+                            <label> State/Province </label>
+                            <input type="text" placeholder="State/Province" name="state" formControlName="state">
+                          </div>
+                        </div>
+                        <div class="privacy-policy">
+                          <button type="submit" class="check-button">Update</button>
+                        </div>
+                      </div>
+                    </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="loggedIn && steps.step1" class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingThree">
+                <h4 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Delivery Details
+                    <i class="fa fa-caret-down"></i>
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="delivery-details">
+                        <form [formGroup]="step2Form" (submit)="onForm2Submit()">
+                          <div class="list-style">
+                            <div class="form-name">
+                              <label>First Name <em>*</em> </label>
+                              <input type="text" placeholder="First Name" name="firstName" formControlName="firstName">
+                            </div>
+                            <div class="form-name">
+                              <label>Last Name <em>*</em> </label>
+                              <input type="text" placeholder="Last Name" name="lastName" formControlName="lastName">
+                            </div>
+                            <div class="form-name">
+                              <label>Company </label>
+                              <input type="text" placeholder="Company" name="company" formControlName="company">
+                            </div>
+                            <div class="form-name">
+                              <label>Address 1 <em>*</em> </label>
+                              <input type="text" placeholder="Address 1" name="address1" formControlName="address1">
+                            </div>
+                            <div class="form-name">
+                              <label>Address 2 <em>*</em> </label>
+                              <input type="text" placeholder="Address 2" name="address2" formControlName="address2">
+                            </div>
+                            <div class="form-name">
+                              <label>City <em>*</em> </label>
+                              <input type="text" placeholder="City" name="city" formControlName="city">
+                            </div>
+                            <div class="form-name">
+                              <label>Post Code <em>*</em> </label>
+                              <input type="text" placeholder="Post Code"  name="postCode" formControlName="postCode">
+                            </div>
+                            <div class="form-name">
+                              <label>Phone <em>*</em> </label>
+                              <input type="text" placeholder="Phone"  name="phone" formControlName="phone">
+                            </div>
+                            <div class="form-name">
+                              <label> country <em>*</em> </label>
+                              <input type="text" placeholder="Country" name="country" formControlName="country">
+                            </div>
+                            <div class="form-name">
+                              <label> State/Province </label>
+                              <input type="text" placeholder="State" name="state" formControlName="state">
+                            </div>
+                            <br>
+                            <div class="privacy-policy">
+                              <button type="submit" class="check-button">Update</button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="loggedIn && steps.step2" class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingFive">
+                <h4 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                    Payment Method
+                    <i class="fa fa-caret-down"></i>
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                <div class="panel-body">
+                  <div class="patment-method">
+                    <p>Please select the preferred payment method to use on this order.</p>
+                    <div class="radio">
+                      <input type="radio" checked="" value="shipping-method">Cash On Delivery
+                    </div>
+                    <p> <strong> Add Comments About Your Order</strong></p>
+                    <p> <textarea name="comment" rows="8"></textarea> </p>
+                    <div class="privacy-policy">
+                      <button type="submit" class="check-button">Continue</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="loggedIn && steps.step2" class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingSix">
+                <h4 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                    Confirm Order
+                    <i class="fa fa-caret-down"></i>
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+                <div class="panel-body">
+                  <div class="confirm-order">
+                    <div class="table-responsive">
+                      <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                          <th>Product Name</th>
+                          <th>Model</th>
+                          <th>Quantity</th>
+                          <th>Unit Price</th>
+                          <th>Total</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <td>
+                            <a href="#">More-Or-Less</a>
+                          </td>
+                          <td>Product 14</td>
+                          <td>2</td>
+                          <td>$100.00</td>
+                          <td>$200.00</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <a href="#">Aliquam Consequat</a>
+                          </td>
+                          <td>Product 14</td>
+                          <td>1</td>
+                          <td>$90.00</td>
+                          <td>$90.00</td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                          <td class="text-right" colspan="4">
+                            <strong>Sub-Total:</strong>
+                          </td>
+                          <td>$290.00</td>
+                        </tr>
+                        <tr>
+                          <td class="text-right" colspan="4">
+                            <strong>Flat Shipping Rate:</strong>
+                          </td>
+                          <td>$5.00</td>
+                        </tr>
+                        <tr>
+                          <td class="text-right" colspan="4">
+                            <strong>Flat Shipping Rate:</strong>
+                          </td>
+                          <td>$5.00</td>
+                        </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                    <button type="submit" value="Continue" class="check-button">Confirm Order</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
