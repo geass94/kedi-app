@@ -5,21 +5,27 @@
 <!-- product main items area start -->
 <div class="product-main-items">
   <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="location">
-          <ul>
-            <li><a href="index.html" title="go to homepage">Home<span>/</span></a>  </li>
-            <li><strong> shop</strong></li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <br/>
     <div class="row">
       <div class="col-sm-3">
         <div class="product-sidebar">
           <div class="sidebar-title">
-            <h2>Shopping Options</h2>
+            <h2>მაღაზიის ფილტრი</h2>
+          </div>
+          <div class="single-sidebar price">
+            <div class="single-sidebar-title">
+              <h3>ფასი</h3>
+            </div>
+            <div class="single-sidebar-content">
+              <div class="price-range">
+                <div class="price-filter">
+                  <div id="slider-range"></div>
+                  <div class="price-slider-amount">
+                    <input type="text" id="amount" name="price" (change)="priceSliderOnChange($event.target.value)" readonly />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="single-sidebar">
             <div class="single-sidebar-title">
@@ -39,7 +45,9 @@
             </div>
             <div class="single-sidebar-content">
               <ul>
-                <li *ngFor="let color of sideBar.colors"><a (click)="applyFilter({color: color.id})">{{color.name}}</a></li>
+                <li *ngFor="let color of sideBar.colors">
+                  <a (click)="applyFilter({color: color.id})" [ngClass]="{'bg-success': filter.color.indexOf(color.id) > -1}">{{color.name}}</a>
+                </li>
               </ul>
             </div>
           </div>
@@ -49,24 +57,10 @@
             </div>
             <div class="single-sidebar-content">
               <ul>
-                <li *ngFor="let manufacturer of sideBar.manufacturers"><a (click)="applyFilter({manufacturer: manufacturer.id})">{{manufacturer.name}}</a></li>
+                <li *ngFor="let manufacturer of sideBar.manufacturers">
+                  <a (click)="applyFilter({manufacturer: manufacturer.id})" [ngClass]="{'bg-success': filter.manufacturer.indexOf(manufacturer.id) > -1}">{{manufacturer.name}}</a>
+                </li>
               </ul>
-            </div>
-          </div>
-          <div class="single-sidebar price">
-            <div class="single-sidebar-title">
-              <h3>Price</h3>
-            </div>
-            <div class="single-sidebar-content">
-              <div class="price-range">
-                <div class="price-filter">
-                  <div id="slider-range"></div>
-                  <div class="price-slider-amount">
-                    <input type="text" id="amount" name="price" (change)="priceSliderOnChange($event.target.value)" placeholder="Add Your Price" />
-                  </div>
-                </div>
-                <button type="submit"> <span>search</span> </button>
-              </div>
             </div>
           </div>
           <div class="banner-left">
@@ -78,53 +72,20 @@
       </div>
       <div class="col-sm-9">
         <div class="product-bar">
-          <ul class="product-navigation" role="tablist">
-            <li role="presentation" class="active gird">
-
-              <a href="#gird" aria-controls="gird" role="tab" data-toggle="tab">
-                                        <span>
-                                            <img class="primary" src="assets/img/product/grid-primary.png" alt="">
-                                            <img class="secondary" src="assets/img/product/grid-secondary.png" alt="">
-                                        </span>
-                Gird
-              </a>
-            </li>
-            <li role="presentation" class="list">
-              <a href="#list" aria-controls="list" role="tab" data-toggle="tab">
-                                        <span>
-                                            <img class="primary" src="assets/img/product/list-primary.png" alt="">
-                                            <img class="secondary" src="assets/img/product/list-secondary.png" alt="">
-                                        </span>
-                List
-              </a>
-            </li>
-          </ul>
           <div class="sort-by">
-            <label>Sort By</label>
+            <label>სორტირება</label>
             <select name="sort" (change)="onSort($event.target.value)">
-              <option value="name" selected >Name</option>
-              <option value="price">Price</option>
+              <option value="name" selected >სახელის მიხედვით</option>
+              <option value="price">ფასის მიხედვით</option>
             </select>
             <a href="#" title="Set Descending Direction">
               <img src="assets/img/product/i_asc_arrow.gif" alt="">
             </a>
           </div>
-          <div class="limit-product">
-            <label>Show</label>
-            <select name="show">
-              <option value="#" selected>9</option>
-              <option value="#">12</option>
-              <option value="#">24</option>
-              <option value="#">36</option>
-            </select>
-            per page
-          </div>
         </div>
         <div class="row">
           <div class="product-content">
-            <div class="tab-content">
-              <div role="tabpanel" class="tab-pane active fade in home2" id="gird">
-                <div class="col-lg-4 col-sm-6" *ngFor="let product of products">
+            <div class="col-lg-4 col-sm-6" *ngFor="let product of products">
                   <div class="single-product">
                     <div class="level-pro-new">
                       <span>new</span>
@@ -137,12 +98,12 @@
                       </a>
                     </div>
                     <div class="actions">
-                      <button type="button" (click)="addToCart(product)" class="cart-btn" title="Add to cart">add to cart</button>
-                      <ul class="add-to-link">
-                        <li><a class="modal-view" data-target="#productModal" data-toggle="modal" href="#"> <i class="fa fa-search"></i></a></li>
-                        <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
-                        <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
-                      </ul>
+                      <button type="button" (click)="addToCart(product)" class="cart-btn" title="Add to cart">კალათაში დამატება</button>
+                      <!--<ul class="add-to-link">-->
+                        <!--<li><a class="modal-view" data-target="#productModal" data-toggle="modal" href="#"> <i class="fa fa-search"></i></a></li>-->
+                        <!--<li><a href="#"> <i class="fa fa-heart-o"></i></a></li>-->
+                        <!--<li><a href="#"> <i class="fa fa-refresh"></i></a></li>-->
+                      <!--</ul>-->
                     </div>
                     <div class="product-price">
                       <div class="product-name">
@@ -150,53 +111,17 @@
                       </div>
                       <div class="price-rating">
                         <span>{{product.price}}GEL</span>
-                        <div class="ratings">
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star-half-o"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--<div role="tabpanel" class="tab-pane fade home2" id="list">-->
-                <!--<div class="product-catagory">-->
-                  <!--<div class="single-list-product" *ngFor="let product of products  ">-->
-                    <!--<div class="col-sm-4">-->
-                      <!--<div class="list-product-img">-->
-                        <!--<a href="/product/{{product.id}}">-->
-                          <!--<img src="{{product.productFiles[0].fileUrl}}" alt="">-->
-                        <!--</a>-->
-                      <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="col-sm-8">-->
-                      <!--<div class="list-product-info">-->
-                        <!--<a href="/product/{{product.id}}" class="list-product-name"> {{product.name}}</a>-->
-                        <!--<div class="price-rating">-->
-                          <!--<span class="old-price">{{product.price}}</span>-->
-                          <!--<span>{{product.price}}</span>-->
                           <!--<div class="ratings">-->
                             <!--<i class="fa fa-star"></i>-->
                             <!--<i class="fa fa-star"></i>-->
                             <!--<i class="fa fa-star"></i>-->
                             <!--<i class="fa fa-star"></i>-->
                             <!--<i class="fa fa-star-half-o"></i>-->
-                            <!--<a href="#" class="review">1 Review(s)</a>-->
-                            <!--<a href="#" class="add-review">Add Your Review</a>-->
                           <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="list-product-details">-->
-                          <!--<p>{{product.description}}<a href="/product/{{product.id}}                                                                                       ">Learn More</a> </p>-->
-                        <!--</div>-->
-                      <!--</div>-->
-                    <!--</div>-->
-                  <!--</div>-->
-                <!--</div>-->
-              <!--</div>-->
-            </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
           </div>
           <div class="col-md-12">
             <div class="toolbar-bottom">

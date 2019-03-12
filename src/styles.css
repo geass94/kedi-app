@@ -67,6 +67,8 @@
 /*  1. Theme default CSS
 /*----------------------------------------*/
 
+@import url("//cdn.web-fonts.ge/fonts/bpg-banner-extrasquare-caps/css/bpg-banner-extrasquare-caps.min.css");
+
 html, body {height: 100%;}
 .floatleft {float:left}
 .floatright {float:right}
@@ -78,7 +80,7 @@ img {max-width:100%;height:auto}
 .fix {overflow:hidden}
 p {margin:0 0 15px;}
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "BPG Banner ExtraSquare Caps", sans-serif;
   font-weight: 700;
   color: #333;
   margin: 0 0 10px;
@@ -3356,7 +3358,16 @@ button.check-button:hover,
 
 
 
-
-
-
+.shopping-button button,
+button.check-button,
+.buttons-set button,
+.account-address ul li button,
+.add-address button,
+.save-button button,
+.wishlist-container button,
+.account-button a,
+button {
+  letter-spacing: 0.8px;
+  font-family: "BPG Banner ExtraSquare Caps", sans-serif;
+}
 

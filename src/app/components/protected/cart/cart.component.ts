@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {UserService} from "../../../services/user.service";
 import {User} from "../../../models/user";
 import {Cart} from "../../../models/cart";
@@ -7,7 +7,8 @@ import {CartService} from "../../../services/cart.service";
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  styleUrls: ['./cart.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class CartComponent implements OnInit {
   loggedUser: User;

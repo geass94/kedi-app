@@ -7,3 +7,11 @@
 td a{
   cursor: pointer;
 }
+
+.totals {
+  padding-bottom: 10px;
+}
+
+.totals h3 {
+  width: 100%;
+}

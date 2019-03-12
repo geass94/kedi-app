@@ -30,7 +30,6 @@ export class OrderService {
       Object.keys(obj).forEach(param => {
         let mapInput = document.createElement("input");
         mapInput.type = "hidden";
-        console.log(this.ucFirst(param));
         mapInput.name = this.ucFirst(param);
         mapInput.setAttribute("value", obj[param]);
         mapForm.appendChild(mapInput);

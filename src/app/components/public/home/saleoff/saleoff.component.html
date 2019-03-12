@@ -11,25 +11,13 @@
       </a>
     </div>
     <div class="actions">
-      <button type="button" class="cart-btn" (click)="addToCart(product)" title="Add to cart">add to cart</button>
-      <ul class="add-to-link">
-        <li><a class="modal-view" data-target="#productModal" data-toggle="modal" href="#"> <i class="fa fa-search"></i></a></li>
-        <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
-        <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
-      </ul>
+      <button type="button" class="cart-btn" (click)="addToCart(product)" title="Add to cart">კალათაში დამატება</button>
     </div>
     <div class="product-price">
       <div class="product-name">
         <a routerLink="/product/{{product.id}}" title="{{product.name}}">{{product.name}}</a>
       </div>
       <div class="price-rating">
-        <div class="ratings">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star-half-o"></i>
-        </div>
         <span>{{product.price}}GEL</span>
       </div>
     </div>

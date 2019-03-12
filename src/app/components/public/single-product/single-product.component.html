@@ -1,22 +1,7 @@
-<!-- single product area start -->
-<div class="Single-product-location home2">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="location">
-          <ul>
-            <li><a href="index.html" title="go to homepage">Home<span>/</span></a>  </li>
-            <li><strong> Fusce aliquam</strong></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- single product area end -->
 <!-- single product details start -->
 <div class="single-product-details">
   <div class="container">
+    <br/>
     <div class="row">
       <div class="col-sm-6">
         <div class="single-product-img tab-content">
@@ -38,21 +23,8 @@
       <div class="col-sm-6">
         <div class="single-product-details">
           <a href="#" class="product-name">{{product.name}}</a>
-          <div class="list-product-info">
-            <div class="price-rating">
-              <div class="ratings">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-half-o"></i>
-                <a href="#" class="review">1 Review(s)</a>
-                <a href="#" class="add-review">Add Your Review</a>
-              </div>
-            </div>
-          </div>
           <div class="avalable">
-            <p>Availability:<span> In stock</span></p>
+            <p>ხელმისაწვდომია:<span> არის მარაგში</span></p>
           </div>
           <div class="item-price">
             <span>{{product.price}}</span>
@@ -70,22 +42,12 @@
                   <i class="fa fa-heart" (click)="addToWishlist(product)" ></i>
                 </a>
               </li>
-              <li>
-                <a href="#">
-                  <i class="fa fa-refresh" ></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="fa fa-envelope"></i>
-                </a>
-              </li>
             </ul>
           </div>
           <div class="select-catagory">
             <div class="color-select">
               <label class="required">
-                <em>*</em> Color
+                <em>*</em> ფერი (მოდელი)
               </label>
               <div class="input-box">
                 <select id="select-1" [(ngModel)]="selectedVariant" (change)="onColorChange()">
@@ -96,7 +58,7 @@
             </div>
             <div class="size-select">
               <label class="required">
-                <em>*</em> Size
+                <em>*</em> ზომა
               </label>
               <div class="input-box">
                 <select id="select-2">
@@ -111,10 +73,10 @@
             </div>
             <div class="single-cart">
               <div class="cart-plus-minus">
-                <label>Qty: </label>
+                <label>რაოდენობა: </label>
                 <input class="cart-plus-minus-box" type="number" [(ngModel)]="chosenQuantity" (change)="updateQuantity($event.target.value)" name="qtybutton" min="1">
               </div>
-              <button class="cart-btn" (click)="addToCart(product)" >Add to cart</button>
+              <button class="cart-btn" (click)="addToCart(product)" >კალათაში დამატება</button>
             </div>
           </div>
         </div>
@@ -130,9 +92,7 @@
       <div class="col-md-12">
         <div class="single-product-tab">
           <ul class="single-product-tab-navigation" role="tablist">
-            <li role="presentation" class="active"><a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">Product Description</a></li>
-            <li role="presentation"><a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">reviews</a></li>
-            <li role="presentation"><a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">product tag</a></li>
+            <li role="presentation" class="active"><a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">პროდუქტის აღწერა</a></li>
           </ul>
 
           <!-- Tab panes -->
@@ -140,127 +100,6 @@
             <div role="tabpanel" class="tab-pane fade in active" id="tab1">
               <div class="single-p-tab-content">
                 <p>{{product.description}}</p>
-              </div>
-            </div>
-            <div role="tabpanel" class="tab-pane fade" id="tab2">
-              <div class="single-p-tab-content">
-                <div class="row">
-                  <div class="col-md-5">
-                    <div class="product-review">
-                      <p> <a href="#"> plaza</a> <span>Review by</span> plaza </p>
-                      <div class="product-rating-info">
-                        <p>value</p>
-                        <div class="ratings">
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star-half-o"></i>
-                        </div>
-                      </div>
-                      <div class="product-rating-info">
-                        <p>Quality</p>
-                        <div class="ratings">
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star-half-o"></i>
-                        </div>
-                      </div>
-                      <div class="product-rating-info">
-                        <p>Price</p>
-                        <div class="ratings">
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star-half-o"></i>
-                        </div>
-                      </div>
-                      <div class="review-date">
-                        <p>plaza <em> (Posted on 8/27/2015)</em></p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-7">
-                    <div class="rate-product hidden-xs">
-                      <div class="rate-product-heading">
-                        <h3>You're reviewing: Fusce aliquam</h3>
-                        <h3>How do you rate this product? <em>*</em></h3>
-                      </div>
-                      <form action="#">
-                        <table class="product-review-table">
-                          <thead>
-                          <tr>
-                            <th></th>
-                            <th>1 star</th>
-                            <th>2 star</th>
-                            <th>3 star</th>
-                            <th>4 star</th>
-                            <th>5 star</th>
-                          </tr>
-                          </thead>
-                          <tbody>
-                          <tr>
-                            <th>Price</th>
-                            <td> <input type="radio" class="radio" name="ratings[1]"> </td>
-                            <td> <input type="radio" class="radio" name="ratings[1]"> </td>
-                            <td> <input type="radio" class="radio" name="ratings[1]"> </td>
-                            <td> <input type="radio" class="radio" name="ratings[1]"> </td>
-                            <td> <input type="radio" class="radio" name="ratings[1]"> </td>
-                          </tr>
-                          <tr>
-                            <th>Value</th>
-                            <td> <input type="radio" class="radio" name="ratings[2]"> </td>
-                            <td> <input type="radio" class="radio" name="ratings[2]"> </td>
-                            <td> <input type="radio" class="radio" name="ratings[2]"> </td>
-                            <td> <input type="radio" class="radio" name="ratings[2]"> </td>
-                            <td> <input type="radio" class="radio" name="ratings[2]"> </td>
-                          </tr>
-                          <tr>
-                            <th>Quality</th>
-                            <td> <input type="radio" class="radio" name="ratings[3]"> </td>
-                            <td> <input type="radio" class="radio" name="ratings[3]"> </td>
-                            <td> <input type="radio" class="radio" name="ratings[3]"> </td>
-                            <td> <input type="radio" class="radio" name="ratings[3]"> </td>
-                            <td> <input type="radio" class="radio" name="ratings[3]"> </td>
-                          </tr>
-                          </tbody>
-                        </table>
-                        <ul class="form-list">
-                          <li>
-                            <label> nickname <em>*</em> </label>
-                            <input type="text">
-                          </li>
-                          <li>
-                            <label> Summary of Your Review <em>*</em> </label>
-                            <input type="text">
-                          </li>
-                          <li>
-                            <label> Review <em>*</em> </label>
-                            <textarea cols="3" rows="5"></textarea>
-                          </li>
-                        </ul>
-                        <button type="submit"> submit review</button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div role="tabpanel" class="tab-pane fade" id="tab3">
-              <div class="single-p-tab-content">
-                <div class="add-tab-title">
-                  <p> add your tag </p>
-                </div>
-                <div class="add-tag">
-                  <form action="#">
-                    <input type="text">
-                    <button type="submit">add tags</button>
-                  </form>
-                </div>
-                <p class="tag-rules">Use spaces to separate tags. Use single quotes (') for phrases.</p>
               </div>
             </div>
           </div>
@@ -276,7 +115,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="product-title">
-          <h2>upsell products</h2>
+          <h2>სპეციალური შეთავაზება</h2>
         </div>
       </div>
     </div>
@@ -292,7 +131,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="product-title">
-          <h2>related products</h2>
+          <h2>მსგავსი პროდუქცია</h2>
         </div>
       </div>
     </div>

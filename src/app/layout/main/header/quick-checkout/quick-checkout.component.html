@@ -1,5 +1,5 @@
 <ul>
-  <li><a href="#"> <img src="assets/img/icon-cart.png" alt=""> <span>2</span> </a>
+  <li><a routerLink="/cart"> <img src="assets/img/icon-cart.png" alt=""> <span>X</span> </a>
     <div class="cart-info">
       <ul *ngIf="shoppinCart != null">
         <li *ngFor="let item of shoppinCart" class="checkout-item">
@@ -15,7 +15,7 @@
         </li>
       </ul>
       <h3>Subtotal: <span>{{subtotal}}GEL</span></h3>
-      <a routerLink="/cart" class="checkout">checkout</a>
+      <a routerLink="/checkout" class="checkout">checkout</a>
     </div>
   </li>
 </ul>

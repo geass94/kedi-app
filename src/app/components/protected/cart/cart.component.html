@@ -1,16 +1,7 @@
 <!-- cart item area start -->
 <div class="shopping-cart">
   <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="location">
-          <ul>
-            <li><a href="index.html" title="go to homepage">Home<span>/</span></a>  </li>
-            <li><strong> Shopping cart</strong></li>
-          </ul>
-        </div>
-      </div>
-    </div>
+  <br/>
     <div class="row">
       <div class="col-md-12">
         <div class="table-responsive">
@@ -18,12 +9,12 @@
             <thead>
             <tr>
               <th class="cart-item-img"></th>
-              <th class="cart-product-name">Product Name</th>
-              <th class="edit">Save for Later</th>
-              <th class="move-wishlist">Move to Wishlist</th>
-              <th class="unit-price">Unit Price</th>
-              <th class="quantity">Qty</th>
-              <th class="subtotal">Subtotal</th>
+              <th class="cart-product-name">პროდუქტის დასახელება</th>
+              <th class="edit"></th>
+              <th class="move-wishlist"></th>
+              <th class="unit-price">ერთეულის ფასი</th>
+              <th class="quantity">რაოდენობა</th>
+              <th class="subtotal">ჯამში</th>
               <th class="remove-icon"></th>
             </tr>
             </thead>
@@ -38,10 +29,10 @@
                 <a routerLink="/product/{{item.product.id}}">{{item.product.name}}</a>
               </td>
               <td class="edit">
-                <a (click)="saveForLater(item)">Save</a>
+                <a (click)="saveForLater(item)">მოგვიანებით ვიყიდი</a>
               </td>
               <td class="move-wishlist">
-                <a (click)="moveToWishlist(item)">Move</a>
+                <a (click)="moveToWishlist(item)">სასურველი ნივთია</a>
               </td>
               <td class="unit-price">
                 <span>{{itemUnitPrice(item)}}</span>
@@ -62,92 +53,21 @@
           </table>
           <div class="shopping-button">
             <div class="continue-shopping">
-              <button type="submit">continue shopping</button>
-            </div>
-            <div class="shopping-cart-left">
-              <button type="submit">Clear Shopping Cart</button>
-              <button type="submit">Update Shopping Cart</button>
+              <button type="button" routerLink="/shop">განაგრძე შოპინგი</button>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-4">
-        <div class="discount-code">
-          <h3>Discount Codes</h3>
-          <p>Enter your coupon code if you have one.</p>
-          <input type="text">
-          <div class="shopping-button">
-            <button type="submit">apply coupon</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="estimate-shipping">
-          <h3>Estimate Shipping and Tax</h3>
-          <p>Enter your destination to get a shipping estimate.</p>
-          <form action="#">
-            <div class="form-box">
-              <div class="form-name">
-                <label> country <em>*</em> </label>
-                <select>
-                  <option value="1">Afghanistan</option>
-                  <option value="1">Algeria</option>
-                  <option value="1">American Samoa</option>
-                  <option value="1">Australia</option>
-                  <option value="1">Bangladesh</option>
-                  <option value="1">Belgium</option>
-                  <option value="1">Bosnia and Herzegovina</option>
-                  <option value="1">Chile</option>
-                  <option value="1">China</option>
-                  <option value="1">Egypt</option>
-                  <option value="1">Finland</option>
-                  <option value="1">France</option>
-                  <option value="1">United State</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-box">
-              <div class="form-name">
-                <label> State/Province </label>
-                <select>
-                  <option value="1">Please select region, state or province</option>
-                  <option value="1">Arizona</option>
-                  <option value="1">Armed Forces Africa</option>
-                  <option value="1">California</option>
-                  <option value="1">Florida</option>
-                  <option value="1">Indiana</option>
-                  <option value="1">Marshall Islands</option>
-                  <option value="1">Minnesota</option>
-                  <option value="1">New Mexico</option>
-                  <option value="1">Utah</option>
-                  <option value="1">Virgin Islands</option>
-                  <option value="1">West Virginia</option>
-                  <option value="1">Wyoming</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-box">
-              <div class="form-name">
-                <label> Zip/Postal Code </label>
-                <input type="text">
-              </div>
-            </div>
-            <div class="shopping-button">
-              <button type="submit">get a quote</button>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="col-sm-4">
+      <div class="col-sm-4 col-md-offset-8">
         <div class="totals">
-          <p>subtotal <span>{{subtotal}}</span> </p>
-          <h3>Grand Total <span>{{subtotal}}</span></h3>
+          <p>სულ <span>{{subtotal}}</span> </p>
+          <h3>ჯამში <span>{{subtotal}}</span></h3>
           <div class="shopping-button">
-            <button type="submit">proceed to checkout</button>
+            <button type="submit">შეკვეთის განხორციელება</button>
           </div>
-          <a href="#">Checkout with Multiple Addresses</a>
+          <div class="clearfix"></div>
         </div>
       </div>
     </div>

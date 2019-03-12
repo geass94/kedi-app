@@ -1,0 +1,7 @@
+.product-bar .sort-by, .product-bar .limit-product {
+  margin-left: 0;
+}
+
+a {
+  cursor: pointer;
+}
