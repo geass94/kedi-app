@@ -12,7 +12,7 @@
         </div>
         <div class="checkout-accordion">
           <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            <div *ngIf="loggedIn" class="panel panel-default">
+            <div *ngIf="isLoggedIn" class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingTwo">
                 <h4 class="panel-title">
                   <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -109,7 +109,7 @@
                 </div>
               </div>
             </div>
-            <div *ngIf="loggedIn && steps.step1" class="panel panel-default">
+            <div *ngIf="isLoggedIn && steps.step1" class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingThree">
                 <h4 class="panel-title">
                   <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
@@ -177,7 +177,7 @@
                 </div>
               </div>
             </div>
-            <div *ngIf="loggedIn && steps.step2" class="panel panel-default">
+            <div *ngIf="isLoggedIn && steps.step2" class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingFive">
                 <h4 class="panel-title">
                   <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
@@ -202,7 +202,7 @@
                 </div>
               </div>
             </div>
-            <div *ngIf="loggedIn && steps.step2" class="panel panel-default">
+            <div *ngIf="isLoggedIn && steps.step2" class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingSix">
                 <h4 class="panel-title">
                   <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="true" aria-controls="collapseSix">

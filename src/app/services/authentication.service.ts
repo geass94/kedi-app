@@ -21,14 +21,18 @@ export class AuthenticationService {
   public get currentUserValue(): User {
     return this.currentUserSubject.value;
   }
+
+  isLoggedIn(): boolean {
+    if (this.currentUserValue && this.currentUserValue.accessToken) {
+      return true;
+    }
+    return false;
+  }
+
   signup(name: string, email: string, password: string) {
     return this.http.post<any>(`${environment.apiUrl}/auth/signup`, {name, email, password })
-      .pipe(map(user => {
-        // login successful if there's a jwt token in the response
-        if (user) {
-          console.log(user.response.status);
-        }
-        return user;
+      .pipe(map(data => {
+        return data;
       }));
   }
 
@@ -49,7 +53,7 @@ export class AuthenticationService {
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
-    localStorage.removeItem('loggedUser');
+    localStorage.removeItem('user');
     this.currentUserSubject.next(null);
   }
 }

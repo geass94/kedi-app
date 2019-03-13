@@ -5,6 +5,7 @@ import {ProductService} from "../../../../services/product.service";
 import {UserService} from "../../../../services/user.service";
 import {CartService} from "../../../../services/cart.service";
 import {deserialize} from "serializer.ts/Serializer";
+import {AuthenticationService} from "../../../../services/authentication.service";
 declare var jQuery: any;
 
 @Component({
@@ -13,16 +14,15 @@ declare var jQuery: any;
   styleUrls: ['./featured-products.component.css']
 })
 export class FeaturedProductsComponent implements OnInit {
-
-  loggedUser: User;
+  isLoggedIn = false;
   productsResponse: Product[] = [];
   products: Product[] = [];
   constructor(
     private productService: ProductService,
-    private userService: UserService,
+    private authService: AuthenticationService,
     private cartService: CartService
   ) {
-    this.loggedUser = userService.loadProfile();
+    this.isLoggedIn = authService.isLoggedIn();
   }
 
   imgClass(i: number) {

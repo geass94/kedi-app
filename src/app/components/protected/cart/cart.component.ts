@@ -4,6 +4,7 @@ import {User} from "../../../models/user";
 import {Cart} from "../../../models/cart";
 import {CartService} from "../../../services/cart.service";
 import {deserialize} from "serializer.ts/Serializer";
+import {AuthenticationService} from "../../../services/authentication.service";
 
 @Component({
   selector: 'app-cart',
@@ -12,11 +13,11 @@ import {deserialize} from "serializer.ts/Serializer";
   encapsulation: ViewEncapsulation.None
 })
 export class CartComponent implements OnInit {
-  loggedUser: User;
+  isLoggedIn = false;
   cartItems: Cart[] = [];
   subtotal = 0;
-  constructor(private userService: UserService, private cartService: CartService) {
-    this.loggedUser = this.userService.loadProfile();
+  constructor(private authService: AuthenticationService, private cartService: CartService) {
+    this.isLoggedIn = this.authService.isLoggedIn();
   }
 
   ngOnInit() {
@@ -27,10 +28,15 @@ export class CartComponent implements OnInit {
         this.countSubtotal();
       }
     });
+
+    this.cartService.deleteListener.subscribe(res => {
+      console.log("cart: ", res)
+      this.cartItems.splice(this.cartItems.indexOf( this.cartItems.find(c => c.id === res)), 1);
+    });
   }
 
   removeFromCart(cart: Cart) {
-    console.log(cart);
+    this.cartService.removeFromCart(cart.id);
   }
 
   moveToWishlist(cart: Cart) {

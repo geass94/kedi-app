@@ -4,6 +4,7 @@ import {HeaderService} from "../../../services/header.service";
 import {deserialize} from "serializer.ts/Serializer";
 import {User} from "../../../models/user";
 import {UserService} from "../../../services/user.service";
+import {AuthenticationService} from "../../../services/authentication.service";
 declare var jQuery: any;
 @Component({
   selector: 'app-header',
@@ -13,9 +14,9 @@ declare var jQuery: any;
 })
 export class HeaderComponent implements OnInit {
   headerMenu: Category[] = [];
-  loggedUser: User;
-  constructor(private headerService: HeaderService, private userService: UserService) {
-    this.loggedUser = userService.loadProfile();
+  isLoggedIn = false;
+  constructor(private headerService: HeaderService, private authService: AuthenticationService) {
+    this.isLoggedIn = authService.isLoggedIn();
   }
 
   ngOnInit() {

@@ -89,6 +89,7 @@ a {
   transition: all 0.3s ease 0s;
   text-decoration:none;
   color: #6a6a6a;
+  cursor: pointer;
 }
 a:hover {
   color: #F25862;

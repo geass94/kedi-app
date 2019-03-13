@@ -3,15 +3,15 @@ import {HttpClient} from "@angular/common/http";
 import {User} from "../models/user";
 import {environment} from "../../environments/environment";
 import {deserialize, serialize} from "serializer.ts/Serializer";
+import {AuthenticationService} from "./authentication.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   private user: User;
-  public loggedUser: User;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthenticationService) { }
 
   setProfile(): void {
     this.http.get(`${environment.apiUrl}/user/me`).subscribe((user) => {
@@ -21,19 +21,22 @@ export class UserService {
 
       },
       () => {
-        localStorage.setItem('loggedUser', JSON.stringify(this.user));
+        localStorage.setItem('user', JSON.stringify(this.user));
+        if (this.authService.isLoggedIn()) {
+          window.location.href = "/home";
+        }
       }
     );
   }
 
   loadProfile(): User {
-    return JSON.parse(localStorage.getItem('loggedUser'));
+    return this.user !== null ? this.user : JSON.parse(localStorage.getItem('user'));
   }
 
   updateProfile(u: User): void {
     this.http.put(`${environment.apiUrl}/user/update/${u.id}`, serialize(u)).subscribe((res) => {
       let usr: User = deserialize(User, res);
-      localStorage.setItem('loggedUser', JSON.stringify(usr));
+      localStorage.setItem('user', JSON.stringify(usr));
     });
   }
 

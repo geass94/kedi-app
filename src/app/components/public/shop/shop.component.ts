@@ -11,6 +11,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Filter} from "../../../models/filter";
 import {Sort} from "../../../models/sort";
 import {PriceRange} from "../../../models/price-range";
+import {AuthenticationService} from "../../../services/authentication.service";
 declare var jQuery: any;
 
 @Component({
@@ -20,7 +21,7 @@ declare var jQuery: any;
   encapsulation: ViewEncapsulation.None
 })
 export class ShopComponent implements OnInit, AfterViewInit {
-  loggedUser: User;
+  isLoggedIn = false;
   products: Product[];
   sideBar: Menu = new Menu;
   maxPrice = 0;
@@ -30,12 +31,12 @@ export class ShopComponent implements OnInit, AfterViewInit {
   constructor(
     private productService: ProductService,
     private menuService: MenuService,
-    private userService: UserService,
+    private authService: AuthenticationService,
     private cartService: CartService,
     private route: ActivatedRoute,
     private router: Router
   ) {
-    this.loggedUser = this.userService.loadProfile();
+    this.isLoggedIn = this.authService.isLoggedIn();
     this.productService.getPriceRange().subscribe(
       res => {
         let range = deserialize<PriceRange>(PriceRange, res);

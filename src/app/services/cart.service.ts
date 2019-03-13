@@ -5,17 +5,21 @@ import {Cart} from "../models/cart";
 import {deserialize} from "serializer.ts/Serializer";
 import {map} from "rxjs/internal/operators";
 import {BehaviorSubject, Subject} from "rxjs/index";
+import {AuthenticationService} from "./authentication.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  constructor(private http: HttpClient) {
-    this.getUserCart();
+  constructor(private http: HttpClient, private authService: AuthenticationService) {
+    if (this.authService.isLoggedIn()) {
+      this.getUserCart();
+    }
   }
 
   public shoppingCart = new Subject();
+  public deleteListener = new Subject();
 
   addToCart(productId: number, qty: number) {
     if (!qty) {
@@ -23,10 +27,16 @@ export class CartService {
     }
     this.http.post(`${environment.apiUrl}/cart/add-to-cart`, { productId : productId, quantity: qty }).subscribe(res => {
       let item = deserialize<Cart>(Cart, res);
-      console.log(item);
       this.shoppingCart.next( item );
     });
+  }
 
+  removeFromCart(id: number) {
+    this.http.delete(`${environment.apiUrl}/cart/remove-from-cart/${id}`).subscribe( res => {
+      if (res === true) {
+        this.deleteListener.next(id);
+      }
+    });
   }
 
   addToWishlist(productId: number) {

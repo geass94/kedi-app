@@ -25,7 +25,12 @@
                     </li>
                   </ul>
                 </li>
-                <li *ngIf="loggedUser">
+                <li *ngIf="!isLoggedIn">
+                  <a routerLink="/login">
+                    <i class="fa fa-user"></i>
+                  </a>
+                </li>
+                <li *ngIf="isLoggedIn">
                   <a href="#">
                     <i class="fa fa-bars"></i>
                   </a>
@@ -33,7 +38,7 @@
                 </li>
               </ul>
             </div>
-            <div *ngIf="loggedUser" class="cart-menu">
+            <div *ngIf="isLoggedIn" class="cart-menu">
               <app-quick-checkout></app-quick-checkout>
             </div>
           </div>

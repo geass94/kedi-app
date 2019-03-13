@@ -28,11 +28,11 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.userService.loadProfile())
-    if (this.userService.loadProfile()) {
+    if (this.authenticationService.isLoggedIn()) {
       this.router.navigate([this.returnUrl || 'home']);
       return;
     }
+
     this.loginForm = new FormGroup({
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)

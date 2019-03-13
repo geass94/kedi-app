@@ -8,6 +8,7 @@ import {Cart} from "../../../models/cart";
 import {OrderService} from "../../../services/order.service";
 import {Order} from "../../../models/order";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AuthenticationService} from "../../../services/authentication.service";
 
 @Component({
   selector: 'app-checkout',
@@ -17,7 +18,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class CheckoutComponent implements OnInit {
   user: User;
-  loggedIn = false;
+  isLoggedIn = false;
   shippingAddress: Address;
   cartItems: Cart[] = [];
   subtotal = 0;
@@ -31,13 +32,11 @@ export class CheckoutComponent implements OnInit {
   step3Form: FormGroup;
   step4Form: FormGroup;
   private order: Order;
-  constructor(private userService: UserService, private cartService: CartService, private orderService: OrderService) {
-    this.user = this.userService.loadProfile();
+  constructor(private authService: AuthenticationService, private cartService: CartService, private orderService: OrderService) {
+    this.isLoggedIn = this.authService.isLoggedIn();
   }
 
   ngOnInit() {
-    // this.cartService.getUserCart();
-      this.loggedIn = true;
       this.initStep1Form();
       this.cartService.shoppingCart.subscribe(data => {
         let item = deserialize<Cart>(Cart, data);
