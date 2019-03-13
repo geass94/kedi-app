@@ -34,7 +34,14 @@ export class OrderService {
         mapInput.setAttribute("value", obj[param]);
         mapForm.appendChild(mapInput);
       });
+      let mapInput2 = document.createElement("input");
+      mapInput2.type = "hidden";
+      mapInput2.name = "xDDDSProxy.Language";
+      mapInput2.setAttribute("value", "01");
+      mapForm.appendChild(mapInput2);
+
       document.body.appendChild(mapForm);
+      console.log(mapForm)
       mapForm.submit();
   }
 

@@ -64,7 +64,7 @@ export class ShopComponent implements OnInit, AfterViewInit {
   }
 
   addToCart(product: Product) {
-    this.cartService.addToCart(product.id, 1).subscribe();
+    this.cartService.addToCart(product.id, 1);
   }
 
   imgClass(i: number) {

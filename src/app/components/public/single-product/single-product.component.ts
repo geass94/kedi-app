@@ -39,15 +39,11 @@ export class SingleProductComponent implements OnInit, AfterViewInit {
   }
 
   addToCart(product: Product) {
-    this.cartService.addToCart(product.id, this.chosenQuantity).subscribe((res) => {
-      console.log(res);
-    });
+    this.cartService.addToCart(product.id, this.chosenQuantity);
   }
 
   addToWishlist(product: Product) {
-    this.cartService.addToWishlist(product.id).subscribe((res) => {
-      console.log(res);
-    });
+    this.cartService.addToWishlist(product.id);
   }
 
   private renderProduct() {

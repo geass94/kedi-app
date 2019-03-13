@@ -3,6 +3,7 @@ import {UserService} from "../../../services/user.service";
 import {User} from "../../../models/user";
 import {Cart} from "../../../models/cart";
 import {CartService} from "../../../services/cart.service";
+import {deserialize} from "serializer.ts/Serializer";
 
 @Component({
   selector: 'app-cart',
@@ -12,24 +13,20 @@ import {CartService} from "../../../services/cart.service";
 })
 export class CartComponent implements OnInit {
   loggedUser: User;
-  cartItems: Cart[];
+  cartItems: Cart[] = [];
   subtotal = 0;
   constructor(private userService: UserService, private cartService: CartService) {
     this.loggedUser = this.userService.loadProfile();
   }
 
   ngOnInit() {
-    this.cartService.getUserCart().subscribe(
-      (res) => {
-        this.cartItems = res.filter(c => c.savedForLater === false && c.wishlist === false);
-      },
-      (err) => {
-
-      },
-      () => {
+    this.cartService.shoppingCart.subscribe( data => {
+      let item = deserialize<Cart>(Cart, data);
+      if (item.savedForLater === false && item.wishlist === false) {
+        this.cartItems.push( item );
         this.countSubtotal();
       }
-    );
+    });
   }
 
   removeFromCart(cart: Cart) {

@@ -36,9 +36,7 @@ export class NewproductsComponent implements OnInit {
   }
 
   addToCart(product: Product) {
-    this.cartService.addToCart(product.id, 1).subscribe((res) => {
-      console.log(res);
-    });
+    this.cartService.addToCart(product.id, 1);
   }
 
   initCarousel() {

@@ -19,7 +19,7 @@ export class CheckoutComponent implements OnInit {
   user: User;
   loggedIn = false;
   shippingAddress: Address;
-  cartItems: Cart[];
+  cartItems: Cart[] = [];
   subtotal = 0;
   steps = {
     step1: false,
@@ -36,21 +36,17 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.user !== null) {
+    // this.cartService.getUserCart();
       this.loggedIn = true;
       this.initStep1Form();
-      this.cartService.getUserCart().subscribe(
-        (res) => {
-          this.cartItems = res.filter(c => c.savedForLater === false && c.wishlist === false);
-        },
-        (err) => {
-
-        },
-        () => {
+      this.cartService.shoppingCart.subscribe(data => {
+        let item = deserialize<Cart>(Cart, data);
+        if (item.savedForLater === false && item.wishlist === false) {
+          this.cartItems.push( item );
           this.countSubtotal();
         }
-      );
-    }
+      });
+
   }
 
   private initStep1Form(): void {

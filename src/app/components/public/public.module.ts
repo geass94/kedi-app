@@ -6,7 +6,7 @@ import {RouterModule} from "@angular/router";
 import {PublicRoutes} from "./public.routing";
 import {SliderComponent} from "../../layout/main/slider/slider.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {LoginComponent} from "./login/login.component";
 import {CommonModule} from "@angular/common";
 import { ShopComponent } from './shop/shop.component';
@@ -15,6 +15,9 @@ import { SaleoffComponent } from './home/saleoff/saleoff.component';
 import { NewproductsComponent } from './home/newproducts/newproducts.component';
 import { RelatedProductsComponent } from './single-product/related-products/related-products.component';
 import { PageComponent } from './page/page.component';
+import {CartService} from "../../services/cart.service";
+import {JwtInterceptor} from "../../helpers/jwt-interceptor";
+import {ErrorInterceptor} from "../../helpers/error-interceptor";
 
 @NgModule({
   declarations: [
@@ -36,6 +39,11 @@ import { PageComponent } from './page/page.component';
     HttpClientModule,
     FormsModule,
     CommonModule,
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    CartService
   ]
 })
 

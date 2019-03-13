@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Cart} from "../../../../models/cart";
 import {CartService} from "../../../../services/cart.service";
-import {UserService} from "../../../../services/user.service";
+import {deserialize} from "serializer.ts/Serializer";
 
 @Component({
   selector: 'app-quick-checkout',
@@ -9,23 +9,21 @@ import {UserService} from "../../../../services/user.service";
   styleUrls: ['./quick-checkout.component.css']
 })
 export class QuickCheckoutComponent implements OnInit {
-  shoppinCart: Cart[];
+  shoppinCart: Cart[] = [];
   subtotal = 0;
+  itemsInCart = 0;
   constructor(private cartService: CartService) { }
 
   ngOnInit() {
-    this.cartService.getUserCart().subscribe(
-      res => {
-        this.shoppinCart = res;
-      },
-      err => {
-
-      },
-      () => {
-        console.log(this.shoppinCart)
+    this.cartService.shoppingCart.subscribe( data => {
+      let item = deserialize<Cart>(Cart, data);
+      if (item.savedForLater === false && item.wishlist === false) {
+        this.shoppinCart.push( item );
         this.countSubtotal();
+        this.itemsInCart = this.shoppinCart.length;
       }
-    );
+    });
+
   }
 
   private countSubtotal() {

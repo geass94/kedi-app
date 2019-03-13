@@ -14,6 +14,7 @@ import { MainComponent } from './layout/main/main.component';
 import {CommonModule, LocationStrategy, PathLocationStrategy} from "@angular/common";
 import { UserMenuComponent } from './layout/main/header/user-menu/user-menu.component';
 import { QuickCheckoutComponent } from './layout/main/header/quick-checkout/quick-checkout.component';
+import {CartService} from "./services/cart.service";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { QuickCheckoutComponent } from './layout/main/header/quick-checkout/quic
     {
       provide: LocationStrategy,
       useClass: PathLocationStrategy
-    }
+    },
+    CartService
   ],
   bootstrap: [AppComponent]
 })
