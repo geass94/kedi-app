@@ -474,13 +474,13 @@ body {
 .mainmenu ul li a {
   color: #232323;
   display: block;
-  font-family: "Montserrat",sans-serif;
+  font-family: "BPG Banner ExtraSquare Caps", sans-serif;
   font-weight: 600;
   padding: 30px 20px;
   text-transform: uppercase;
 }
 .home2 .mainmenu ul li a {
-  color: #fff;
+  color: #888;
 }
 .mainmenu ul li:hover a {
   color: #e03550;
@@ -1876,7 +1876,7 @@ ul.address li span {
 /*----------------------------------------*/
 
 .mainmenu-area.product-items {
-  background-color: #e5e5e5;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.4);
 }
 
 /*----------------------------------------*/
