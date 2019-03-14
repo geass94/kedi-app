@@ -15,7 +15,7 @@ export class SliderComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    console.log("es xdeba")
+    // console.log("es xdeba")
     jQuery('#nivoslider').nivoSlider({
       effect: 'random',
       slices: 15,

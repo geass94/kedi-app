@@ -30,7 +30,7 @@ export class CartComponent implements OnInit {
     });
 
     this.cartService.deleteListener.subscribe(res => {
-      console.log("cart: ", res)
+      // console.log("cart: ", res)
       this.cartItems.splice(this.cartItems.indexOf( this.cartItems.find(c => c.id === res)), 1);
     });
   }
@@ -40,11 +40,11 @@ export class CartComponent implements OnInit {
   }
 
   moveToWishlist(cart: Cart) {
-    console.log(cart);
+    // console.log(cart);
   }
 
   saveForLater(cart: Cart) {
-    console.log(cart);
+    // console.log(cart);
   }
 
   private countSubtotal() {

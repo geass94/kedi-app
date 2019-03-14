@@ -41,7 +41,7 @@ export class OrderService {
       mapForm.appendChild(mapInput2);
 
       document.body.appendChild(mapForm);
-      console.log(mapForm)
+      // console.log(mapForm)
       mapForm.submit();
   }
 

@@ -32,11 +32,15 @@ export class CheckoutComponent implements OnInit {
   step3Form: FormGroup;
   step4Form: FormGroup;
   private order: Order;
-  constructor(private authService: AuthenticationService, private cartService: CartService, private orderService: OrderService) {
+  constructor(private authService: AuthenticationService,
+              private cartService: CartService,
+              private orderService: OrderService,
+              private userService: UserService) {
     this.isLoggedIn = this.authService.isLoggedIn();
   }
 
   ngOnInit() {
+    this.user = this.userService.loadProfile();
       this.initStep1Form();
       this.cartService.shoppingCart.subscribe(data => {
         let item = deserialize<Cart>(Cart, data);
@@ -49,6 +53,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   private initStep1Form(): void {
+    // console.log(this.user)
     this.step1Form = new FormGroup({
       'firstName': new FormControl(this.user.personalInformation.firstName, Validators.nullValidator),
       'lastName': new FormControl(this.user.personalInformation.lastName, Validators.nullValidator),

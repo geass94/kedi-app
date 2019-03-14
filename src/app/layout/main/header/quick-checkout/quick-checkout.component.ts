@@ -13,7 +13,7 @@ export class QuickCheckoutComponent implements OnInit {
   subtotal = 0;
   itemsInCart = 0;
   constructor(private cartService: CartService) {
-    console.log("quick");
+    // console.log("quick");
   }
 
   ngOnInit() {
@@ -27,7 +27,7 @@ export class QuickCheckoutComponent implements OnInit {
     });
 
     this.cartService.deleteListener.subscribe(res => {
-      console.log("quick cart: ", res);
+      // console.log("quick cart: ", res);
       this.shoppinCart.splice(this.shoppinCart.indexOf( this.shoppinCart.find(c => c.id === res) ), 1);
       this.countSubtotal();
       this.itemsInCart = this.shoppinCart.length;
