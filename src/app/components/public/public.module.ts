@@ -18,6 +18,7 @@ import { PageComponent } from './page/page.component';
 import {CartService} from "../../services/cart.service";
 import {JwtInterceptor} from "../../helpers/jwt-interceptor";
 import {ErrorInterceptor} from "../../helpers/error-interceptor";
+import { BestSellerComponent } from './home/best-seller/best-seller.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {ErrorInterceptor} from "../../helpers/error-interceptor";
     NewproductsComponent,
     RelatedProductsComponent,
     PageComponent,
+    BestSellerComponent,
   ],
   imports: [
     RouterModule.forChild(PublicRoutes),

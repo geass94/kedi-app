@@ -1,5 +1,4 @@
 import {AfterViewInit, Component, OnInit, ViewEncapsulation} from '@angular/core';
-declare var jQuery: any;
 
 @Component({
   selector: 'app-home',
@@ -15,17 +14,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    jQuery(".sell-area .sell-slider").owlCarousel({
-      autoPlay: false,
-      slideSpeed: 2000,
-      pagination: false,
-      navigation: false,
-      items : 5,
-      itemsDesktop : [1199, 4],
-      itemsDesktopSmall : [1100, 3],
-      itemsTablet: [768, 2],
-      itemsMobile : [479, 1],
-    });
+
   }
 
 }
