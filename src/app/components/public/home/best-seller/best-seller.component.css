@@ -9,3 +9,13 @@
 #best-seller .sell-slider {
   width: 65%;
 }
+
+.old-price{
+  text-decoration: line-through;
+  margin-right: 10px;
+}
+
+.new-price{
+  color: #ee4558;
+}
+

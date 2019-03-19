@@ -16,7 +16,7 @@ export class BestSellerComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     jQuery(".sell-area .sell-slider").owlCarousel({
-      autoPlay: false,
+      autoPlay: true,
       slideSpeed: 2000,
       pagination: false,
       navigation: false,
