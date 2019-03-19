@@ -1,4 +1,6 @@
-import {AfterViewInit, Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Product} from "../../../../models/product";
+import {ProductService} from "../../../../services/product.service";
 declare var jQuery: any;
 
 @Component({
@@ -7,14 +9,40 @@ declare var jQuery: any;
   styleUrls: ['./best-seller.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class BestSellerComponent implements OnInit, AfterViewInit {
+export class BestSellerComponent implements OnInit {
+  bestSale: Product = null;
+  bestSales: Product[] = [];
 
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit() {
+    this.productService.getBestSales().subscribe(
+      res => {
+        this.bestSales = res;
+      },
+      err => {
+
+      },
+      () => {
+        this.bestSale = this.bestSales[0];
+        this.bestSales.shift();
+      }
+    );
   }
 
-  ngAfterViewInit() {
+  getNewPrice(p: Product): number {
+    return p.price - (p.price * p.sale / 100);
+  }
+
+  getTimeLeft(date: string) {
+   // return new moment.format(date)
+  }
+
+  imgClass(i: number) {
+    return i === 0 ? 'primary-img' : 'secondary-img';
+  }
+
+  initCarousel() {
     jQuery(".sell-area .sell-slider").owlCarousel({
       autoPlay: true,
       slideSpeed: 2000,

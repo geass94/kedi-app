@@ -68,4 +68,9 @@ export class ProductService {
     return this.http.get(`${environment.apiUrl}/product/get-sale-off`)
       .pipe(map((res: any) => deserialize<Product[]>(Product, res)));
   }
+
+  getBestSales() {
+    return this.http.get(`${environment.apiUrl}/product/get-best-sale`)
+      .pipe(map((res: any) => deserialize<Product[]>(Product, res)));
+  }
 }

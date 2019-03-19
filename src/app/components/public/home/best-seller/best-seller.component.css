@@ -1,13 +1,22 @@
+#best-seller {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
 #best-seller .level-pro-new{
   background-color: #ee4558;
 }
 
 #best-seller .sell-heading{
   width: 35%;
+  padding: 0;
+  padding-right: 15px;
 }
 
 #best-seller .sell-slider {
   width: 65%;
+  padding-left: 15px;
 }
 
 .old-price{

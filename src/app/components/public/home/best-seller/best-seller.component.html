@@ -1,339 +1,65 @@
-<div id="best-seller" class="sell-area home2">
+<div *ngIf="bestSale != null && bestSales.length > 0" id="best-seller" class="sell-area home2">
   <div class="sell-heading">
-    <h2>Best seller</h2>
-    <p>Subcribe to the Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat</p>
+    <div class="single-product">
+      <div class="level-pro-new">
+        <span>Best Sale</span>
+      </div>
+      <div class="product-img">
+        <a routerLink="/product/{{bestSale.id}}">
+          <ng-template ngFor let-image [ngForOf]="bestSale.productFiles" let-i= "index">
+            <img src="{{image.fileUrl}}" alt="" ngClass="{{imgClass(i)}}" *ngIf="i<2">
+          </ng-template>
+        </a>
+      </div>
+      <div class="actions">
+        <button type="submit" class="cart-btn" title="Add to cart">კალათაში დამატება</button>
+        <ul class="add-to-link">
+          <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
+          <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
+        </ul>
+      </div>
+      <div class="product-price">
+        <div class="product-name">
+          <a routerLink="/product/{{bestSale.id}}" title="{{bestSale.name}}">{{bestSale.name}}</a>
+        </div>
+        <div class="price-rating">
+          <span class="old-price">{{bestSale.price}}</span>
+          <span class="new-price">{{getNewPrice(bestSale)}}</span>
+          <div class="ratings">
+            <countdown-timer [end]="bestSale.countDown"></countdown-timer>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="sell-slider">
-    <div class="single-product">
+    <div class="single-product" *ngFor="let product of bestSales; let last = last;">
       <div class="level-pro-new">
         <span>Best Sale</span>
       </div>
       <div class="product-img">
-        <a href="single-product.html">
-          <img src="assets/img/product/1.png" alt="" class="primary-img">
-          <img src="assets/img/product/2.png" alt="" class="secondary-img">
+        <a routerLink="/product/{{product.id}}">
+          <ng-template ngFor let-image [ngForOf]="product.productFiles" let-i= "index">
+            <img src="{{image.fileUrl}}" alt="" ngClass="{{imgClass(i)}}" *ngIf="i<2">
+          </ng-template>
         </a>
       </div>
       <div class="actions">
         <button type="submit" class="cart-btn" title="Add to cart">კალათაში დამატება</button>
-        <ul class="add-to-link">
-          <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
-          <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
-        </ul>
       </div>
       <div class="product-price">
         <div class="product-name">
-          <a href="single-product.html" title="Fusce aliquam">Fusce aliquam</a>
+          <a routerLink="/product/{{product.id}}" title="{{product.name}}">{{product.name}}</a>
         </div>
         <div class="price-rating">
-          <span class="old-price">$170.00</span>
-          <span class="new-price">$170.00</span>
+          <span class="old-price">{{product.price}}</span>
+          <span class="new-price">{{getNewPrice(product)}}</span>
           <div class="ratings">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
+            <countdown-timer [end]="product.countDown"></countdown-timer>
           </div>
         </div>
       </div>
-    </div>
-    <div class="single-product">
-      <div class="level-pro-new">
-        <span>Best Sale</span>
-      </div>
-      <div class="product-img">
-        <a href="single-product.html">
-          <img src="assets/img/product/3.png" alt="" class="primary-img">
-          <img src="assets/img/product/4.png" alt="" class="secondary-img">
-        </a>
-      </div>
-      <div class="actions">
-        <button type="submit" class="cart-btn" title="Add to cart">კალათაში დამატება</button>
-        <ul class="add-to-link">
-          <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
-          <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
-        </ul>
-      </div>
-      <div class="product-price">
-        <div class="product-name">
-          <a href="single-product.html" title="Fusce aliquam">Fusce aliquam</a>
-        </div>
-        <div class="price-rating">
-          <span>$170.00</span>
-          <div class="ratings">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="single-product">
-      <div class="level-pro-new">
-        <span>Best Sale</span>
-      </div>
-      <div class="product-img">
-        <a href="single-product.html">
-          <img src="assets/img/product/5.png" alt="" class="primary-img">
-          <img src="assets/img/product/6.png" alt="" class="secondary-img">
-        </a>
-      </div>
-      <div class="actions">
-        <button type="submit" class="cart-btn" title="Add to cart">კალათაში დამატება</button>
-        <ul class="add-to-link">
-          <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
-          <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
-        </ul>
-      </div>
-      <div class="product-price">
-        <div class="product-name">
-          <a href="single-product.html" title="Fusce aliquam">Fusce aliquam</a>
-        </div>
-        <div class="price-rating">
-          <span>$170.00</span>
-          <div class="ratings">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="single-product">
-      <div class="level-pro-new">
-        <span>Best Sale</span>
-      </div>
-      <div class="product-img">
-        <a href="single-product.html">
-          <img src="assets/img/product/7.png" alt="" class="primary-img">
-          <img src="assets/img/product/8.png" alt="" class="secondary-img">
-        </a>
-      </div>
-      <div class="actions">
-        <button type="submit" class="cart-btn" title="Add to cart">კალათაში დამატება</button>
-        <ul class="add-to-link">
-          <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
-          <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
-        </ul>
-      </div>
-      <div class="product-price">
-        <div class="product-name">
-          <a href="single-product.html" title="Fusce aliquam">Fusce aliquam</a>
-        </div>
-        <div class="price-rating">
-          <span>$170.00</span>
-          <div class="ratings">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="single-product">
-      <div class="level-pro-new">
-        <span>Best Sale</span>
-      </div>
-      <div class="product-img">
-        <a href="single-product.html">
-          <img src="assets/img/product/9.png" alt="" class="primary-img">
-          <img src="assets/img/product/10.png" alt="" class="secondary-img">
-        </a>
-      </div>
-      <div class="actions">
-        <button type="submit" class="cart-btn" title="Add to cart">კალათაში დამატება</button>
-        <ul class="add-to-link">
-          <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
-          <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
-        </ul>
-      </div>
-      <div class="product-price">
-        <div class="product-name">
-          <a href="single-product.html" title="Fusce aliquam">Fusce aliquam</a>
-        </div>
-        <div class="price-rating">
-          <span>$170.00</span>
-          <div class="ratings">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="single-product">
-      <div class="level-pro-new">
-        <span>Best Sale</span>
-      </div>
-      <div class="product-img">
-        <a href="single-product.html">
-          <img src="assets/img/product/11.png" alt="" class="primary-img">
-          <img src="assets/img/product/12.png" alt="" class="secondary-img">
-        </a>
-      </div>
-      <div class="actions">
-        <button type="submit" class="cart-btn" title="Add to cart">კალათაში დამატება</button>
-        <ul class="add-to-link">
-          <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
-          <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
-        </ul>
-      </div>
-      <div class="product-price">
-        <div class="product-name">
-          <a href="single-product.html" title="Fusce aliquam">Fusce aliquam</a>
-        </div>
-        <div class="price-rating">
-          <span>$170.00</span>
-          <div class="ratings">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="single-product">
-      <div class="level-pro-new">
-        <span>Best Sale</span>
-      </div>
-      <div class="product-img">
-        <a href="single-product.html">
-          <img src="assets/img/product/13.png" alt="" class="primary-img">
-          <img src="assets/img/product/14.png" alt="" class="secondary-img">
-        </a>
-      </div>
-      <div class="actions">
-        <button type="submit" class="cart-btn" title="Add to cart">კალათაში დამატება</button>
-        <ul class="add-to-link">
-          <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
-          <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
-        </ul>
-      </div>
-      <div class="product-price">
-        <div class="product-name">
-          <a href="single-product.html" title="Fusce aliquam">Fusce aliquam</a>
-        </div>
-        <div class="price-rating">
-          <span>$170.00</span>
-          <div class="ratings">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="single-product">
-      <div class="level-pro-new">
-        <span>Best Sale</span>
-      </div>
-      <div class="product-img">
-        <a href="single-product.html">
-          <img src="assets/img/product/15.png" alt="" class="primary-img">
-          <img src="assets/img/product/16.png" alt="" class="secondary-img">
-        </a>
-      </div>
-      <div class="actions">
-        <button type="submit" class="cart-btn" title="Add to cart">კალათაში დამატება</button>
-        <ul class="add-to-link">
-          <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
-          <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
-        </ul>
-      </div>
-      <div class="product-price">
-        <div class="product-name">
-          <a href="single-product.html" title="Fusce aliquam">Fusce aliquam</a>
-        </div>
-        <div class="price-rating">
-          <span>$170.00</span>
-          <div class="ratings">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="single-product">
-      <div class="level-pro-new">
-        <span>Best Sale</span>
-      </div>
-      <div class="product-img">
-        <a href="single-product.html">
-          <img src="assets/img/product/17.png" alt="" class="primary-img">
-          <img src="assets/img/product/18.png" alt="" class="secondary-img">
-        </a>
-      </div>
-      <div class="actions">
-        <button type="submit" class="cart-btn" title="Add to cart">კალათაში დამატება</button>
-        <ul class="add-to-link">
-          <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
-          <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
-        </ul>
-      </div>
-      <div class="product-price">
-        <div class="product-name">
-          <a href="single-product.html" title="Fusce aliquam">Fusce aliquam</a>
-        </div>
-        <div class="price-rating">
-          <span>$170.00</span>
-          <div class="ratings">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="single-product">
-      <div class="level-pro-new">
-        <span>Best Sale</span>
-      </div>
-      <div class="product-img">
-        <a href="single-product.html">
-          <img src="assets/img/product/19.png" alt="" class="primary-img">
-          <img src="assets/img/product/20.png" alt="" class="secondary-img">
-        </a>
-      </div>
-      <div class="actions">
-        <button type="submit" class="cart-btn" title="Add to cart">კალათაში დამატება</button>
-        <ul class="add-to-link">
-          <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
-          <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
-        </ul>
-      </div>
-      <div class="product-price">
-        <div class="product-name">
-          <a href="single-product.html" title="Fusce aliquam">Fusce aliquam</a>
-        </div>
-        <div class="price-rating">
-          <span>$170.00</span>
-          <div class="ratings">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-          </div>
-        </div>
-      </div>
+      {{last ? initCarousel() : ''}}
     </div>
   </div>
 </div>

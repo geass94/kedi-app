@@ -32,6 +32,7 @@ export class Product {
   bundlePrice: number;
   @Type(() => Bundle)
   bundle: Bundle;
+  countDown: string;
 }
 
 export interface ProductPage {

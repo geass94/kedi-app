@@ -19,6 +19,7 @@ import {CartService} from "../../services/cart.service";
 import {JwtInterceptor} from "../../helpers/jwt-interceptor";
 import {ErrorInterceptor} from "../../helpers/error-interceptor";
 import { BestSellerComponent } from './home/best-seller/best-seller.component';
+import {CountdownTimerModule} from "angular-countdown-timer";
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { BestSellerComponent } from './home/best-seller/best-seller.component';
     HttpClientModule,
     FormsModule,
     CommonModule,
+    CountdownTimerModule.forRoot()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
