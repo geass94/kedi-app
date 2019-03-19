@@ -53,7 +53,6 @@ export class CheckoutComponent implements OnInit {
   }
 
   private initStep1Form(): void {
-    // console.log(this.user)
     this.step1Form = new FormGroup({
       'firstName': new FormControl(this.user.personalInformation.firstName, Validators.nullValidator),
       'lastName': new FormControl(this.user.personalInformation.lastName, Validators.nullValidator),
