@@ -14,7 +14,7 @@
           </div>
           <div class="single-sidebar price">
             <div class="single-sidebar-title">
-              <h3>ფასი</h3>
+              <h3>ფასი &#8382;</h3>
             </div>
             <div class="single-sidebar-content">
               <div class="price-range">
@@ -86,42 +86,42 @@
         <div class="row">
           <div class="product-content">
             <div class="col-lg-4 col-sm-6" *ngFor="let product of products">
-                  <div class="single-product">
-                    <div class="level-pro-new">
-                      <span>new</span>
-                    </div>
-                    <div class="product-img">
-                      <a routerLink="/product/{{product.id}}">
-                        <ng-template ngFor let-image [ngForOf]="product.productFiles" let-i= "index">
-                          <img src="{{image.fileUrl}}" alt="" ngClass="{{imgClass(i)}}" *ngIf="i<2">
-                        </ng-template>
-                      </a>
-                    </div>
-                    <div class="actions">
-                      <button type="button" (click)="addToCart(product)" class="cart-btn" title="Add to cart">კალათაში დამატება</button>
-                      <!--<ul class="add-to-link">-->
-                        <!--<li><a class="modal-view" data-target="#productModal" data-toggle="modal" href="#"> <i class="fa fa-search"></i></a></li>-->
-                        <!--<li><a href="#"> <i class="fa fa-heart-o"></i></a></li>-->
-                        <!--<li><a href="#"> <i class="fa fa-refresh"></i></a></li>-->
-                      <!--</ul>-->
-                    </div>
-                    <div class="product-price">
-                      <div class="product-name">
-                        <a href="single-product.html" title="Fusce aliquam">{{product.name}}</a>
-                      </div>
-                      <div class="price-rating">
-                        <span>{{product.price}}GEL</span>
-                          <!--<div class="ratings">-->
-                            <!--<i class="fa fa-star"></i>-->
-                            <!--<i class="fa fa-star"></i>-->
-                            <!--<i class="fa fa-star"></i>-->
-                            <!--<i class="fa fa-star"></i>-->
-                            <!--<i class="fa fa-star-half-o"></i>-->
-                          <!--</div>-->
-                      </div>
-                    </div>
+              <div class="single-product">
+                <!--<div class="level-pro-new">-->
+                  <!--<span>new</span>-->
+                <!--</div>-->
+                <div class="product-img">
+                  <a routerLink="/product/{{product.id}}">
+                    <ng-template ngFor let-image [ngForOf]="product.productFiles" let-i= "index">
+                      <img src="{{image.fileUrl}}" alt="" ngClass="{{imgClass(i)}}" *ngIf="i<2">
+                    </ng-template>
+                  </a>
+                </div>
+                <div class="actions">
+                  <button type="button" (click)="addToCart(product)" class="cart-btn" title="Add to cart">კალათაში დამატება</button>
+                  <!--<ul class="add-to-link">-->
+                    <!--<li><a class="modal-view" data-target="#productModal" data-toggle="modal" href="#"> <i class="fa fa-search"></i></a></li>-->
+                    <!--<li><a href="#"> <i class="fa fa-heart-o"></i></a></li>-->
+                    <!--<li><a href="#"> <i class="fa fa-refresh"></i></a></li>-->
+                  <!--</ul>-->
+                </div>
+                <div class="product-price">
+                  <div class="product-name">
+                    <a href="single-product.html" title="Fusce aliquam">{{product.name}}</a>
+                  </div>
+                  <div class="price-rating">
+                    <span>{{product.price}}&#8382;</span>
+                      <!--<div class="ratings">-->
+                        <!--<i class="fa fa-star"></i>-->
+                        <!--<i class="fa fa-star"></i>-->
+                        <!--<i class="fa fa-star"></i>-->
+                        <!--<i class="fa fa-star"></i>-->
+                        <!--<i class="fa fa-star-half-o"></i>-->
+                      <!--</div>-->
                   </div>
                 </div>
+              </div>
+            </div>
           </div>
           <div class="col-md-12">
             <div class="toolbar-bottom">

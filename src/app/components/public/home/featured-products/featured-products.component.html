@@ -2,7 +2,7 @@
   <div class="col-md-12" *ngFor="let prdct of products; let last = last;">
     <div class="single-product" *ngFor="let product of prdct;">
       <div class="level-pro-new">
-        <span>new</span>
+        <span>featured</span>
       </div>
       <div class="product-img">
         <a routerLink="/product/{{product.id}}">
@@ -19,7 +19,7 @@
           <a routerLink="/product/{{product.id}}" title="{{product.name}}">{{product.name}}</a>
         </div>
         <div class="price-rating">
-          <span>{{product.price}}GEL</span>
+          <span>{{product.price}}&#8382;</span>
           <div class="ratings">
             <i class="fa fa-star"></i>
             <i class="fa fa-star"></i>

@@ -111,6 +111,10 @@ export class SingleProductComponent implements OnInit, AfterViewInit {
     return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
 
+  imgClass(i: number) {
+    return i === 0 ? 'primary-img' : 'secondary-img';
+  }
+
   ngAfterViewInit() {
     jQuery(".product-slider").owlCarousel({
       autoPlay: false,

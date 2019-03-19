@@ -2,7 +2,7 @@
   <div class="sell-heading">
     <div class="single-product">
       <div class="level-pro-new">
-        <span>Best Sale</span>
+        <span>best sale</span>
       </div>
       <div class="product-img">
         <a routerLink="/product/{{bestSale.id}}">
@@ -23,8 +23,8 @@
           <a routerLink="/product/{{bestSale.id}}" title="{{bestSale.name}}">{{bestSale.name}}</a>
         </div>
         <div class="price-rating">
-          <span class="old-price">{{bestSale.price}}</span>
-          <span class="new-price">{{getNewPrice(bestSale)}}</span>
+          <span class="old-price">{{bestSale.price}}&#8382;</span>
+          <span class="new-price">{{getNewPrice(bestSale)}}&#8382;</span>
           <div class="ratings">
             <countdown-timer [end]="bestSale.countDown"></countdown-timer>
           </div>
@@ -52,8 +52,8 @@
           <a routerLink="/product/{{product.id}}" title="{{product.name}}">{{product.name}}</a>
         </div>
         <div class="price-rating">
-          <span class="old-price">{{product.price}}</span>
-          <span class="new-price">{{getNewPrice(product)}}</span>
+          <span class="old-price">{{product.price}}&#8382;</span>
+          <span class="new-price">{{getNewPrice(product)}}&#8382;</span>
           <div class="ratings">
             <countdown-timer [end]="product.countDown"></countdown-timer>
           </div>

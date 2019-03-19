@@ -1,7 +1,7 @@
 <div class="sell-off-slider">
   <div class="single-product" *ngFor="let product of products; let last = last;">
     <div class="level-pro-sale">
-      <span>sale</span>
+      <span>saloff</span>
     </div>
     <div class="product-img">
       <a routerLink="/product/{{product.id}}">
@@ -18,7 +18,7 @@
         <a routerLink="/product/{{product.id}}" title="{{product.name}}">{{product.name}}</a>
       </div>
       <div class="price-rating">
-        <span>{{product.price}}GEL</span>
+        <span>{{product.price}}&#8382;</span>
       </div>
     </div>
     {{last ? initCarousel() : ''}}
