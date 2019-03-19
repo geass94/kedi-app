@@ -122,7 +122,8 @@
     <div *ngIf="product.bundle != null" class="row">
       <h3>შეიძნე ერთად კრებული {{product.bundle.sale}} პროცენტიანი ფადაკლებით! {{product.bundle.price}} ლარად</h3>
 
-      <div class="single-product">
+      <div class="col-lg-3 col-sm-4">
+        <div class="single-product">
         <div class="product-img">
           <a routerLink="/product/{{product.id}}">
             <ng-template ngFor let-image [ngForOf]="product.productFiles" let-i= "index">
@@ -142,28 +143,29 @@
           </div>
         </div>
       </div>
-
-      <div *ngFor="let b of product.bundle.products" class="single-product">
-        <div class="product-img">
-          <a routerLink="/product/{{b.id}}">
-            <ng-template ngFor let-image [ngForOf]="b.productFiles" let-i= "index">
-              <img src="{{image.fileUrl}}" alt="" ngClass="{{imgClass(i)}}" *ngIf="i<2">
-            </ng-template>
-          </a>
-        </div>
-        <div class="actions">
-          <button type="button" (click)="addToCart(b)" class="cart-btn" title="Add to cart">კალათაში დამატება</button>
-        </div>
-        <div class="product-price">
-          <div class="product-name">
-            <a href="single-product.html" title="Fusce aliquam">{{b.name}}</a>
+      </div>
+      <div class="col-lg-3 col-sm-4" *ngFor="let b of product.bundle.products">
+        +<div class="single-product">
+          <div class="product-img">
+            <a routerLink="/product/{{b.id}}">
+              <ng-template ngFor let-image [ngForOf]="b.productFiles" let-i= "index">
+                <img src="{{image.fileUrl}}" alt="" ngClass="{{imgClass(i)}}" *ngIf="i<2">
+              </ng-template>
+            </a>
           </div>
-          <div class="price-rating">
-            <span>{{b.price}}&#8382;</span>
+          <div class="actions">
+            <button type="button" (click)="addToCart(b)" class="cart-btn" title="Add to cart">კალათაში დამატება</button>
+          </div>
+          <div class="product-price">
+            <div class="product-name">
+              <a href="single-product.html" title="Fusce aliquam">{{b.name}}</a>
+            </div>
+            <div class="price-rating">
+              <span>{{b.price}}&#8382;</span>
+            </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
