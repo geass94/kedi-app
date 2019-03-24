@@ -10,12 +10,14 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import {CartService} from "../../services/cart.service";
 import {JwtInterceptor} from "../../helpers/jwt-interceptor";
 import {ErrorInterceptor} from "../../helpers/error-interceptor";
+import { OrderHistoryComponent } from './profile/order-history/order-history.component';
 
 @NgModule({
   declarations: [
     ProfileComponent,
     CartComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    OrderHistoryComponent
   ],
   imports: [
     CommonModule,

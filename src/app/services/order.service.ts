@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {Order} from "../models/order";
+import {deserialize} from "serializer.ts/Serializer";
+import {map} from "rxjs/internal/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -47,5 +49,10 @@ export class OrderService {
 
   private ucFirst(string) {
     return string.toString().charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  getOrders() {
+    return this.http.get(`${environment.apiUrl}/order/get-order-history`)
+      .pipe(map((res: any) => deserialize<Order[]>(Order, res)));
   }
 }
