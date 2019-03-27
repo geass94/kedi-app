@@ -1502,7 +1502,7 @@ body {
   text-decoration: underline;
 }
 .blog-content span {
-  color: #f25862;
+  /*color: #f25862;*/
   display: block;
   font-size: 11px;
   margin: 10px 0;
