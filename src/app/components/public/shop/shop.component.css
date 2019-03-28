@@ -5,3 +5,18 @@
 a {
   cursor: pointer;
 }
+
+
+.amount{
+  width: 50%;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+
+.amount input {
+  width: 70px;
+  border: 1px #f3f3f3 solid;
+  text-align: center;
+}

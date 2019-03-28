@@ -83,25 +83,33 @@ export class ShopComponent implements OnInit, AfterViewInit {
       max: this.maxPrice,
       values: [ this.minPrice, this.maxPrice ],
       slide: ( event, ui ) => {
-        jQuery( "#amount" ).val( "" + ui.values[ 0 ] + " -- " + ui.values[ 1 ] );
+        jQuery( "#amount-min" ).val( ui.values[ 0 ]  );
+        jQuery( "#amount-max" ).val( ui.values[ 1 ]  );
+
+
         this.filterProductsByPriceRange(ui.values[ 0 ], ui.values[ 1 ]);
       }
     });
-    jQuery( "#amount" ).val( "" + jQuery( "#slider-range" ).slider( "values", 0 ) +
-      " -- " + jQuery( "#slider-range" ).slider( "values", 1 ) );
+    jQuery( "#amount-min" ).val( jQuery( "#slider-range" ).slider( "values", 0 ) );
+    jQuery( "#amount-max" ).val( jQuery( "#slider-range" ).slider( "values", 1 ) );
   }
 
   private filterProductsByPriceRange(min, max) {
     this.applyFilter({priceMin: min, priceMax: max});
   }
 
-  priceSliderOnChange(v: any) {
-    let arr = v.split(" -- ");
-    this.minPrice = parseFloat(arr[0]);
-    this.maxPrice = parseFloat(arr[1]);
+  priceSliderOnMinChange(v: any) {
+    this.minPrice = parseFloat(v);
     jQuery( "#slider-range" ).slider({
-      min: this.minPrice,
-      max: this.maxPrice,
+      values: [ parseFloat(v), this.maxPrice ]
+    });
+    this.filterProductsByPriceRange(this.minPrice, this.maxPrice);
+  }
+
+  priceSliderOnMaxChange(v: any) {
+    this.maxPrice = parseFloat(v);
+    jQuery( "#slider-range" ).slider({
+      values: [ this.minPrice, parseFloat(v) ]
     });
     this.filterProductsByPriceRange(this.minPrice, this.maxPrice);
   }
