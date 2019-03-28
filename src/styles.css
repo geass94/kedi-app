@@ -963,6 +963,14 @@ body {
 .level-pro-sale {
   background-color: #333333;
 }
+
+.product-img{
+  height: 262px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 .product-img a {
   display: block;
   position: relative;
