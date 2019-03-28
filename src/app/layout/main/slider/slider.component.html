@@ -8,12 +8,13 @@
     <div *ngFor="let slide of carousel.carouselFiles; let last = last; let i = index;" id="slider-direction-{{i+1}}" class="t-cn slider-direction">
       <div class="slider-progress"></div>
       <div class="slider-content t-lfl s-tb slider-{{i+1}}">
-        <div class="title-container s-tb-c title-compress">
-          <!--<img src="{{slide.fileUrl}}" class="slider-logo" alt="">-->
-          <h1 class="title1">{{slide.title}}</h1>
-          <h2 class="title2" >{{slide.heading}}</h2>
-          <h3 class="title3" >{{slide.caption}}</h3>
-          <a href="#"><span>read more</span></a>
+        <div *ngIf="slide.title && slide.heading && slide.caption" class="title-container s-tb-c title-compress">
+          <div class="slider-text">
+            <h1 class="title1">{{slide.title}}</h1>
+            <h2 class="title2" >{{slide.heading}}</h2>
+            <h3 class="title3" >{{slide.caption}}</h3>
+            <a href="{{slide.externalURL}}"><span>{{slide.label}}</span></a>
+          </div>
         </div>
       </div>
       {{initSlider(last)}}

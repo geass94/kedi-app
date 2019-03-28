@@ -33,7 +33,7 @@ export class SliderComponent implements OnInit {
       if (!this.sliderInited) {
         console.log("slider chairto")
         jQuery('#nivoslider').nivoSlider({
-          effect: 'random',
+          effect: 'fade',
           slices: 15,
           boxCols: 8,
           boxRows: 4,
