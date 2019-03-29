@@ -1,19 +1,21 @@
-import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {Product} from "../../../../models/product";
-import {ProductService} from "../../../../services/product.service";
 import {CartService} from "../../../../services/cart.service";
 import {ActivatedRoute, Router} from "@angular/router";
 declare var jQuery: any;
+
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
-  styleUrls: ['./details.component.css']
+  styleUrls: ['./details.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class DetailsComponent implements OnInit {
   @Input()
   product: Product;
   pluginsInited = false;
   selectedVariant: Product;
+  selectedSize: number;
   @Input()
   colorVariants: Product [];
   chosenQuantity = 1;
@@ -22,6 +24,7 @@ export class DetailsComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
+    this.selectedVariant = this.product;
   }
 
   addToCart(product: Product) {
@@ -32,8 +35,8 @@ export class DetailsComponent implements OnInit {
     this.cartService.addToWishlist(product.id);
   }
 
-  onColorChange() {
-    this.router.navigate(['/product',  this.selectedVariant.id], { relativeTo: this.route });
+  onColorChange(c) {
+    this.router.navigate(['/product',  c], { relativeTo: this.route });
   }
 
   updateQuantity(value: any) {

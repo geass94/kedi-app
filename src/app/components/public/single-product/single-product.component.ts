@@ -27,7 +27,6 @@ export class SingleProductComponent implements OnInit {
       this.id = params.get('id');
 
       this.loadProduct();
-
     });
   }
 
@@ -44,6 +43,7 @@ export class SingleProductComponent implements OnInit {
             this.colorVariants = deserialize<Product[]>(Product, res);
           });
         }
+        console.log(this.colorVariants)
       }
     );
   }
