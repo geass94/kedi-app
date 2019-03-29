@@ -1,5 +1,5 @@
 <!-- single product details start -->
-<app-details *ngIf="product.id > 0" [product]="product" [colorVariants]="colorVariants"></app-details>
+<app-details *ngIf="product.id > 0 && colorVariants.length > 0" [product]="product" [colorVariants]="colorVariants"></app-details>
 <!-- single product details end -->
 
 <!-- related product area start-->

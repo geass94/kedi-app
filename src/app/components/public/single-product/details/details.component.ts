@@ -2,6 +2,7 @@ import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {Product} from "../../../../models/product";
 import {CartService} from "../../../../services/cart.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {ProductFile} from "../../../../models/product-file";
 declare var jQuery: any;
 
 @Component({
@@ -16,6 +17,7 @@ export class DetailsComponent implements OnInit {
   pluginsInited = false;
   selectedVariant: Product;
   selectedSize: number;
+  allFiles: ProductFile[] = [];
   @Input()
   colorVariants: Product [];
   chosenQuantity = 1;
@@ -25,6 +27,12 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit() {
     this.selectedVariant = this.product;
+    this.colorVariants.forEach(v => {
+      v.productFiles.forEach(f => {
+        this.allFiles.push(f);
+      });
+    });
+
   }
 
   addToCart(product: Product) {

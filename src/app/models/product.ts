@@ -3,6 +3,7 @@ import {Manufacturer} from "./manufacturer";
 import {Category} from "./category";
 import {Type} from "serializer.ts/Decorators";
 import {Bundle} from "./bundle";
+import {ProductFile} from "./product-file";
 
 export class Product {
   id: number;
@@ -17,12 +18,7 @@ export class Product {
   manufacturer: Manufacturer;
   @Type(() => Category)
   categoryList: Category[];
-  productFiles: [{
-    id: number,
-    name: string,
-    filType: string,
-    fileUrl: string
-  }];
+  productFiles: ProductFile[];
   baseProduct: boolean;
   productVariantId: number;
   productVariantIds: number[];
