@@ -20,6 +20,7 @@ import {JwtInterceptor} from "../../helpers/jwt-interceptor";
 import {ErrorInterceptor} from "../../helpers/error-interceptor";
 import { BestSellerComponent } from './home/best-seller/best-seller.component';
 import {CountdownTimerModule} from "angular-countdown-timer";
+import { DetailsComponent } from './single-product/details/details.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {CountdownTimerModule} from "angular-countdown-timer";
     RelatedProductsComponent,
     PageComponent,
     BestSellerComponent,
+    DetailsComponent,
   ],
   imports: [
     RouterModule.forChild(PublicRoutes),
