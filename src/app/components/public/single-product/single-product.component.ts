@@ -68,7 +68,8 @@ export class SingleProductComponent implements OnInit, AfterViewInit {
   }
 
   onColorChange() {
-    this.router.navigate(['/product',  this.selectedVariant.id], { relativeTo: this.route });
+    // this.router.navigate(['/product',  this.selectedVariant.id], { relativeTo: this.route });
+    window.location.href = "/product/" + this.selectedVariant.id;
   }
 
   updateQuantity(value: any) {
