@@ -2198,11 +2198,11 @@ ul.address li span {
   top: auto;
 }
 .single-product-details .owl-theme .owl-controls .owl-buttons div {
-  background: rgba(0, 0, 0, .3) url("assets/img/product/single-product-slider-control.png") no-repeat scroll 0 100%;
+  /*background: rgba(0, 0, 0, 0) url("assets/img/button-slider2.png") no-repeat scroll 0 0;*/
   border-radius: 0px;
 }
 .single-product-details .owl-theme .owl-controls .owl-buttons div:hover {
-  background-color: #e03550;
+  /*background-color: #e03550;*/
 }
 .single-product-details .owl-theme .owl-controls .owl-buttons div.owl-next {
   background-position: 100% 100%;
@@ -3361,10 +3361,18 @@ button.check-button:hover,
 
 
 .single-product-img.tab-content {
-  height: 560px;
+  height: 555px;
+  width: 555px;
   position: relative;
+  margin: 0;
+  padding: 0;
 }
 
+.single-product-img.tab-content img {
+  max-width: 555px;
+  max-height: 555px;
+  width: 100%;
+}
 
 
 .shopping-button button,

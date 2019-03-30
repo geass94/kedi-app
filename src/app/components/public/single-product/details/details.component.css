@@ -1,0 +1,22 @@
+.owl-theme .owl-controls{
+  margin-top: 50px;
+}
+
+.product-page-slider .owl-item {
+  width: 100px !important;
+}
+
+.owl-item .single-product-slider {
+  width: 100px;
+  text-align: center;
+  height: 95px;
+}
+
+.owl-item .single-product-slider a img {
+  max-width: 95px;
+  width: 100%;
+  max-height: 95px;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
