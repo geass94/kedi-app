@@ -2,7 +2,7 @@
   <div class="sell-heading">
     <div class="single-product">
       <div class="level-pro-new">
-        <span>best sale</span>
+        <span>დღის ფასდაკლება</span>
       </div>
       <div class="product-img">
         <a routerLink="/product/{{bestSale.id}}">
@@ -12,7 +12,7 @@
         </a>
       </div>
       <div class="actions">
-        <button type="submit" class="cart-btn" title="Add to cart">კალათაში დამატება</button>
+        <button type="submit" class="cart-btn" title="Add to cart">ყიდვა</button>
         <ul class="add-to-link">
           <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
           <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
@@ -35,7 +35,7 @@
   <div class="sell-slider">
     <div class="single-product" *ngFor="let product of bestSales; let last = last;">
       <div class="level-pro-new">
-        <span>Best Sale</span>
+        <span>რჩეული პროდუქცია</span>
       </div>
       <div class="product-img">
         <a routerLink="/product/{{product.id}}">
@@ -45,7 +45,7 @@
         </a>
       </div>
       <div class="actions">
-        <button type="submit" class="cart-btn" title="Add to cart">კალათაში დამატება</button>
+        <button type="submit" class="cart-btn" title="Add to cart">ყიდვა</button>
       </div>
       <div class="product-price">
         <div class="product-name">

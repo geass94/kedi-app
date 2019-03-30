@@ -2,7 +2,7 @@
   <div class="col-md-12" *ngFor="let prdct of products; let last = last;">
     <div class="single-product" *ngFor="let product of prdct;">
       <div class="level-pro-new">
-        <span>featured</span>
+        <span>გამორჩეული</span>
       </div>
       <div class="product-img">
         <a routerLink="/product/{{product.id}}">
@@ -12,7 +12,7 @@
         </a>
       </div>
       <div class="actions">
-        <button type="submit" class="cart-btn" (click)="addToCart(product)" title="Add to cart">კალათაში დამატება</button>
+        <button type="submit" class="cart-btn" (click)="addToCart(product)" title="Add to cart">ყიდვა</button>
       </div>
       <div class="product-price">
         <div class="product-name">
