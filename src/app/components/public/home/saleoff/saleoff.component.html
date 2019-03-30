@@ -1,7 +1,7 @@
 <div class="sell-off-slider">
   <div class="single-product" *ngFor="let product of products; let last = last;">
     <div class="level-pro-sale">
-      <span>saloff</span>
+      <span>ფასდაკლება</span>
     </div>
     <div class="product-img">
       <a routerLink="/product/{{product.id}}">
@@ -11,7 +11,7 @@
       </a>
     </div>
     <div class="actions">
-      <button type="button" class="cart-btn" (click)="addToCart(product)" title="Add to cart">კალათაში დამატება</button>
+      <button type="button" class="cart-btn" (click)="addToCart(product)" title="Add to cart">ყიდვა</button>
     </div>
     <div class="product-price">
       <div class="product-name">
