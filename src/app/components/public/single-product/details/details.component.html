@@ -75,7 +75,7 @@
                 <label>რაოდენობა: </label>
                 <input class="cart-plus-minus-box" type="number" [(ngModel)]="chosenQuantity" (change)="updateQuantity($event.target.value)" name="qtybutton" min="1">
               </div>
-              <button class="cart-btn" (click)="addToCart(product)" >კალათაში დამატება</button>
+              <button class="cart-btn" (click)="addToCart(product)" >ყიდვა</button>
             </div>
           </div>
         </div>
@@ -132,7 +132,7 @@
             </a>
           </div>
           <div class="actions">
-            <button type="button" (click)="addToCart(product)" class="cart-btn" title="Add to cart">კალათაში დამატება</button>
+            <button type="button" (click)="addToCart(product)" class="cart-btn" title="Add to cart">ყიდვა</button>
           </div>
           <div class="product-price">
             <div class="product-name">
@@ -154,7 +154,7 @@
             </a>
           </div>
           <div class="actions">
-            <button type="button" (click)="addToCart(b)" class="cart-btn" title="Add to cart">კალათაში დამატება</button>
+            <button type="button" (click)="addToCart(b)" class="cart-btn" title="Add to cart">ყიდვა</button>
           </div>
           <div class="product-price">
             <div class="product-name">
