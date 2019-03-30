@@ -17,6 +17,7 @@ export class DetailsComponent implements OnInit {
   pluginsInited = false;
   selectedVariant: Product;
   selectedSize: number;
+  availabelSizes = [];
   allFiles: ProductFile[] = [];
   @Input()
   colorVariants: Product [];
@@ -28,6 +29,11 @@ export class DetailsComponent implements OnInit {
   ngOnInit() {
     this.selectedVariant = this.product;
     this.colorVariants.forEach(v => {
+
+      if (typeof this.availabelSizes.find(s => s.id === v.size.id) === "undefined") {
+        this.availabelSizes.push(v.size);
+      }
+
       v.productFiles.forEach(f => {
         this.allFiles.push(f);
       });
@@ -45,6 +51,18 @@ export class DetailsComponent implements OnInit {
 
   onColorChange(c) {
     this.router.navigate(['/product',  c], { relativeTo: this.route });
+  }
+
+  onSizeChange(s) {
+    console.log(s)
+    // this.router.navigate(['/product',  this.selectedVariant.id],
+    //   {
+    //           relativeTo: this.route ,
+    //           queryParams: {
+    //             size: s,
+    //           }
+    //         }
+    //     );
   }
 
   updateQuantity(value: any) {

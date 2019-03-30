@@ -4,6 +4,7 @@ import {Category} from "./category";
 import {Type} from "serializer.ts/Decorators";
 import {Bundle} from "./bundle";
 import {ProductFile} from "./product-file";
+import {Size} from "./size";
 
 export class Product {
   id: number;
@@ -11,7 +12,7 @@ export class Product {
   price: number;
   @Type(() => Color)
   color: Color;
-  size: string;
+  size: Size;
   sex: string;
   description: string;
   @Type(() => Manufacturer)

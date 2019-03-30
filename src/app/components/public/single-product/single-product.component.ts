@@ -15,6 +15,7 @@ declare var jQuery: any;
 export class SingleProductComponent implements OnInit {
   colorVariants: Product [] = [];
   product: Product = new Product;
+  sizeId: number = 1;
   private id: string;
 
   constructor(private productService: ProductService,
@@ -23,15 +24,14 @@ export class SingleProductComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.product = new Product();
-
       this.id = params.get('id');
-
+      this.sizeId = parseInt(params.get("size"), 10) || 0;
       this.loadProduct();
     });
   }
 
   private loadProduct() {
-    this.productService.getProduct(parseInt(this.id, 10)).subscribe((res) => {
+    this.productService.getProduct(parseInt(this.id, 10), this.sizeId).subscribe((res) => {
         this.product = deserialize<Product>(Product, res);
       },
       (error) => {

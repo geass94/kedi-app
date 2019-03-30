@@ -21,8 +21,10 @@ export class ProductService {
     return this.http.get<ProductPage>(`${environment.apiUrl}/product/get-products`, {params: params});
   }
 
-  getProduct(id: number ) {
-    return this.http.get(`${environment.apiUrl}/product/get-product-by-id/${id}`);
+  getProduct(id: number, sizeId: number ) {
+    let params = new HttpParams();
+    params = params.append('size', sizeId.toString());
+    return this.http.get(`${environment.apiUrl}/product/get-product-by-id/${id}`, {params: params});
   }
 
   getProductVariants(ids: any[]): Observable<Product[]> {
