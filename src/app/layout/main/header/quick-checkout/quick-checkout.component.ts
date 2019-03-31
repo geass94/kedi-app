@@ -17,7 +17,9 @@ export class QuickCheckoutComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("Inited: ", "Quick");
     this.cartService.shoppingCart.subscribe( data => {
+      console.log("Quick data loaded: ", data)
       let item = deserialize<Cart>(Cart, data);
       if (item.savedForLater === false && item.wishlist === false) {
         this.shoppinCart.push( item );
@@ -35,6 +37,7 @@ export class QuickCheckoutComponent implements OnInit {
   }
 
   private countSubtotal() {
+    this.subtotal = 0;
     this.shoppinCart.forEach(item => {
       this.subtotal += (item.product.price - (item.product.price * item.product.sale / 100)) * item.quantity;
     });

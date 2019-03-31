@@ -40,14 +40,13 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("Inited: ", "Checkout");
     this.user = this.userService.loadProfile();
       this.initStep1Form();
-      this.cartService.shoppingCart.subscribe(data => {
-        let item = deserialize<Cart>(Cart, data);
-        if (item.savedForLater === false && item.wishlist === false) {
-          this.cartItems.push( item );
-          this.countSubtotal();
-        }
+      this.cartService.getUserCart().subscribe(data => {
+        console.log("Checkout data loaded: ", data)
+        this.cartItems = data;
+        this.countSubtotal();
       });
 
   }
@@ -96,6 +95,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   private countSubtotal() {
+    this.subtotal = 0;
     this.cartItems.forEach(item => {
       this.subtotal += (item.product.price - (item.product.price * item.product.sale / 100)) * item.quantity;
     });

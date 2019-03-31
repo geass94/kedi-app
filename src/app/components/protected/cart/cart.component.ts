@@ -21,12 +21,11 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.cartService.shoppingCart.subscribe( data => {
-      let item = deserialize<Cart>(Cart, data);
-      if (item.savedForLater === false && item.wishlist === false) {
-        this.cartItems.push( item );
-        this.countSubtotal();
-      }
+    console.log("Inited: ", "Cart");
+    this.cartService.getUserCart().subscribe( data => {
+      console.log("Cart data loaded: ", data)
+      this.cartItems = data;
+      this.countSubtotal();
     });
 
     this.cartService.deleteListener.subscribe(res => {

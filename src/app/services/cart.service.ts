@@ -13,8 +13,10 @@ import {AuthenticationService} from "./authentication.service";
 export class CartService {
 
   constructor(private http: HttpClient, private authService: AuthenticationService) {
+    console.log("Constructed", "CartService");
     if (this.authService.isLoggedIn()) {
-      this.getUserCart();
+
+      this.seedCartSubject();
     }
   }
 
@@ -27,6 +29,7 @@ export class CartService {
     }
     this.http.post(`${environment.apiUrl}/cart/add-to-cart`, { productId : productId, quantity: qty }).subscribe(res => {
       let item = deserialize<Cart>(Cart, res);
+      console.log(item)
       this.shoppingCart.next( item );
     });
   }
@@ -43,7 +46,12 @@ export class CartService {
     return this.http.post(`${environment.apiUrl}/cart/add-to-wishlist`, { productId : productId });
   }
 
-  private getUserCart() {
+  getUserCart() {
+    return this.http.get(`${environment.apiUrl}/cart/get-user-cart`)
+      .pipe(map((res: any) => deserialize<Cart[]>(Cart, res)));
+  }
+
+  private seedCartSubject() {
     this.http.get(`${environment.apiUrl}/cart/get-user-cart`)
       .pipe(map((res: any) => deserialize<Cart[]>(Cart, res))).subscribe(res => {
         res.forEach(c => {
