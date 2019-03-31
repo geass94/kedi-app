@@ -52,7 +52,7 @@ export class ShopComponent implements OnInit, AfterViewInit {
         this.initPriceSlider();
       }
     );
-    this.menuService.getSideBar().subscribe(res => {
+    this.menuService.getSideBar(this.filter.category[0].id).subscribe(res => {
       this.sideBar = deserialize<Menu>(Menu, res);
     });
   }
