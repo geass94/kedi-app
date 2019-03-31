@@ -1,0 +1,5 @@
+<div *ngFor="let banner of banners">
+  <a *ngFor="let file of banner.bannerFiles" target="_blank" href="{{file.externalURL}}" title="{{banner.name}}">
+    <img src="{{file.fileUrl}}" alt="{{file.name}}">
+  </a>
+</div>

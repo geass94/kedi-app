@@ -23,7 +23,7 @@ import {CartService} from "./services/cart.service";
     HeaderComponent,
     FooterComponent,
     UserMenuComponent,
-    QuickCheckoutComponent,
+    QuickCheckoutComponent
   ],
   imports: [
     CommonModule,

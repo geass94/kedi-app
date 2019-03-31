@@ -21,6 +21,7 @@ import {ErrorInterceptor} from "../../helpers/error-interceptor";
 import { BestSellerComponent } from './home/best-seller/best-seller.component';
 import {CountdownTimerModule} from "angular-countdown-timer";
 import { DetailsComponent } from './single-product/details/details.component';
+import {SharedModule} from "../../layout/shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { DetailsComponent } from './single-product/details/details.component';
     HttpClientModule,
     FormsModule,
     CommonModule,
-    CountdownTimerModule.forRoot()
+    CountdownTimerModule.forRoot(),
+    SharedModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
