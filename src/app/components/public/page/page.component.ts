@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Page} from "../../../models/page";
 import {PageService} from "../../../services/page.service";
 import {ActivatedRoute} from "@angular/router";
@@ -7,7 +7,8 @@ import {deserialize} from "serializer.ts/Serializer";
 @Component({
   selector: 'app-page',
   templateUrl: './page.component.html',
-  styleUrls: ['./page.component.css']
+  styleUrls: ['./page.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class PageComponent implements OnInit {
   private alias: string;
