@@ -49,29 +49,17 @@ export class CartComponent implements OnInit {
 
   private countSubtotal() {
     this.cartItems.forEach(item => {
-      if (item.product.bundle !== null) {
-        this.subtotal += (item.product.bundle.price - (item.product.bundle.price * item.product.bundle.sale / 100)) * item.quantity;
-      } else {
-        this.subtotal += (item.product.price - (item.product.price * item.product.sale / 100)) * item.quantity;
-      }
+      this.subtotal += (item.product.price - (item.product.price * item.product.sale / 100)) * item.quantity;
     });
   }
 
   itemUnitPrice(item: Cart): number {
-    if (item.product.bundle !== null) {
-      return (item.product.bundle.price - (item.product.bundle.price * item.product.bundle.sale / 100));
-    } else {
-      return (item.product.price - (item.product.price * item.product.sale / 100));
-    }
+    return (item.product.price - (item.product.price * item.product.sale / 100));
   }
 
   itemSubotal(item: Cart): number {
     let itemSubtotal = 0;
-    if (item.product.bundle !== null) {
-      itemSubtotal += (item.product.bundle.price - (item.product.bundle.price * item.product.bundle.sale / 100)) * item.quantity;
-    } else {
-      itemSubtotal += (item.product.price - (item.product.price * item.product.sale / 100)) * item.quantity;
-    }
+    itemSubtotal += (item.product.price - (item.product.price * item.product.sale / 100)) * item.quantity;
     return itemSubtotal;
   }
 
