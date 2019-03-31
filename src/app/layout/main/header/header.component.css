@@ -1,9 +1,9 @@
 .menu-banner{
   max-width: 810px;
-  max-height: 172px;
-  display: flex;
+  display: inline-flex;
+  height: 100%;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
 }
 
