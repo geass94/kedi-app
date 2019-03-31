@@ -27,11 +27,19 @@ export class CartService {
     if (!qty) {
       qty = 1;
     }
-    this.http.post(`${environment.apiUrl}/cart/add-to-cart`, { productId : productId, quantity: qty }).subscribe(res => {
-      let item = deserialize<Cart>(Cart, res);
-      console.log(item)
-      this.shoppingCart.next( item );
-    });
+    this.http.post(`${environment.apiUrl}/cart/add-to-cart`, { productId : productId, quantity: qty }).subscribe(
+      res => {
+        let item = deserialize<Cart>(Cart, res);
+        this.shoppingCart.next( item );
+      },
+      err => {
+
+      },
+      () => {
+        // TODO
+        window.location.href = "/cart";
+      }
+    );
   }
 
   removeFromCart(id: number) {
