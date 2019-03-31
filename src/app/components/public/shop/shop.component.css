@@ -20,3 +20,20 @@ a {
   border: 1px #f3f3f3 solid;
   text-align: center;
 }
+
+
+.product-banner{
+  max-height: 322px;
+  max-width: 1920px;
+  margin: 0 auto;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.product-banner img {
+  max-height: 322px;
+}

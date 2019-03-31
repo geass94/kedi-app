@@ -1,11 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {BannerService} from "../../../services/banner.service";
 import {Banner} from "../../../models/banner";
 
 @Component({
   selector: 'app-banner',
   templateUrl: './banner.component.html',
-  styleUrls: ['./banner.component.css']
+  styleUrls: ['./banner.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class BannerComponent implements OnInit {
   @Input()
