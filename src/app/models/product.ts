@@ -9,27 +9,30 @@ import {Size} from "./size";
 export class Product {
   id: number;
   name: string;
+  referenceCode: string;
+  barCode: string;
   price: number;
-  @Type(() => Color)
-  color: Color;
+  quantity: number;
+  totalQuantity: number;
+  sale: number;
+  description: string;
+  promoted: boolean;
+  countDown: string;
+  //  Specifications
+  color: { id: number, name: string };
   size: Size;
   sex: string;
-  description: string;
-  @Type(() => Manufacturer)
-  manufacturer: Manufacturer;
-  @Type(() => Category)
+  manufacturer: { id: number, name: string };
   categoryList: Category[];
+  //  File attachments
   productFiles: ProductFile[];
+  //  Product Variants
   baseProduct: boolean;
   productVariantId: number;
   productVariantIds: number[];
-  quantity: number;
-  sale: number;
-  bundleSale: number;
-  bundlePrice: number;
-  @Type(() => Bundle)
-  bundle: Bundle;
-  countDown: string;
+  //  Bundles and gifts
+  bundledProducts: Product[];
+  makeBundle: boolean;
 }
 
 export interface ProductPage {

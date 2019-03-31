@@ -27,6 +27,11 @@ export class ProductService {
     return this.http.get(`${environment.apiUrl}/product/get-product-by-id/${id}`, {params: params});
   }
 
+  getBundles(id: number) {
+    return this.http.get(`${environment.apiUrl}/product/get-bundles-for-product/${id}`)
+      .pipe(map((res: any) => deserialize<Product[]>(Product, res)));
+  }
+
   getProductVariants(ids: any[]): Observable<Product[]> {
     let params = new HttpParams();
     params = params.append('ids', JSON.stringify(ids).replace(/[\[\]']+/g, ''));

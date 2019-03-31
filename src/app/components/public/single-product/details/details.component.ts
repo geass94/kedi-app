@@ -3,6 +3,7 @@ import {Product} from "../../../../models/product";
 import {CartService} from "../../../../services/cart.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ProductFile} from "../../../../models/product-file";
+import {ProductService} from "../../../../services/product.service";
 declare var jQuery: any;
 
 @Component({
@@ -22,7 +23,9 @@ export class DetailsComponent implements OnInit {
   @Input()
   colorVariants: Product [];
   chosenQuantity = 1;
+  bundledProduct: Product[];
   constructor(private cartService: CartService,
+              private productService: ProductService,
               private route: ActivatedRoute,
               private router: Router) { }
 
@@ -39,6 +42,12 @@ export class DetailsComponent implements OnInit {
       });
     });
 
+    this.productService.getBundles(this.product.id).subscribe(
+      res => {
+        this.bundledProduct = res;
+      }
+    );
+
   }
 
   addToCart(product: Product) {
@@ -54,7 +63,7 @@ export class DetailsComponent implements OnInit {
   }
 
   onSizeChange(s) {
-    console.log(s)
+    console.log(s);
     // this.router.navigate(['/product',  this.selectedVariant.id],
     //   {
     //           relativeTo: this.route ,

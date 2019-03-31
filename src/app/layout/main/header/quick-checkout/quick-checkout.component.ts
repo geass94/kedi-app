@@ -36,11 +36,7 @@ export class QuickCheckoutComponent implements OnInit {
 
   private countSubtotal() {
     this.shoppinCart.forEach(item => {
-      if (item.product.bundle !== null) {
-        this.subtotal += (item.product.bundle.price - (item.product.bundle.price * item.product.bundle.sale / 100)) * item.quantity;
-      } else {
-        this.subtotal += (item.product.price - (item.product.price * item.product.sale / 100)) * item.quantity;
-      }
+      this.subtotal += (item.product.price - (item.product.price * item.product.sale / 100)) * item.quantity;
     });
   }
 }
