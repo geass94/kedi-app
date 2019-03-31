@@ -8,7 +8,7 @@ import {environment} from "../../environments/environment";
 export class MenuService {
 
   constructor(private http: HttpClient) { }
-  getSideBar(parentCategory: number) {
-    return this.http.get(`${environment.apiUrl}/menu/get-sidebar/${parentCategory}`);
+  getSideBar() {
+    return this.http.get(`${environment.apiUrl}/menu/get-sidebar`);
   }
 }
