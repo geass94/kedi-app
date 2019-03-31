@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {User} from "../../../../models/user";
 import {Product} from "../../../../models/product";
 import {ProductService} from "../../../../services/product.service";
@@ -11,7 +11,8 @@ declare var jQuery: any;
 @Component({
   selector: 'app-newproducts',
   templateUrl: './newproducts.component.html',
-  styleUrls: ['./newproducts.component.css']
+  styleUrls: ['./newproducts.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class NewproductsComponent implements OnInit {
   isLoggedIn = false;

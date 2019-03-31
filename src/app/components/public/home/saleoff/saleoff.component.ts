@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {User} from "../../../../models/user";
 import {Product} from "../../../../models/product";
 import {ProductService} from "../../../../services/product.service";
@@ -10,7 +10,8 @@ declare var jQuery: any;
 @Component({
   selector: 'app-saleoff',
   templateUrl: './saleoff.component.html',
-  styleUrls: ['./saleoff.component.css']
+  styleUrls: ['./saleoff.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class SaleoffComponent implements OnInit {
   products: Product[] = [];

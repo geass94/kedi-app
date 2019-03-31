@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {User} from "../../../../models/user";
 import {Product} from "../../../../models/product";
 import {ProductService} from "../../../../services/product.service";
@@ -11,7 +11,8 @@ declare var jQuery: any;
 @Component({
   selector: 'app-featured-products',
   templateUrl: './featured-products.component.html',
-  styleUrls: ['./featured-products.component.css']
+  styleUrls: ['./featured-products.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class FeaturedProductsComponent implements OnInit {
   isLoggedIn = false;
