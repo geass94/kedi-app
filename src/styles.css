@@ -2003,9 +2003,20 @@ ul.address li span {
 }
 .banner-left {
   margin-top: 45px;
+  max-width: 271px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: flex-start;
 }
 
-/*----------------------------------------*/
+.banner-left img {
+  max-width: 271px;
+  max-height: 407px;
+  width: 100%;
+}
+
+  /*----------------------------------------*/
 /*  21.3 Shop content
 /*----------------------------------------*/
 
