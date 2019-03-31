@@ -2014,6 +2014,7 @@ ul.address li span {
   max-width: 271px;
   max-height: 407px;
   width: 100%;
+  object-fit: contain;
 }
 
   /*----------------------------------------*/
