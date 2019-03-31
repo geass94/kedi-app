@@ -54,6 +54,14 @@ export class ShopComponent implements OnInit, AfterViewInit {
     );
     this.menuService.getSideBar(this.filter.category[0].id).subscribe(res => {
       this.sideBar = deserialize<Menu>(Menu, res);
+      this.sideBar.categories.map( c => {
+        if (c.children.length) {
+          c.children.forEach(s => {
+            this.sideBar.categories.push(s);
+          });
+          delete c.children;
+        }
+      });
     });
   }
 
