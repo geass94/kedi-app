@@ -15,6 +15,7 @@ import {CommonModule, LocationStrategy, PathLocationStrategy} from "@angular/com
 import { UserMenuComponent } from './layout/main/header/user-menu/user-menu.component';
 import { QuickCheckoutComponent } from './layout/main/header/quick-checkout/quick-checkout.component';
 import {CartService} from "./services/cart.service";
+import {SharedModule} from "./layout/shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {CartService} from "./services/cart.service";
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   exports: [
   ],

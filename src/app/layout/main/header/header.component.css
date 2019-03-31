@@ -1,0 +1,16 @@
+.menu-banner{
+  max-width: 810px;
+  max-height: 172px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+
+.menu-banner img {
+  max-width: 810px;
+  max-height: 172px;
+  width: 100%;
+  object-fit: contain;
+}
