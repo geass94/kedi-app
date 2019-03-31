@@ -121,7 +121,7 @@
     </div>
     <div *ngIf="bundledProduct != null" class="row">
       <div *ngFor="let bundle of bundledProduct">
-        <h3>შეიძნე ერთად კრებული {{bundle.name}}! {{bundle.price}} ლარად, {{bundle.sale}} პროცენტიანი ფასდაკლებით! </h3>
+        <p>შეიძნე ერთად კრებული {{bundle.name}}! {{bundle.price}} ლარად, {{bundle.sale}}% ფასდაკლებით! </p>
 
         <div class="col-lg-3 col-sm-4" *ngFor="let b of bundle.bundledProducts">
           <div class="single-product">
@@ -136,7 +136,7 @@
         </div>
           <div class="col-lg-3 col-sm-4">
             <div class="actions">
-              <button type="button" (click)="addToCart(bundle)" class="cart-btn" title="Add to cart">კალათაში დამატება</button>
+              <button type="button" (click)="addToCart(bundle)" class="btn-primary cart-btn" title="Add to cart">კალათაში დამატება</button>
             </div>
           </div>
       </div>
