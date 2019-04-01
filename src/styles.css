@@ -994,6 +994,8 @@ body {
 }
 
 .product-img a .primary-img {
+  width: 262px;
+  height: 262px;
   transition: all 0.5s ease 0s;
 }
 .single-product:hover .product-img a .primary-img {
@@ -1002,6 +1004,8 @@ body {
   visibility: hidden;
 }
 .single-product:hover .product-img a .secondary-img {
+  width: 262px;
+  height: 262px;
   visibility: visible;
   z-index: 9;
   opacity: 1;
@@ -2071,6 +2075,7 @@ ul.address li span {
 }
 .product-content .single-product {
   margin-bottom: 40px;
+  height: 410px;
 }
 .product-content .single-product .actions {
   padding: 0px;
