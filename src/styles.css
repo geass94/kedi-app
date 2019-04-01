@@ -986,6 +986,13 @@ body {
   opacity: 0;
   visibility: hidden;
 }
+
+.product-img a img {
+  width: 262px;
+  height: 262px;
+  object-fit: cover;
+}
+
 .product-img a .primary-img {
   transition: all 0.5s ease 0s;
 }
@@ -1106,31 +1113,7 @@ body {
 /*  8. Sell area
 /*----------------------------------------*/
 
-.sell-area {
-  overflow: hidden;
-  background-color: #333;
-}
-.sell-heading {
-  float: left;
-  padding: 35px 20px 0px;
-  width: 20%;
-}
-.sell-heading h2 {
-  color: #fff;
-  font-size: 36px;
-  line-height: 48px;
-}
-.sell-heading p {
-  color: #bbb;
-  font-size: 13px;
-  font-style: italic;
-  line-height: 22px;
-}
-.sell-slider {
-  float: left;
-  overflow: hidden;
-  width: 80%;
-}
+
 .home2 .single-product {
   float: left;
   width: 100%;

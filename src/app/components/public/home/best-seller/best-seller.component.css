@@ -1,3 +1,15 @@
+.sell-area {
+  overflow: hidden;
+}
+.sell-heading {
+  width: 300px;
+}
+.sell-slider {
+  float: left;
+  overflow: hidden;
+  width: calc(100% - 300px);
+}
+
 #best-seller {
   display: flex;
   align-items: center;
@@ -6,17 +18,6 @@
 
 #best-seller .level-pro-new{
   background-color: #ee4558;
-}
-
-#best-seller .sell-heading{
-  width: 35%;
-  padding: 0;
-  padding-right: 15px;
-}
-
-#best-seller .sell-slider {
-  width: 65%;
-  padding-left: 15px;
 }
 
 .old-price{
