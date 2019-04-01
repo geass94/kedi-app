@@ -34,7 +34,7 @@
               </div>
             </div>
           </div>
-          <div class="single-sidebar">
+          <div *ngIf="leftMenu.length > 0" class="single-sidebar">
             <div class="single-sidebar-title">
               <h3>კატეგორიები</h3>
             </div>
@@ -46,7 +46,7 @@
               </ul>
             </div>
           </div>
-          <div class="single-sidebar">
+          <div *ngIf="sideBar.colors.length > 0" class="single-sidebar">
             <div class="single-sidebar-title">
               <h3>ფერები</h3>
             </div>
@@ -58,7 +58,7 @@
               </ul>
             </div>
           </div>
-          <div class="single-sidebar">
+          <div *ngIf="sideBar.manufacturers.length > 0" class="single-sidebar">
             <div class="single-sidebar-title">
               <h3>მწარმოებელი</h3>
             </div>
