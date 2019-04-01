@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Product} from "../../../../models/product";
 import {ProductService} from "../../../../services/product.service";
+import {CartService} from "../../../../services/cart.service";
 declare var jQuery: any;
 
 @Component({
@@ -13,7 +14,7 @@ export class BestSellerComponent implements OnInit {
   bestSale: Product = null;
   bestSales: Product[] = [];
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private cartService: CartService) { }
 
   ngOnInit() {
     this.productService.getBestSales().subscribe(
@@ -54,6 +55,10 @@ export class BestSellerComponent implements OnInit {
       itemsTablet: [768, 2],
       itemsMobile : [479, 1],
     });
+  }
+
+  addToCart(product: Product) {
+    this.cartService.addToCart(product.id, 1);
   }
 
 }

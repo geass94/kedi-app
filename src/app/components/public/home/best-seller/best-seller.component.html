@@ -12,11 +12,7 @@
         </a>
       </div>
       <div class="actions">
-        <button type="submit" class="cart-btn" title="Add to cart">ყიდვა</button>
-        <ul class="add-to-link">
-          <li><a href="#"> <i class="fa fa-heart-o"></i></a></li>
-          <li><a href="#"> <i class="fa fa-refresh"></i></a></li>
-        </ul>
+        <button type="button" (click)="addToCart(bestSale.id)" class="cart-btn" title="Add to cart">ყიდვა</button>
       </div>
       <div class="product-price">
         <div class="product-name">
@@ -47,7 +43,7 @@
         </a>
       </div>
       <div class="actions">
-        <button type="submit" class="cart-btn" title="Add to cart">ყიდვა</button>
+        <button type="button" (click)="addToCart(product.id)" class="cart-btn" title="Add to cart">ყიდვა</button>
       </div>
       <div class="product-price">
         <div class="product-name">
