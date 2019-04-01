@@ -1,20 +1,8 @@
-.sell-area {
-  overflow: hidden;
-}
-.sell-heading {
-  width: 300px;
-}
-.sell-slider {
-  float: left;
-  overflow: hidden;
-  width: calc(100% - 300px);
-}
-
 #best-seller {
   display: flex;
-  align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
+
 
 #best-seller .level-pro-new{
   background-color: #ee4558;
@@ -29,3 +17,80 @@
   color: #ee4558;
 }
 
+.best-seller {
+  position: relative;
+  width: 520px;
+  /*height: 275px;*/
+  background-color: #fff;
+  border: 1px #ccc solid;
+  padding: 15px;
+}
+
+.best-seller h2 {
+  display: inline-block;
+  font-size: 24px;
+  padding-left: 10px;
+  position: relative;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+
+.half {
+  width: 50%;
+}
+
+.poster {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
+.best-seller .product {
+  position: relative;
+  display: flex;
+}
+
+.best-seller .description {
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-left: 30px;
+}
+
+.best-seller .description a.title{
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.best-seller .indicator {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.timer{
+  color: #00abff;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.btn-buy {
+  border-radius: 0px;
+  background-color: transparent;
+  border: 1px #333 solid;
+}
+
+.sell-slider {
+  padding-left: 40px;
+  width: calc(100% - 520px);
+}
+
+
+.price-diff{
+  font-weight: bold;
+  font-size: 20px;
+}

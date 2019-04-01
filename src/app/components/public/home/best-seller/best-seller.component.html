@@ -1,63 +1,64 @@
-<div *ngIf="bestSale != null && bestSales.length > 0" id="best-seller" class="sell-area home2">
-  <div class="sell-heading">
-    <div class="single-product">
-      <div class="level-pro-new">
-        <span>დღის ფასდაკლება</span>
+<div class="container">
+<div *ngIf="bestSale != null && bestSales.length > 0" id="best-seller"class="sell-area home2">
+  <div class="best-seller">
+    <div class="level-pro-new indicator">
+      <span>დღის ფასდაკლება</span>
+    </div>
+    <h2>დღის ფასდაკლება</h2>
+    <div class="product">
+      <div class="poster half">
+        <img src="{{bestSale.productFiles[0].fileUrl}}" alt="{{bestSale.productFiles[0].name}}">
       </div>
-      <div class="product-img">
-        <a routerLink="/product/{{bestSale.id}}">
-          <ng-template ngFor let-image [ngForOf]="bestSale.productFiles" let-i= "index">
-            <img src="{{image.fileUrl}}" alt="" ngClass="{{imgClass(i)}}" *ngIf="i<2">
-          </ng-template>
-        </a>
-      </div>
-      <div class="actions">
-        <button type="button" (click)="addToCart(bestSale)" class="cart-btn" title="Add to cart">ყიდვა</button>
-      </div>
-      <div class="product-price">
-        <div class="product-name">
-          <a routerLink="/product/{{bestSale.id}}" title="{{bestSale.name}}">{{bestSale.name}}</a>
+      <div class="description half">
+        <div class="text">
+          <a class="title" routerLink="/product/{{bestSale.id}}">{{bestSale.name}}</a>
+          <br/>
+          {{bestSale.description | slice : 0  : 220 }}
         </div>
-        <div class="price-rating">
-          <span class="old-price">{{bestSale.price}}&#8382;</span>
+        <div class="price-diff">
           <span class="new-price">{{getNewPrice(bestSale)}}&#8382;</span>
-          <div class="ratings">
-            <countdown-timer [end]="bestSale.countDown"></countdown-timer>
-          </div>
+          &nbsp;&nbsp;&nbsp;
+          <span class="old-price">{{bestSale.price}}&#8382;</span>
+        </div>
+        <div class="actions">
+          <button (click)="addToCart(bestSale)" class="btn btn-buy">ყიდვა</button>
+        </div>
+        <div class="timer">
+          <countdown-timer [end]="bestSale.countDown"></countdown-timer>
         </div>
       </div>
     </div>
   </div>
 
-
-  <div class="sell-slider">
-    <div class="single-product" *ngFor="let product of bestSales; let last = last;">
-      <div class="level-pro-new">
-        <span>დღის ფასდაკლება</span>
-      </div>
-      <div class="product-img">
-        <a routerLink="/product/{{product.id}}">
-          <ng-template ngFor let-image [ngForOf]="product.productFiles" let-i= "index">
-            <img src="{{image.fileUrl}}" alt="" ngClass="{{imgClass(i)}}" *ngIf="i<2">
-          </ng-template>
-        </a>
-      </div>
-      <div class="actions">
-        <button type="button" (click)="addToCart(product)" class="cart-btn" title="Add to cart">ყიდვა</button>
-      </div>
-      <div class="product-price">
-        <div class="product-name">
-          <a routerLink="/product/{{product.id}}" title="{{product.name}}">{{product.name}}</a>
+    <div class="sell-slider">
+      <div class="single-product" *ngFor="let product of bestSales; let last = last;">
+        <div class="level-pro-new">
+          <span>ფასდაკლება</span>
         </div>
-        <div class="price-rating">
-          <span class="old-price">{{product.price}}&#8382;</span>
-          <span class="new-price">{{getNewPrice(product)}}&#8382;</span>
-          <div class="ratings">
-            <countdown-timer [end]="product.countDown"></countdown-timer>
+        <div class="product-img">
+          <a routerLink="/product/{{product.id}}">
+            <ng-template ngFor let-image [ngForOf]="product.productFiles" let-i= "index">
+              <img src="{{image.fileUrl}}" alt="" ngClass="{{imgClass(i)}}" *ngIf="i<2">
+            </ng-template>
+          </a>
+        </div>
+        <div class="actions">
+          <button type="button" (click)="addToCart(product)" class="cart-btn" title="Add to cart">ყიდვა</button>
+        </div>
+        <div class="product-price">
+          <div class="product-name">
+            <a routerLink="/product/{{product.id}}" title="{{product.name}}">{{product.name}}</a>
+          </div>
+          <div class="price-rating">
+            <span class="old-price">{{product.price}}&#8382;</span>
+            <span class="new-price">{{getNewPrice(product)}}&#8382;</span>
+            <!--<div class="ratings">-->
+              <!--<countdown-timer [end]="product.countDown"></countdown-timer>-->
+            <!--</div>-->
           </div>
         </div>
+        {{last ? initCarousel() : ''}}
       </div>
-      {{last ? initCarousel() : ''}}
     </div>
   </div>
 </div>

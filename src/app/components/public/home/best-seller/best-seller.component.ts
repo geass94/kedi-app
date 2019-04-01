@@ -49,9 +49,9 @@ export class BestSellerComponent implements OnInit {
       slideSpeed: 2000,
       pagination: false,
       navigation: false,
-      items : 4,
-      itemsDesktop : [1199, 4],
-      itemsDesktopSmall : [1100, 3],
+      items : 2,
+      itemsDesktop : [1199, 2],
+      itemsDesktopSmall : [1100, 2],
       itemsTablet: [768, 2],
       itemsMobile : [479, 1],
     });
