@@ -5,9 +5,9 @@ import {Type} from "serializer.ts/Decorators";
 
 export class Menu {
   @Type(() => Color)
-  colors: Color[];
+  colors: Color[] = [];
   @Type(() => Manufacturer)
-  manufacturers: Manufacturer[];
+  manufacturers: Manufacturer[] = [];
   @Type(() => Category)
-  categories: Category[];
+  categories: Category[] = [];
 }

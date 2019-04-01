@@ -24,7 +24,7 @@ declare var jQuery: any;
 export class ShopComponent implements OnInit, AfterViewInit {
   isLoggedIn = false;
   products: Product[];
-  sideBar: Menu = new Menu;
+  sideBar: Menu = new Menu();
   maxPrice = 0;
   minPrice = 0;
   filter = new Filter();
