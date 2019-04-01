@@ -40,7 +40,7 @@
             </div>
             <div class="single-sidebar-content">
               <ul>
-                <li *ngFor="let category of sideBar.categories">
+                <li *ngFor="let category of leftMenu">
                   <a (click)="applyFilter({category: category.id})" [ngClass]="{'bg-success': filter.category.indexOf(category.id) > -1}">{{category.name}}</a>
                 </li>
               </ul>

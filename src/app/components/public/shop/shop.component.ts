@@ -12,6 +12,7 @@ import {Filter} from "../../../models/filter";
 import {Sort} from "../../../models/sort";
 import {PriceRange} from "../../../models/price-range";
 import {AuthenticationService} from "../../../services/authentication.service";
+import {Category} from "../../../models/category";
 declare var jQuery: any;
 
 @Component({
@@ -27,6 +28,7 @@ export class ShopComponent implements OnInit, AfterViewInit {
   maxPrice = 0;
   minPrice = 0;
   filter = new Filter();
+  leftMenu: Category[] = [];
 
   constructor(
     private productService: ProductService,
@@ -52,6 +54,7 @@ export class ShopComponent implements OnInit, AfterViewInit {
         this.initPriceSlider();
       }
     );
+
     this.menuService.getSideBar().subscribe(res => {
       this.sideBar = deserialize<Menu>(Menu, res);
     });
@@ -61,7 +64,16 @@ export class ShopComponent implements OnInit, AfterViewInit {
     this.route.queryParamMap.subscribe(params => {
       this.applyFilterFromURL(params);
       this.filterProducts();
+      this.loadLeftMenu();
     });
+  }
+
+  private loadLeftMenu() {
+    this.menuService.getChildren(this.filter.category[0]).subscribe(
+      res => {
+        this.leftMenu = deserialize<Category[]>(Category, res);
+      }
+    );
   }
 
   addToCart(product: Product) {

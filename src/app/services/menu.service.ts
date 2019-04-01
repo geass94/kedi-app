@@ -11,4 +11,8 @@ export class MenuService {
   getSideBar() {
     return this.http.get(`${environment.apiUrl}/menu/get-sidebar`);
   }
+
+  getChildren(id: number) {
+    return this.http.get(`${environment.apiUrl}/specification/get-categories-by-parent/${id}`);
+  }
 }
