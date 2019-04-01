@@ -1,3 +1,12 @@
+<div class="container" *ngIf="products.length">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="product-title">
+        <h2>ახალი პროდუქცია</h2>
+      </div>
+    </div>
+  </div>
+  <div class="row">
 <div class="features-home2-slider-2">
   <div class="col-md-12" *ngFor="let product of products; let last = last;">
     <div class="single-product">
@@ -24,5 +33,7 @@
       </div>
     </div>
     {{last ? initCarousel() : ''}}
+  </div>
+</div>
   </div>
 </div>

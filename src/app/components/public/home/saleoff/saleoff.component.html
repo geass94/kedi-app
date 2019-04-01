@@ -1,26 +1,33 @@
-<div class="sell-off-slider">
-  <div class="single-product" *ngFor="let product of products; let last = last;">
-    <div class="level-pro-sale">
-      <span>ფასდაკლება</span>
-    </div>
-    <div class="product-img">
-      <a routerLink="/product/{{product.id}}">
-        <ng-template ngFor let-image [ngForOf]="product.productFiles" let-i= "index">
-          <img src="{{image.fileUrl}}" alt="" ngClass="{{imgClass(i)}}" *ngIf="i<2">
-        </ng-template>
-      </a>
-    </div>
-    <div class="actions">
-      <button type="button" class="cart-btn" (click)="addToCart(product)" title="Add to cart">ყიდვა</button>
-    </div>
-    <div class="product-price">
-      <div class="product-name">
-        <a routerLink="/product/{{product.id}}" title="{{product.name}}">{{product.name}}</a>
+<div *ngIf="products.length">
+  <div class="product-title">
+    <h2>ფასდაკლება</h2>
+  </div>
+  <div class="container-fluid">
+    <div class="sell-off-slider">
+      <div class="single-product" *ngFor="let product of products; let last = last;">
+        <div class="level-pro-sale">
+          <span>ფასდაკლება</span>
+        </div>
+        <div class="product-img">
+          <a routerLink="/product/{{product.id}}">
+            <ng-template ngFor let-image [ngForOf]="product.productFiles" let-i= "index">
+              <img src="{{image.fileUrl}}" alt="" ngClass="{{imgClass(i)}}" *ngIf="i<2">
+            </ng-template>
+          </a>
+        </div>
+        <div class="actions">
+          <button type="button" class="cart-btn" (click)="addToCart(product)" title="Add to cart">ყიდვა</button>
+        </div>
+        <div class="product-price">
+          <div class="product-name">
+            <a routerLink="/product/{{product.id}}" title="{{product.name}}">{{product.name}}</a>
+          </div>
+          <div class="price-rating">
+            <span>{{product.price}}&#8382;</span>
+          </div>
+        </div>
+        {{last ? initCarousel() : ''}}
       </div>
-      <div class="price-rating">
-        <span>{{product.price}}&#8382;</span>
-      </div>
     </div>
-    {{last ? initCarousel() : ''}}
   </div>
 </div>
