@@ -39,9 +39,10 @@ export class SingleProductComponent implements OnInit {
       },
       () => {
 
-          this.productService.getProductVariants(this.product.productVariantIds).subscribe(res => {
-            this.colorVariants = deserialize<Product[]>(Product, res);
-          });
+          // this.productService.getProductVariants(this.product.productVariantIds).subscribe(res => {
+          //   this.colorVariants = deserialize<Product[]>(Product, res);
+          // });
+        this.colorVariants = this.product.productVariants;
       }
     );
   }

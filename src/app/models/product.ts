@@ -29,7 +29,7 @@ export class Product {
   //  Product Variants
   baseProduct: boolean;
   productVariantId: number;
-  productVariantIds: number[];
+  productVariants: Product[];
   //  Bundles and gifts
   bundledProducts: Product[];
   makeBundle: boolean;
