@@ -19,17 +19,17 @@ export class Product {
   promoted: boolean;
   countDown: string;
   //  Specifications
-  color: { id: number, name: string };
+  color: Color;
   size: Size;
   sex: string;
-  manufacturer: { id: number, name: string };
+  manufacturer: Manufacturer;
   categoryList: Category[];
   //  File attachments
   productFiles: ProductFile[];
   //  Product Variants
   baseProduct: boolean;
-  productVariantId: number;
-  productVariants: Product[];
+  baseVariant: Product;
+  variants: Product[];
   //  Bundles and gifts
   bundledProducts: Product[];
   makeBundle: boolean;
