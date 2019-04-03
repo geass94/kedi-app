@@ -4,6 +4,7 @@ import {CartService} from "../../../../services/cart.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ProductFile} from "../../../../models/product-file";
 import {ProductService} from "../../../../services/product.service";
+import {Size} from "../../../../models/size";
 declare var jQuery: any;
 
 @Component({
@@ -18,10 +19,16 @@ export class DetailsComponent implements OnInit {
   pluginsInited = false;
   selectedVariant: Product;
   selectedSize: number;
-  availabelSizes = [];
+
   allFiles: ProductFile[] = [];
+
+
   @Input()
   colorVariants: Product [];
+  availableColors: Product[] = [];
+  availabelSizes: Size[] = [];
+
+
   chosenQuantity = 1;
   bundledProduct: Product[];
   constructor(private cartService: CartService,
@@ -31,14 +38,31 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit() {
     this.selectedVariant = this.product;
-    this.colorVariants.forEach(v => {
 
-      if (typeof this.availabelSizes.find(s => s.id === v.size.id) === "undefined") {
-        this.availabelSizes.push(v.size);
+    this.selectedVariant.productFiles.forEach(pf => {
+      if (this.allFiles.indexOf(pf) === -1) {
+        this.allFiles.unshift(pf);
       }
+    });
 
+    this.colorVariants.forEach(v => {
+      if (this.availableColors.indexOf(v) === -1) {
+        if (!this.availableColors.filter(ac => ac.color.id === v.color.id).length) {
+          this.availableColors.push(v);
+        }
+      }
+      if (this.availabelSizes.indexOf(v.size) === -1) {
+        if (!this.availabelSizes.filter(ac => ac.id === v.size.id).length) {
+          this.availabelSizes.push(v.size);
+        }
+      }
+    });
+
+    this.availableColors.forEach(v => {
       v.productFiles.forEach(f => {
-        this.allFiles.push(f);
+        if (!this.allFiles.filter(af => af.name === f.name).length) {
+          this.allFiles.push(f);
+        }
       });
     });
 
@@ -47,7 +71,6 @@ export class DetailsComponent implements OnInit {
         this.bundledProduct = res;
       }
     );
-
   }
 
   addToCart(product: Product) {
