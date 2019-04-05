@@ -1,5 +1,6 @@
-<div class="container">
-<div *ngIf="bestSale != null && bestSales.length > 0" id="best-seller"class="sell-area home2">
+<div class="container-fluid">
+  <br/>
+<div *ngIf="bestSale != null && bestOffers.length > 0" id="best-seller"class="sell-area home2">
   <div class="best-seller">
     <div class="level-pro-new indicator">
       <span>დღის ფასდაკლება</span>
@@ -31,16 +32,15 @@
   </div>
 
     <div class="sell-slider">
-      <div class="single-product" *ngFor="let product of bestSales; let last = last;">
+      <div class="bo-product" *ngFor="let product of bestOffers; let last = last;">
         <div class="level-pro-new">
-          <span>ფასდაკლება</span>
+          <span>დღის შეთავაზება</span>
         </div>
         <div class="product-img">
-          <a routerLink="/product/{{product.id}}">
-            <ng-template ngFor let-image [ngForOf]="product.productFiles" let-i= "index">
-              <img src="{{image.fileUrl}}" alt="" ngClass="{{imgClass(i)}}" *ngIf="i<2">
-            </ng-template>
-          </a>
+            <img src="{{product.productFiles[0].fileUrl}}" alt="">
+            <div class="bundle-img">
+              <img src="{{product.productFiles[0].fileUrl}}" alt="">
+            </div>
         </div>
         <div class="actions">
           <button type="button" (click)="addToCart(product)" class="cart-btn" title="Add to cart">ყიდვა</button>
@@ -50,8 +50,7 @@
             <a routerLink="/product/{{product.id}}" title="{{product.name}}">{{product.name}}</a>
           </div>
           <div class="price-rating">
-            <span class="old-price">{{product.price}}&#8382;</span>
-            <span class="new-price">{{getNewPrice(product)}}&#8382;</span>
+            <span class="new-price">{{product.price}}&#8382;</span>
             <!--<div class="ratings">-->
               <!--<countdown-timer [end]="product.countDown"></countdown-timer>-->
             <!--</div>-->

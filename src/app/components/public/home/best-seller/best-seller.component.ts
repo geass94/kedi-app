@@ -12,7 +12,8 @@ declare var jQuery: any;
 })
 export class BestSellerComponent implements OnInit {
   bestSale: Product = null;
-  bestSales: Product[] = [];
+  private bestSales: Product[] = [];
+  bestOffers: Product[] = [];
 
   constructor(private productService: ProductService, private cartService: CartService) { }
 
@@ -27,6 +28,12 @@ export class BestSellerComponent implements OnInit {
       () => {
         this.bestSale = this.bestSales[0];
         this.bestSales.shift();
+      }
+    );
+
+    this.productService.getAllBundles().subscribe(
+      res => {
+        this.bestOffers = res;
       }
     );
   }
